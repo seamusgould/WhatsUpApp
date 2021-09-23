@@ -3,6 +3,10 @@
 <br /> Something, such as a club meeting, concert, party, etc. occurring
 on or near the Vassar campus, which is entered into the app
 
+**Karma**:
+<br /> The difference between a user's lifetime upvotes and downvotes. May be used to identify
+those engaged in trolling or other undesirable behavior.
+
 **President/Leader**:
 <br /> A user who has been given authority outside of the app to lead a club, 
 student association, etc. They are verified users.
