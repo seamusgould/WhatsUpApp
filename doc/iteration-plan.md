@@ -1,9 +1,8 @@
 ``` mermaid
 graph TD
-A[Christmas] -->|Get money| B(Go shopping)
-B --> C{Let me think}
-C -->|One| D[Laptop]
-C -->|Two| E[iPhone]
-C -->|Three| F[fa:fa-car Car]
+A[Create a login for users] -->|a| B(Display a map for users who log on)
 
+B --> |b| C(VCreate the ability for a person to make an event amd store it into a database)
+
+C --> |d| D(Make)
 ```
