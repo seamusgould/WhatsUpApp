@@ -8,7 +8,8 @@ student association, etc. They are verified users.
 **Push Notification**: A notification sent to a user's device which appears whether or
 not the user is currently using the app
 
-**Tag**: 
+**Tag**: A label applied to certain post. The same tag (i.e., "from a verified user) 
+can be applied to numerous posts.
 
 **Trolling**: The practice of creating fake events as a prank or to anger others. This practice should be
 prevented by using verification as well as the upvote/downvote system.
