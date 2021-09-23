@@ -10,7 +10,7 @@
 - **User posting activity:** Wants to share information about activity with other users.  
 
 **Preconditions:**  
-- User is identified and authenticated  
+- User is identified and authenticated.  
 
 **Postconditions (or success guarantee):**  
 - Activities are successfully displayed.  
