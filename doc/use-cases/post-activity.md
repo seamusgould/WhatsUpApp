@@ -10,7 +10,7 @@
 - **User finding activity:** Wants to quickly find out what is happening, when the activity starts and ends, and where on campus it is happening. Does not want to see events that are not actually happening.
 
 **Preconditions:**
-- User is identified and authenticated
+- User is identified and authenticated.
 
 **Postconditions (or success guarantee):**
 - An activity post is successfully created.
