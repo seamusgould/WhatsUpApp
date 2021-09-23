@@ -3,6 +3,10 @@
 <br /> Something, such as a club meeting, concert, party, etc. occurring
 on or near the Vassar campus, which is entered into the app
 
+**Karma**:
+<br /> The difference between a user's lifetime upvotes and downvotes. May be used to identify
+those engaged in trolling or other undesirable behavior.
+
 **President/Leader**:
 <br /> A user who has been given authority outside of the app to lead a club, 
 student association, etc. They are verified users.
@@ -27,8 +31,8 @@ The total of the upvotes minus downvotes is the score of a post.
 <br /> Certain users, such as club presidents, whose identities have been verified, to prevent impersonation or trolling.
 Events they create are tagged as created by verified users.
 
-**Viewer**:
-<br /> A student who is using the app to view activities.
+**Viewer**:  
+A student who is using the app to view activities.  
 
-**Poster**:
-<br /> A student who is using the app to post activities.
+**Poster**:  
+A student who is using the app to post activities.  
