@@ -9,6 +9,7 @@ Our software addresses customer needs that other products do not:
 4. Allows users to upvote and downvote events based on their credibility.
 5. It integrates with some background information of each user to quantify the reliability of an event.
 
+<<<<<<< HEAD
 Key features summary:
 • Creating a login so that credited students are the only ones who have access<br />
 • Displaying a map of the locations of events on campus.<br />
@@ -18,6 +19,13 @@ Key features summary:
 • One constraint that we have is that we want the time of the app to be as fast as possible, tht is,
  make it work in less than three seconds to upload and view an event.<br />
 • Making a database that can keep track of users and verify their credibility.<br />
+=======
+Key features summary: \
+• Creating a login so that credited students are the only ones who have access \
+• Displaying a map of the locations of events on campus. \
+• Allowing users to upload information on a future event. \
+• Allowing users to view events that are already happening on campus. \
+• An upvote and downvote mechanism that can be saved to identify the reliability of a user.
 
 ```plantuml
 
