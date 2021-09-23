@@ -29,7 +29,6 @@
 
 **Special requirements:**
 - Touch screen UI.
-- Internationalization of displayed text.
 
 **Technology and data variations list:**  
 1a. Touch screen and device keyboard are used to navigate.  

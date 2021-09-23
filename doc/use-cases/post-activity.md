@@ -3,11 +3,11 @@
 
 **Level:** User goal
 
-**Primary actor:** User
+**Primary actor:** Poster
 
 **Stakeholders and Interests:**
-- **User posting activity:** Wants to share information about activity with other users and encourage people to attend/participate in the activity.
-- **User finding activity:** Wants to quickly find out what is happening, when the activity starts and ends, and where on campus it is happening. Does not want to see events that are not actually happening.
+- **Poster:** Wants to share information about activity with other users and encourage people to attend/participate in the activity.
+- **Viewer:** Wants to quickly find out what is happening, when the activity starts and ends, and where on campus it is happening. Does not want to see events that are not actually happening.
 
 **Preconditions:**
 - User is identified and authenticated.
@@ -18,21 +18,20 @@
 - The new activity is included on the list of activities.
 
 **Main success scenario:**
-1. User opens the app with the intention of posting activity.
+1. Poster opens the app with the intention of posting activity.
 2. System displays activities that are happening at the current time or in the near future.
-3. User chooses the option to post activity.
-4. User provides the app with a description of the activity, the start/end time, and a category for the activity (e.g. party, free food, etc.).
+3. Poster chooses the option to post activity.
+4. Poster provides the app with a description of the activity, the start/end time, and a category for the activity (e.g. party, free food, etc.).
 5. The newly created activity is added to the existing list of activities.
-6. User closes the app after posting the activity.
+6. Poster closes the app after posting the activity.
 
 **Extensions (or alternate flows):**  
-4a. User changes their mind about posting an activity
-1. The user can leave the post activity screen to cancel the activity creation.
+4a. Poster changes their mind about posting an activity
+1. The poster can leave the post activity screen to cancel the activity creation.
 
 **Special requirements:**
 - Touch screen UI.
-- Internationalization of displayed text.
-- Users must be able to assign a category to their event (e.g. party).
+- Posters must be able to assign a category to their event (e.g. party).
 
 **Technology and data variations list:**  
 3a. Touch screen is used to navigate.  

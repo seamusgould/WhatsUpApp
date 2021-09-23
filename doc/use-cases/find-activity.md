@@ -3,11 +3,11 @@
 
 **Level:** User goal  
 
-**Primary actor:** User  
+**Primary actor:** Viewer  
 
 **Stakeholders and Interests:**  
-- **User finding activity:** Wants to quickly find out what is happening, when the activity starts and ends, and where on campus it is happening. Does not want to see events that are not actually happening.  
-- **User posting activity:** Wants to share information about activity with other users.  
+- **Viewer:** Wants to quickly find out what is happening, when the activity starts and ends, and where on campus it is happening. Does not want to see events that are not actually happening.  
+- **Poster:** Wants to share information about activity with other users.  
 
 **Preconditions:**  
 - User is identified and authenticated.  
@@ -17,19 +17,18 @@
 - An activity can be viewed in detail.
  
 **Main success scenario:**  
-1. User opens the app with the intention of finding activity.  
+1. Viewer opens the app with the intention of finding activity.  
 2. System displays activities that are happening at the current time or in the near future.  
-3. User views the list of activities.  
-4. User chooses an activity to view in more detail.  
-5. User closes the app after finding an activity.  
+3. Viewer views the list of activities.  
+4. Viewer chooses an activity to view in more detail.  
+5. Viewer closes the app after finding an activity.  
 
 **Extensions (or alternate flows):**  
-4a. User wishes to view more activities  
-1. The user can repeat steps 3-4 as long as they would like.  
+4a. Viewer wishes to view more activities  
+1. The viewer can repeat steps 3-4 as long as they would like.  
 
 **Special requirements:**  
-- Touch screen UI.  
-- Internationalization of displayed text.  
+- Touch screen UI.
 - List of activities and map must be readable on a phone screen (e.g. large enough text, scrollable list, high-resolution map image).  
 - Activity categories must be displayed when viewing activities on the map, in the list, and in detail.  
 
