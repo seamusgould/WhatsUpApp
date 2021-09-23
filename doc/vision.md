@@ -7,12 +7,15 @@ Our software addresses customer needs that other products do not:
 2. It allows other students to see what events are taking place on campus as well.
 3. It integrates with some background information of each user to quantify the reliability of an event.
 
-Key features summary:
-• Creating a login so that credited students are the only ones who have access
-• Displaying a map of the locations of events on campus.
-• Allowing users to upload information on a future event.
-• Allowing users to view events that are already happening on campus.
-• An upvote and downvote mechanism that can be saved to identify the relibaility of a user.
+Key features summary: \
+• Creating a login so that credited students are the only ones who have access \
+• Displaying a map of the locations of events on campus. \
+• Allowing users to upload information on a future event. \
+• Allowing users to view events that are already happening on campus. \
+• An upvote and downvote mechanism that can be saved to identify the reliability of a user.
+
+
+
 
 ```plantuml
 @startuml
