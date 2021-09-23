@@ -25,7 +25,10 @@
 
 **Extensions (or alternate flows):**  
 4a. Viewer wishes to view more activities  
-1. The viewer can repeat steps 3-4 as long as they would like.  
+1. The viewer can repeat steps 3-4 as long as they would like.
+
+4b. Viewer wishes to indicate that they like or dislike a posted activity
+1. The viewer can upvote or downvote an activity when viewing it in detail.
 
 **Special requirements:**  
 - Touch screen UI.
