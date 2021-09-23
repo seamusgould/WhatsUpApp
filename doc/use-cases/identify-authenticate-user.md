@@ -1,4 +1,4 @@
-## Identify/Authenticate User
+# Identify/Authenticate User
 **Scope:** Campus activity application
 
 **Level:** Subfunction
@@ -7,7 +7,7 @@
 
 **Stakeholders and Interests:**
 - **User:** Wants to log in to the app to find or post activity.  
-- **System:** Wants to authenticate identity of each user.  
+- **System:** Wants to authenticate identity of each user, which reduces risk of trolling.  
 
 **Preconditions:**
 - User has created an account on the app.
@@ -29,7 +29,6 @@
 
 **Special requirements:**
 - Touch screen UI.
-- Internationalization of displayed text.
 
 **Technology and data variations list:**  
 1a. Touch screen and device keyboard are used to navigate.  
