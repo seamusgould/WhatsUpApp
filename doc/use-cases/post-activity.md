@@ -1,4 +1,4 @@
-## Post Activity
+# Post Activity
 **Scope:** Campus activity application
 
 **Level:** User goal

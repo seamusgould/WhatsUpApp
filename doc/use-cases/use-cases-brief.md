@@ -1,3 +1,4 @@
+# Brief Use Cases
 ### Find Activity
 1. The user opens the app to look for activity.
 2. The app displays events that are happening now or start within the next two hours.

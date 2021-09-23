@@ -1,4 +1,4 @@
-## Find Activity
+# Find Activity
 **Scope:** Campus activity application  
 
 **Level:** User goal  
