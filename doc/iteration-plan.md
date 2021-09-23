@@ -1,4 +1,9 @@
-| Rank      | Rank Requirement (use case or feature) | Comments     |
-| :---        |    :----:   |          ---: |
-| Header      | Title       | Here's this   |
-| Paragraph   | Text        | And more      |
+``` mermaid
+graph TD
+A[Christmas] -->|Get money| B(Go shopping)
+B --> C{Let me think}
+C -->|One| D[Laptop]
+C -->|Two| E[iPhone]
+C -->|Three| F[fa:fa-car Car]
+
+```
