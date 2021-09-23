@@ -24,6 +24,9 @@
 5. User closes the app after finding an activity.  
 
 **Extensions (or alternate flows):**  
+1a. App fails to start
+1. User can restart or contact dev team
+
 4a. User wishes to view more activities  
 1. The user can repeat steps 3-4 as long as they would like.  
 
