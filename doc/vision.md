@@ -9,7 +9,7 @@ Our software addresses customer needs that other products do not:
 4. Allows users to upvote and downvote events based on their credibility.
 5. It integrates with some background information of each user to quantify the reliability of an event.
 
-Key features summary:
+Key features summary: <br />
 • Creating a login so that credited students are the only ones who have access<br />
 • Displaying a map of the locations of events on campus.<br />
 • Allowing users to upload information on a future event.<br />
