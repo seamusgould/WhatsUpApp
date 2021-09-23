@@ -27,8 +27,8 @@ The total of the upvotes minus downvotes is the score of a post.
 <br /> Certain users, such as club presidents, whose identities have been verified, to prevent impersonation or trolling.
 Events they create are tagged as created by verified users.
 
-**Viewer**:
-<br /> A student who is using the app to view activities.
+**Viewer**:  
+A student who is using the app to view activities.  
 
-**Poster**:
-<br /> A student who is using the app to post activities.
+**Poster**:  
+A student who is using the app to post activities.  

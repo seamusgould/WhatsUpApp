@@ -1,5 +1,6 @@
 # Supplementary Specifications
 Constraints:
+
 1. App must run on Android OS.
 
 Usability: 
@@ -11,9 +12,9 @@ computer or social media experience should be able to utilize it properly.
 
 Reliability: 
 
-1. If the system crashes, all posted events should be preserved.
+1. If the system crashes, all posted activities should be preserved.
 
 Performance:
 
-1. 
+1. Viewers want real-time updates to the activities list.
 
