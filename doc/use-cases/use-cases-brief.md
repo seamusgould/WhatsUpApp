@@ -12,3 +12,8 @@
 ### User Identification/Authentication (Log In)
 1. The user identifies themself.
 2. The system authenticates the identity provided by the user.
+
+### Upvote or Downvote Activity
+1. The viewer views the list of activities.
+2. The viewer selects an activity to view in more detail.
+3. The viewer selects the option to "upvote" the activity post if they like it, or the "downvote" option if they dislike it.
