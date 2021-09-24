@@ -30,14 +30,13 @@ left to right direction
 
 skinparam packageStyle rectangle
 
-actor Planner
-actor Student
+actor Poster
+actor Viewer
 
 rectangle EventApp {
-    Student ---> (Database)
-    Planner ---> (Database)
-    Planner ---> (Post Event to Database)
-'    actor "Accounting system" <<system>> as accountingSystem
+    Viewer ---> (Database)
+    Poster ---> (Database)
+    Poster ---> (Post Event to Database)
 }
 
 @enduml
@@ -45,3 +44,14 @@ rectangle EventApp {
 ```
 
 # Files
+- #Use case list folder 
+Will provide a list of development goals that our team has for the project.
+- #Supplementary Specification
+Additional specifications that our team views as functions that are not requirements,
+but that would be nice to have in addition to our project.
+- #Glossary:
+A list of terms that may be useful to understand the development of our app
+and its features.
+- #Iteration Plan
+Our iteration plan will contain the path of our development.  In addition, it will include
+the order that we plan to make progress.

@@ -8,7 +8,6 @@ Usability:
 computer or social media experience should be able to utilize it properly.
 2. Errors should have an associated code to enable easier identification
 3. Map and list text must be legible when viewing on smaller screens.
-
 Reliability: 
 
 1. If the system crashes, all posted activities should be preserved.
