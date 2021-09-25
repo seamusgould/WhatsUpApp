@@ -21,4 +21,3 @@ A student who is using the app to view activities.
 **Poster**:  
 A student who is using the app to post activities.  
 
-**Final**
