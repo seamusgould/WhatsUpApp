@@ -4,4 +4,4 @@
 
 @startuml
 actor User as user
-
+participant " : Event" as event
