@@ -16,5 +16,6 @@ event -->> evloc **: evloc = (roughLocation)
 
 evloc -->> event: finalLocation
 
+repo -> user: Show Event
 
 
