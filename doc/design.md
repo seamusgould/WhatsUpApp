@@ -107,7 +107,7 @@ class User{
 - karma : double
 }
 
-class EventRepository{
+class EventCollection{
 - EventList : List<Event> = |Event1 -> Event2 -> Event3 -> ...|
 }
 
@@ -130,11 +130,11 @@ class Location{
 
 User ---> "(1..*)Creates Events\n{Event}" Event : \t\t\t\t
 
-Event ---> "(1)Stored in\n{EventRepository}" EventRepository : \t\t\t\t
+Event ---> "(1)Stored in\n{EventCollection}" EventCollection : \t\t\t\t
 
-Event ---> "(1)Stored in\n{EventRepository}" Location : \t\t\t\t
+Event ---> "(1)Stored in\n{EventCollection}" Location : \t\t\t\t
 
-User ---> "(1..*)Can View\n{Event}" EventRepository : \t\t\t\t
+User ---> "(1..*)Can View\n{Event}" EventCollection : \t\t\t\t
 
 @enduml
 ```
