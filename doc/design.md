@@ -62,12 +62,9 @@ participant " : EventCollection" as coll
 participant " : Event" as event
 participant " : Location" as evloc
 
-<<<<<<< HEAD
 user -> cont: create event (name, date, time, description, location, recurrence)
 cont -> event: event = create(name, date, time, description, location, recurrence)
-=======
 coll -->> event **: event = create(name, date, time, reecurrence, description, poster, roughLocation).;
->>>>>>> 962c8fd266a2cfe05b344f5379e6b67f18b51ff6
 event -->> evloc **: evloc = (roughLocation)
 
 evloc -->> event: finalLocation
