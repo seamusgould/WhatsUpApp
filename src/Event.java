@@ -29,7 +29,7 @@ public class Event
         String score = Integer.toString(upvoteDownvote);
         finalstring = "\n";
         finalstring += score + "|";
-        finalstring += eventName + " on {eventdate} at {eventtime} posted by {poster}";
+        finalstring += eventName + " " + eventDate + " at " + eventTime + " posted by " +  eventPoster.username;
         finalstring += "\n";
         finalstring += new String(new char[score.length()]).replace("\0", " ") + "|";
         finalstring += new String(new char[100 - score.length()]).replace("\0", "=");
