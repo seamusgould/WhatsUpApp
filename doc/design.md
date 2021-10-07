@@ -20,7 +20,6 @@ time
 recurrence
 description
 upvoteDownvote
-posterUsername
 }
 class Tag{
 name
@@ -32,11 +31,8 @@ gpsCoordinates
 class Comment{
 date
 time
-commenterUsername
 description
 upvoteDownvote
-}
-class MapDisplay{
 }
 class Statistics{
 }
@@ -49,7 +45,6 @@ Event "1" - "1" Location : \tHas\t\t
 Event "1" - "*" Tag : \tHas\t\t
 Event "1" -left- "*" Comment : \tHas\t\t
 Comment "1" -up- "1" User : \tIs-posted-by\t\t
-Event "*" -- "1" MapDisplay : \tIs-displayed-on\t\t
 Event "*" --- "1" Statistics : \tContributes-to\t\t
 
 @enduml
@@ -62,18 +57,22 @@ Event "*" --- "1" Statistics : \tContributes-to\t\t
 @startuml
 hide footbox
 actor User as user
+participant " : Controller" as cont
 participant " : EventCollection" as coll
 participant " : Event" as event
-participant " : EventLocation" as evloc
+participant " : Location" as evloc
 
-user -> coll: create event
-
+<<<<<<< HEAD
+user -> cont: create event (name, date, time, description, location, recurrence)
+cont -> event: event = create(name, date, time, description, location, recurrence)
+=======
 coll -->> event **: event = create(name, date, time, reecurrence, description, poster, roughLocation).;
+>>>>>>> 962c8fd266a2cfe05b344f5379e6b67f18b51ff6
 event -->> evloc **: evloc = (roughLocation)
 
 evloc -->> event: finalLocation
 
-coll -> user: Show Event
+cont -> coll: addEvent(e)
 
 @enduml
 ```
@@ -83,23 +82,24 @@ coll -> user: Show Event
 @startuml
 hide footbox
 actor User as user
+participant " : Controller" as cont
 participant " : EventCollection" as coll
 participant " : Event" as event
 
-user -> coll: view
+user -> cont: view events
 
-coll -> user: display all events
+cont -> coll: display events
 
-user -> coll: select particular event
+user -> cont: select particular event
 
-coll -->> event: displayEvent(Event)
+cont -> event: displayEvent(Event)
 
-coll -> user: displays particular event 
+event -> cont: displays particular event 
 
 @enduml
 ```
 
-#Posting an Event: A Class Diagram
+# Class Diagram
 
 ```plantuml
 

@@ -27,11 +27,16 @@ public class Event
 
     public String toString()
     {
+<<<<<<< HEAD
         finalstring += new String(new char[20]).replace("\0", "-");
         finalstring += "\n";
         finalstring += "" + name;
         finalstring += new String(new char[20]).replace("\0", "-");
         return finalstring;
+=======
+        String finalString = eventName + eventDate.toString();
+        return finalString;
+>>>>>>> 55cb842018df399b50cbebd6ff313b6bf4c5cf36
     }
 
 }
