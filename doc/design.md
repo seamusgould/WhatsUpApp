@@ -62,8 +62,12 @@ participant " : EventCollection" as coll
 participant " : Event" as event
 participant " : Location" as evloc
 
+<<<<<<< HEAD
 user -> cont: create event (name, date, time, description, location, recurrence)
 cont -> event: event = create(name, date, time, description, location, recurrence)
+=======
+coll -->> event **: event = create(name, date, time, reecurrence, description, poster, roughLocation).;
+>>>>>>> 962c8fd266a2cfe05b344f5379e6b67f18b51ff6
 event -->> evloc **: evloc = (roughLocation)
 
 evloc -->> event: finalLocation
@@ -91,6 +95,49 @@ user -> cont: select particular event
 cont -> event: displayEvent(Event)
 
 event -> cont: displays particular event 
+
+@enduml
+```
+
+# Class Diagram
+
+```plantuml
+
+@startuml
+class User{
+- username : String = "John/Jane Doe"
+- profilePicture : picture
+- karma : double
+}
+
+class EventRepository{
+- EventList : List<Event> = |Event1 -> Event2 -> Event3 -> ...|
+}
+
+
+class Event{
+- name : String = "Club Meeting"
+- date : Date = "01/08/2022"
+- time : Date = 21:23
+- recurrence : Boolean = True
+- description : String = 'This event is ...'
+- upvoteDonwvote : double = 5
+- posterUsername : User = 'John/Jane Doe'
+}
+
+class Location{
+- name : String = "John/Jane Doe"
+- gpsCoordinatesLat : double = 41.686798
+- gpsCoordinatesLong : double = -73.895699
+}
+
+User ---> "(1..*)Creates Events\n{Event}" Event : \t\t\t\t
+
+Event ---> "(1)Stored in\n{EventRepository}" EventRepository : \t\t\t\t
+
+Event ---> "(1)Stored in\n{EventRepository}" Location : \t\t\t\t
+
+User ---> "(1..*)Can View\n{Event}" EventRepository : \t\t\t\t
 
 @enduml
 ```
