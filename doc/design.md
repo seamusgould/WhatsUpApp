@@ -98,3 +98,46 @@ coll -> user: displays particular event
 
 @enduml
 ```
+
+#Posting an Event: A Class Diagram
+
+```plantuml
+
+@startuml
+class User{
+- username : String = "John/Jane Doe"
+- profilePicture : picture
+- karma : double
+}
+
+class EventRepository{
+- EventList : List<Event> = |Event1 -> Event2 -> Event3 -> ...|
+}
+
+
+class Event{
+- name : String = "Club Meeting"
+- date : Date = "01/08/2022"
+- time : Date = 21:23
+- recurrence : Boolean = True
+- description : String = 'This event is ...'
+- upvoteDonwvote : double = 5
+- posterUsername : User = 'John/Jane Doe'
+}
+
+class Location{
+- name : String = "John/Jane Doe"
+- gpsCoordinatesLat : double = 41.686798
+- gpsCoordinatesLong : double = -73.895699
+}
+
+User ---> "(1..*)Creates Events\n{Event}" Event : \t\t\t\t
+
+Event ---> "(1)Stored in\n{EventRepository}" EventRepository : \t\t\t\t
+
+Event ---> "(1)Stored in\n{EventRepository}" Location : \t\t\t\t
+
+User ---> "(1..*)Can View\n{Event}" EventRepository : \t\t\t\t
+
+@enduml
+```
