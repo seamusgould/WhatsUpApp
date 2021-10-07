@@ -62,15 +62,17 @@ Event "*" --- "1" Statistics : \tContributes-to\t\t
 @startuml
 hide footbox
 actor User as user
-participant " : EventRepository" as repo
+participant " : EventCollection" as coll
 participant " : Event" as event
 participant " : EventLocation" as evloc
 
-user -> repo: create event
+user -> coll: create event
 
-repo -->> event **: event = create(creator, date, time, description, location recurrence)
+coll -->> event **: event = create(creator, date, time, description, location recurrence)
 event -->> evloc **: evloc = (roughLocation)
 
 evloc -->> event: finalLocation
 
-repo -> user: Show Event
+coll -> user: Show Event
+
+
