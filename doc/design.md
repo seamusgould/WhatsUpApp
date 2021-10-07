@@ -44,7 +44,7 @@ class Statistics{
 ' associations
 User "1" -- "1" EventCollection : \tViews\t\t
 User "1" - "*" Event : \tPosts\t\t
-EventCollection "1" - "*" Event : \tLists\t\t
+EventCollection "1" -- "*" Event : \tLists\t\t
 Event "1" - "1" Location : \tHas\t\t
 Event "1" - "*" Tag : \tHas\t\t
 Event "1" -left- "*" Comment : \tHas\t\t
