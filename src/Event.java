@@ -25,18 +25,20 @@ public class Event
         this.eventDescription = description;
     }
 
-    public String toString()
-    {
-<<<<<<< HEAD
-        finalstring += new String(new char[20]).replace("\0", "-");
+    public String toString(){
+        String score = Integer.toString(upvoteDownvote);
+        finalstring = "\n";
+        finalstring += score + "|";
+        finalstring += eventName + " on {eventdate} at {eventtime} posted by {poster}";
         finalstring += "\n";
-        finalstring += "" + name;
-        finalstring += new String(new char[20]).replace("\0", "-");
+        finalstring += new String(new char[score.length()]).replace("\0", " ") + "|";
+        finalstring += new String(new char[100 - score.length()]).replace("\0", "=");
+        finalstring += "\n";
+        finalstring += new String(new char[score.length()]).replace("\0", " ") + "|";
+        finalstring += eventDescription;
+        finalstring += "\n";
+        finalstring += new String(new char[score.length()]).replace("\0", " ") + "|";
+        finalstring += new String(new char[100]).replace("\0", "=");
         return finalstring;
-=======
-        String finalString = eventName + eventDate.toString();
-        return finalString;
->>>>>>> 55cb842018df399b50cbebd6ff313b6bf4c5cf36
     }
-
 }
