@@ -1,8 +1,11 @@
-public class EventCollection {
+import java.util.*;
 
-    EventCollection() {
-    }
+public class EventCollection {
+   LinkedList<Event> ll = new LinkedList<Event>();
+
    public String toString(){
-        return "";
-    }
+      String stringy = "";
+
+      return stringy;
+   }
 }

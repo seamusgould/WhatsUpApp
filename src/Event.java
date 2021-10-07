@@ -12,10 +12,11 @@ public class Event
     User eventPoster = new User("The Big C");
     String eventRoughLocation;
     String name;
-    public String finalstring = "";
+    String finalstring = "";
+    EventCollection listo = new EventCollection();
 
-    Event (String name, Date date, Time time, int recurrence, String description, User poster, String roughLocation)
-    {
+
+    Event (String name, Date date, Time time, int recurrence, String description, User poster, String roughLocation){
         this.eventName = name;
         this.eventDate = date;
         this.eventTime = time;
@@ -38,7 +39,11 @@ public class Event
         finalstring += eventDescription;
         finalstring += "\n";
         finalstring += new String(new char[score.length()]).replace("\0", " ") + "|";
-        finalstring += new String(new char[100]).replace("\0", "=");
+        finalstring += new String(new char[100 - score.length()]).replace("\0", "=");
         return finalstring;
+    }
+
+    public void store(Event e){
+        
     }
 }
