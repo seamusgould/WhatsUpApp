@@ -24,8 +24,8 @@ public class Event
 
     public String toString()
     {
-        String finalString = eventName;
-        return "gangsta";
+        String finalString = eventName + eventDate.toString();
+        return finalString;
     }
 
 }
