@@ -68,7 +68,7 @@ participant " : EventLocation" as evloc
 
 user -> coll: create event
 
-coll -->> event **: event = create(creator, date, time, description, location, recurrence)
+coll -->> event **: event = create(name, date, time, reecurrence, description, poster, roughLocation).;
 event -->> evloc **: evloc = (roughLocation)
 
 evloc -->> event: finalLocation
