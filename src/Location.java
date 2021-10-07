@@ -5,4 +5,3 @@ public class Location {
         this.name = roughLocation;
         }
     }
-}
