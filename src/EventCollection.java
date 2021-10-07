@@ -5,8 +5,6 @@ public class EventCollection {
     }
 
    public String toString(){
-
-        
-   }
-
+        return "";
+    }
 }
