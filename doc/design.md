@@ -88,9 +88,13 @@ participant " : Event" as event
 
 user -> coll: view
 
-coll -> user: display events
+coll -> user: display all events
 
-user -> event: view in detail
+user -> coll: select particular event
+
+coll -->> event: displayEvent(Event)
+
+coll -> user: displays particular event 
 
 @enduml
 ```
