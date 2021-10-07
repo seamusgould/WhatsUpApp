@@ -55,7 +55,7 @@ Event "*" --- "1" Statistics : \tContributes-to\t\t
 @enduml
 ```
 
-#Posting an Event: A Sequence Diagram
+# Posting an Event: A Sequence Diagram
 
 ```plantuml
 
@@ -68,11 +68,29 @@ participant " : EventLocation" as evloc
 
 user -> coll: create event
 
-coll -->> event **: event = create(creator, date, time, description, location recurrence)
+coll -->> event **: event = create(creator, date, time, description, location, recurrence)
 event -->> evloc **: evloc = (roughLocation)
 
 evloc -->> event: finalLocation
 
 coll -> user: Show Event
 
+@enduml
+```
 
+# Viewing Events: A Sequence Diagram
+```plantuml
+@startuml
+hide footbox
+actor User as user
+participant " : EventCollection" as coll
+participant " : Event" as event
+
+user -> coll: view
+
+coll -> user: display events
+
+user -> event: view in detail
+
+@enduml
+```
