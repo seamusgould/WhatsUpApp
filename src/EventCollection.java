@@ -15,6 +15,7 @@ public class EventCollection {
       String accstring = "";
       for(Event obj : ll) {
          accstring += obj;
+         accstring += "\n";
       }
       return accstring;
    }
