@@ -10,13 +10,16 @@ public class Main {
                 ("Chess tournament", dummyDate, dummyTime, 0,
                         "There will be coffee, tea, and biscuits",
                         dummyUser, "ths");
-
-        System.out.println(dummyEvent);
+        EventCollection ll = new EventCollection();
+        /*System.out.println(dummyEvent);
 
         /*if view events
         I will print out the Collection of Events
          */
 
-        System.out.println("This completes the test"); /* This will print out all of the events.*/
+        System.out.println("These are the events");
+        ll.include(dummyEvent);
+        System.out.println(ll);
+        System.out.println("This completes the test"); /* This will print out all events.*/
     }
 }

@@ -1,14 +1,21 @@
 import java.util.*;
 
 public class EventCollection {
-   LinkedList<Event> ll = new LinkedList<Event>();
+   ArrayList<Event> ll = new ArrayList<Event>();
 
-   EventCollection(Event e){
+   EventCollection(){
+      ArrayList<Event> ll = new ArrayList<Event>();
+   }
+
+   public void include(Event e){
       ll.add(e);
    }
-   public String toString(){
-      String stringy = "";
 
-      return stringy;
+   public String toString(){
+      String accstring = "";
+      for(Event obj : ll) {
+         accstring += obj;
+      }
+      return accstring;
    }
 }
