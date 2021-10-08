@@ -1,8 +1,7 @@
 import java.sql.Time;
 import java.util.Date;
 
-public class Event
-{
+public class Event {
     int upvoteDownvote = 0;
     String eventName;
     Date eventDate;
@@ -13,8 +12,6 @@ public class Event
     String eventRoughLocation;
     String name;
     String finalstring = "";
-    EventCollection listo = new EventCollection();
-
 
     Event (String name, Date date, Time time, int recurrence, String description, User poster, String roughLocation){
         this.eventName = name;
