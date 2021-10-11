@@ -5,6 +5,6 @@ public class User {
     }
 
     public void upvote(Event e){
-
+        int x = 0;
     }
 }
