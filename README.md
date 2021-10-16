@@ -18,5 +18,5 @@ use case. That slice of the find-activity use case will be implemented in iterat
 3. Follow the prompt and enter your name
 4. Enter "post" when prompted to create a new event
 5. Follow the prompts and provide information about your event (name, description, time, location, etc.)
-6. Once the event has been created, you can repeat steps 4-5 to add to the list of events
+6. Once the event has been created, you can repeat steps 4-5 to add to the list of events.
 
