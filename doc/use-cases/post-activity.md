@@ -21,7 +21,7 @@
 1. Poster opens the app with the intention of posting activity.
 2. System displays activities that are happening at the current time or in the near future.
 3. Poster chooses the option to post activity.
-4. Poster provides the app with a description of the activity, the start/end time, and a category for the activity (e.g. party, free food, etc.).
+4. Poster provides the app with the name of the activity, date, time, location, whether the activity is recurring, and any tags for the activity (e.g. party, free food, etc.).
 5. The newly created activity is added to the existing list of activities.
 6. Poster closes the app after posting the activity.
 

@@ -1,46 +1,42 @@
 import java.sql.Time;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Event {
     int upvoteDownvote = 0;
     String eventName;
-    Date eventDate;
-    Time eventTime;
+    Calendar eventDateAndTime;
     int eventRecurrence;
     String eventDescription;
-    User eventPoster = new User("The Big C");
-    String eventRoughLocation;
+    User eventPoster;
+    Location eventLocation;
     String name;
-    String finalstring = "";
+    String finalString = "";
 
-    Event (String name, Date date, Time time, int recurrence, String description, User poster, String roughLocation){
+    Event (String name, Calendar eDateAndTime, int recurrence, String description, User poster, Location eLocation){
         this.eventName = name;
-        this.eventDate = date;
-        this.eventTime = time;
+        this.eventDateAndTime = eDateAndTime;
         this.eventRecurrence = recurrence;
         this.eventPoster = poster;
-        this.eventRoughLocation = roughLocation;
+        this.eventLocation =  eLocation;
         this.eventDescription = description;
     }
 
     public String toString(){
         String score = Integer.toString(upvoteDownvote);
-        finalstring = "\n";
-        finalstring += score + "|";
-        finalstring += eventName + " " + eventDate + " at " + eventTime + " posted by " +  eventPoster.username;
-        finalstring += "\n";
-        finalstring += new String(new char[score.length()]).replace("\0", " ") + "|";
-        finalstring += new String(new char[100 - score.length()]).replace("\0", "=");
-        finalstring += "\n";
-        finalstring += new String(new char[score.length()]).replace("\0", " ") + "|";
-        finalstring += eventDescription;
-        finalstring += "\n";
-        finalstring += new String(new char[score.length()]).replace("\0", " ") + "|";
-        finalstring += new String(new char[100 - score.length()]).replace("\0", "=");
-        return finalstring;
-    }
-
-    public void store(Event e){
-        
+        //String finalString2 = String.format("\n%d%s %t at %t posted by %s \n")
+        finalString = "\n";
+        finalString += score + "|";
+        finalString += eventName + " " + eventDateAndTime.getTime() + " at " + eventLocation + " posted by " +  eventPoster.username;
+        finalString += "\n";
+        finalString += new String(new char[score.length()]).replace("\0", " ") + "|";
+        finalString += new String(new char[100 - score.length()]).replace("\0", "=");
+        finalString += "\n";
+        finalString += new String(new char[score.length()]).replace("\0", " ") + "|";
+        finalString += eventDescription;
+        finalString += "\n";
+        finalString += new String(new char[score.length()]).replace("\0", " ") + "|";
+        finalString += new String(new char[100 - score.length()]).replace("\0", "=");
+        return finalString;
     }
 }

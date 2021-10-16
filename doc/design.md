@@ -16,8 +16,7 @@ class EventCollection{
 }
 class Event{
 name
-date
-time
+dateAndTime
 recurrence
 description
 upvoteDownvote
@@ -58,19 +57,22 @@ Event "*" --- "1" Statistics : \tContributes-to\t\t
 @startuml
 hide footbox
 actor User as user
+participant " : Main" as main
 participant " : Controller" as cont
+participant " : Location" as evloc
 participant " : EventCollection" as coll
 participant " : Event" as event
-participant " : Location" as evloc
 
-user -> cont: create event (name, date, time, description, location, recurrence)
-cont -> event: event = create(name, date, time, description, location, recurrence)
-coll -->> event **: event = create(name, date, time, reecurrence, description, poster, roughLocation).;
-event -->> evloc **: evloc = (roughLocation)
 
-evloc -->> event: finalLocation
+user -> main: create event
+main -> cont: makeEvent
+cont -->> coll: makeEvent(eventName, eventDateAndTime, eventRecurrence, eventDescription, eventRoughLocation)
+coll -->> event **: create(eventName, eventDateAndTime, eventRecurrence, eventDescription, poster, eventRoughLocation)
+cont -->> evloc **: eLocation = eventRoughLocation
 
-cont -> coll: addEvent(e)
+cont -> main: displayEvents
+
+main -> user: displayEvents
 
 @enduml
 ```
@@ -80,19 +82,22 @@ cont -> coll: addEvent(e)
 @startuml
 hide footbox
 actor User as user
+participant " : Main" as main
 participant " : Controller" as cont
 participant " : EventCollection" as coll
 participant " : Event" as event
 
-user -> cont: view events
+user -> main: view events
 
-cont -> coll: display events
+main -> cont: displayEvents
 
-user -> cont: select particular event
+cont -> coll: toString()
 
-cont -> event: displayEvent(Event)
+coll -> event: toString()
 
-event -> cont: displays particular event 
+cont -> main: displayEvents
+
+main -> user: displayEvents
 
 @enduml
 ```
@@ -100,42 +105,76 @@ event -> cont: displays particular event
 # Class Diagram
 
 ```plantuml
-
 @startuml
+skinparam classAttributeIconSize 0
+
 class User{
-- username : String = "John/Jane Doe"
-- profilePicture : picture
-- karma : double
+username : String
+--
+public void upvote(Event e)
+public void downvote(Event e)
 }
 
 class EventCollection{
-- EventList : List<Event> = |Event1 -> Event2 -> Event3 -> ...|
++ ll : ArrayList<Event> [0..*]
+--
+public EventCollection()
+public String toString()
+public Event makeEvent(String eventName, Calendar eventDateAndTime, int eventRecurrence, String eventDescription, User poster, Location eventRoughLocation)
 }
 
-
 class Event{
-- name : String = "Club Meeting"
-- date : Date = "01/08/2022"
-- time : Date = 21:23
-- recurrence : Boolean = True
-- description : String = 'This event is ...'
-- upvoteDonwvote : double = 5
-- posterUsername : User = 'John/Jane Doe'
++ upvoteDownvote : int = 0
++ eventName : String
++ eventDateAndTime: Calendar
++ eventRecurrence : int
++ eventDescription : String
++ eventPoster : User
++ eventLocation : Location
++ name : String
++ finalString : String = ""
+--
+public Event(String name, Calendar eDateAndTime, int recurrence, String description, User poster, Location eLocation)
+public String toString()
 }
 
 class Location{
-- name : String = "John/Jane Doe"
-- gpsCoordinatesLat : double = 41.686798
-- gpsCoordinatesLong : double = -73.895699
++ roughLocation : String
+--
+public Location (String roughLocation)
+public String toString()
 }
 
-User ---> "(1..*)Creates Events\n{Event}" Event : \t\t\t\t
+class Main{
+--
+public static Calendar isValidDateAndTime(String eDateAndTime)
+public static void main(String[] args)
+}
 
-Event ---> "(1)Stored in\n{EventCollection}" EventCollection : \t\t\t\t
+class Controller{
+- collection : EventCollection = new EventCollection()
+- locationList : ArrayList<Location>
+--
+public Event makeEvent(String eventName, Calendar eventDateAndTime, int eventRecurrence, String eventDescription, User poster, String eventRoughLocation)
+public EventCollection getEventCollection()
+public ArrayList getLocationList()
+public void addNewLocation(Location l)
+public Location newLocationFromString(String s)
+public boolean isResponsePost(String s)
+public void addStandardLocations()
+}
 
-Event ---> "(1)Stored in\n{EventCollection}" Location : \t\t\t\t
+User ---> Main : \t\t\t\t
 
-User ---> "(1..*)Can View\n{Event}" EventCollection : \t\t\t\t
+Main ---> Controller : \t\t\t\t
+
+Controller ---> "(1)" EventCollection : \t\t\t\t
+
+EventCollection *- "(*)\nll\n{ArrayList}" Event : \t\t\t\t
+
+Controller ---> Location : \t\t\t\t
+
+Event ---> "(1)" Location : \t\t\t\t
 
 @enduml
 ```

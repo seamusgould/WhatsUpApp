@@ -1,7 +1,13 @@
 public class Location {
-    String name;
+    private String roughLocation;
 
     Location (String roughLocation){
-        this.name = roughLocation;
+        this.roughLocation = roughLocation;
         }
+
+    public String toString() {
+        return roughLocation + "\n";
     }
+}
+
+

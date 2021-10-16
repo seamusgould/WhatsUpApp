@@ -20,16 +20,20 @@
 1. Viewer opens the app with the intention of finding activity.  
 2. System displays activities that are happening at the current time or in the near future.  
 3. Viewer views the list of activities.  
-4. Viewer chooses an activity to view in more detail.  
-5. Viewer closes the app after finding an activity.  
+4. Viewer chooses an activity to view in more detail.
+5. The detailed view of an activity displays the name of the activity, description, date, time, location, 
+whether the activity is recurring, any tags associated with the activity, and the number of upvotes and
+downvotes the activity has. The detailed view also displays the comments other users have left on the activity post.
+6. Viewer closes the app after finding an activity.  
 
 **Extensions (or alternate flows):**  
 1a. The application fails to start
-1. Viewer can restart or contact the dev team
-4a. Viewer wishes to view more activities  
+1. Viewer can restart or contact the dev team  
+
+5a. Viewer wishes to view more activities  
 1. The viewer can repeat steps 3-4 as long as they would like.
 
-4b. Viewer wishes to indicate that they like or dislike a posted activity
+5b. Viewer wishes to indicate that they like or dislike a posted activity
 1. The viewer can upvote or downvote an activity when viewing it in detail.
 
 **Special requirements:**  
@@ -40,6 +44,7 @@
 **Technology and data variations list:**  
 3a. Touch screen is used to navigate.  
 4a. Touch screen is used to navigate.  
+5a. Touch screen is used to navigate.
 
 **Frequency of occurrence:**  
 Very frequent
