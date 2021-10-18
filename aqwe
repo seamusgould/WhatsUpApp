@@ -1,0 +1,245 @@
+[33mcommit 86f3ff3f8e2d12dea7f959aeb0f3b4c1bdc015ed[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Seamus Gould <sgould@vassar.edu>
+Date:   Fri Oct 15 22:23:02 2021 -0400
+
+    iteration1-submission
+
+[33mcommit a706f183690ca29c83cb1d4b0f643714b54001e0[m
+Author: Seamus Gould <sgould@vassar.edu>
+Date:   Fri Oct 15 22:20:33 2021 -0400
+
+    trying to merge into main
+
+[33mcommit c52998329e6b9a3ad7b17b36c17a55a32c7c1ea7[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Mon Oct 11 18:16:23 2021 -0400
+
+    added blank upvote method
+
+[33mcommit 025deaa832a963ac75b045cac13f37ae3caebfc3[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Mon Oct 11 18:15:30 2021 -0400
+
+    added content to the main class to let me test that what I'm doing with Event is working
+
+[33mcommit 223c0e6f9704f480154572d1526efed925ca7029[m
+Author: Seamus Gould <sgould@vassar.edu>
+Date:   Fri Oct 8 19:58:53 2021 -0400
+
+    Improved toString() example with more than one event
+
+[33mcommit af1255fab7315d56f969f46fe065ab549478eaad[m
+Author: Seamus Gould <sgould@vassar.edu>
+Date:   Fri Oct 8 18:44:33 2021 -0400
+
+    Completed the toString method in the EventCollections Class, I also included a function where a person can include an event so that it is visible
+
+[33mcommit 75406a890185a887f2335ca8bf40ca004fe748ef[m
+Author: Seamus Gould <sgould@vassar.edu>
+Date:   Fri Oct 8 17:24:54 2021 -0400
+
+    cleaning the files
+
+[33mcommit f76967457dacc4839e695a44d8a9dc21fccf21d8[m
+Author: Seamus Gould <sgould@dritchie.cs.vassar.edu>
+Date:   Thu Oct 7 17:02:01 2021 -0400
+
+    Created event listing
+
+[33mcommit 7c2c5d9a301c8046e7c5b7861018103ffc384bfc[m
+Author: Seamus Gould <sgould@dritchie.cs.vassar.edu>
+Date:   Thu Oct 7 16:34:51 2021 -0400
+
+    This is the best toString method for Event
+
+[33mcommit 26dd9923ca2f44c9c5385e14afaec7eb544318f1[m
+Author: Seamus Gould <sgould@dritchie.cs.vassar.edu>
+Date:   Thu Oct 7 16:22:36 2021 -0400
+
+    The event class has an improved its toString method
+
+[33mcommit 4ff7510aa0ac0b231ad14eb9c70bdd3e9fa2c316[m
+Merge: 8263bf4 a515afd
+Author: Seamus Gould <sgould@dritchie.cs.vassar.edu>
+Date:   Thu Oct 7 15:57:38 2021 -0400
+
+    Merge branch 'main' of https://gitlab.cs.vassar.edu/cmpu203-f21-projects/team-1e into main
+
+[33mcommit a515afd9bfdd81ad8b25f21e0c58818cc96f0c49[m
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:56:33 2021 -0400
+
+    fixed typo
+
+[33mcommit 2999043412dfadba2d2d4ef98b1e0f7c14e7602d[m
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:55:21 2021 -0400
+
+    changed repository to collection
+
+[33mcommit 8263bf417a01f9581eaa0f1eed6c35b7b801e288[m
+Merge: ccab71c d65d4ce
+Author: Seamus Gould <sgould@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:54:37 2021 -0400
+
+    Merge branch 'main' of https://gitlab.cs.vassar.edu/cmpu203-f21-projects/team-1e into main
+
+[33mcommit ccab71c336b5386c984ee7049f909b4dadf07593[m
+Merge: ac5f3a4 55cb842
+Author: Seamus Gould <sgould@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:53:42 2021 -0400
+
+    this is the tostring for eent done
+
+[33mcommit d65d4ce3c147d5998ebadedae48839d4c006ce88[m
+Merge: d0b984f 55cb842
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:53:25 2021 -0400
+
+    Merge branch 'main' of https://gitlab.cs.vassar.edu/cmpu203-f21-projects/team-1e into main
+
+[33mcommit d0b984ff8940c88ede853aab5f04b3db7340dfd8[m
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:53:17 2021 -0400
+
+    fixed syntax error
+
+[33mcommit ac5f3a4e22e376c7f64a5ef438b65fc3f161b1c9[m
+Author: Seamus Gould <sgould@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:53:10 2021 -0400
+
+    this is the tostring for eent done
+
+[33mcommit 55cb842018df399b50cbebd6ff313b6bf4c5cf36[m
+Merge: 0707401 244f4d0
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 12:52:29 2021 -0400
+
+    Merge remote-tracking branch 'origin/main' into main
+
+[33mcommit 070740197f860ef1baaf2cff962a3c266ca1454b[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 12:52:14 2021 -0400
+
+    added content to the main class to let me test that what I'm doing with Event is working
+
+[33mcommit 244f4d0d2c3be5c3bd3f4c4f95dd210d7fe6b0ea[m
+Merge: d4975be 962c8fd
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:51:54 2021 -0400
+
+    merged design.md
+
+[33mcommit d4975be40e9127bb2c20d00ce9259b53cf338ff8[m
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:50:18 2021 -0400
+
+    modified diagrams, added Location class
+
+[33mcommit 962c8fd266a2cfe05b344f5379e6b67f18b51ff6[m
+Merge: 8bd57fe 8bff44a
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 12:23:33 2021 -0400
+
+    Merge remote-tracking branch 'origin/main' into main
+
+[33mcommit 8bd57fed004ed1129bf34fba3b6e597671ce5f68[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 12:23:17 2021 -0400
+
+    added the Event and Java classes and added a constructor to Event.java and User.java
+
+[33mcommit 8bff44aae52b2da0c0358992475dfd010298a08a[m
+Author: Seamus Gould <sgould@mail.cs.vassar.edu>
+Date:   Thu Oct 7 12:15:22 2021 -0400
+
+    Added a rough class sequence diagram
+
+[33mcommit 35a5ea1334bb60a3910807e686e1aa8309f0083f[m
+Author: John Lim <johnlim0043@gmail.com>
+Date:   Thu Oct 7 12:09:03 2021 -0400
+
+    created the EventCollection class
+
+[33mcommit 35335765280a4191c186391916304daf8d7e3585[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 11:41:47 2021 -0400
+
+    edited the viewing sequence diagram in desing.md
+
+[33mcommit 8d3c29c174fdd9b3e5227a09eed690bdd0559df6[m
+Merge: fc2b23a f6f2808
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 11:35:25 2021 -0400
+
+    Merge remote-tracking branch 'origin/main' into main
+
+[33mcommit fc2b23a362cceec8b23fa2a382eb41ebd311f5d4[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 11:34:55 2021 -0400
+
+    created the Event.java file
+
+[33mcommit f6f28089677d0dbfa68a76a93491c42446fad2c4[m
+Merge: 77fbb55 6eff2ea
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 11:26:29 2021 -0400
+
+    Merge branch 'main' of https://gitlab.cs.vassar.edu/cmpu203-f21-projects/team-1e into main
+
+[33mcommit 77fbb55d86958058dba8aca66802ae2e97f5a9cc[m
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 11:26:16 2021 -0400
+
+    added viewing events sequence diagram
+
+[33mcommit 6eff2eae3154524220921c8d74dc11867df2f26d[m
+Author: John Lim <johnlim0043@gmail.com>
+Date:   Thu Oct 7 11:24:04 2021 -0400
+
+    deleted sequence diagram folder
+
+[33mcommit 89a119940fba863d2226b4af2127ccec0061638d[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 11:08:24 2021 -0400
+
+    changed EventRepository to EventCollection in the posting sequence diagram
+
+[33mcommit ea6c901501d4da76ee2a996ae4d69687c85963f7[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Oct 7 11:05:32 2021 -0400
+
+    moved posting sequence diagram from its own file in the sequence-diagrams folder to the design.md file
+
+[33mcommit 7c71d76130e4a459b2c5942722bbe29c326af4b3[m
+Author: Laura Hoban <lhoban@mail.cs.vassar.edu>
+Date:   Thu Oct 7 10:58:32 2021 -0400
+
+    minor domain model format change
+
+[33mcommit 8e5e7f4aa2ac4fa33ae3a0757a52fd14121c2a6b[m
+Author: unknown <lhoban@vassar.edu>
+Date:   Wed Oct 6 20:43:59 2021 -0400
+
+    created design.md, started domain model plantuml
+
+[33mcommit b40ec3dfebbe5920cde3601d6080900ca2e4c04d[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Tue Oct 5 18:11:05 2021 -0400
+
+    added a line specifying that EventRepository shows the event to the user after it has been created
+
+[33mcommit 1c608299ff2490f4868263321d3ba0b978a7209a[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Tue Oct 5 17:06:01 2021 -0400
+
+    added a line indicating that EventLocation should return a finalLocation to the event
+
+[33mcommit c454917590d141507477b45887fe0a01168d2999[m
+Author: cmccullison <cmccullison@vassar.edu>
+Date:   Thu Sep 30 12:54:42 2021 -0400
+
+    added event and eventlocation classes
+
+[33mcommit 71588381855c4ff3d4dd283120c6b95026fa7cd5[m
+Author: cmccullison <cmccullison

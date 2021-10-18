@@ -12,11 +12,10 @@ public class User {
         this.username = name;
     }
 
-<<<<<<< HEAD
-    public void upvote(Event e){
-        int x = 0;
-    }
-=======
+    //public void upvote(Event e){
+      //  int x = 0;
+    //}
+
     public void upvote(Event e)
     {
         e.upvoteDownvote = e.upvoteDownvote++;
@@ -24,6 +23,4 @@ public class User {
 
     public void downvote(Event e) {e.upvoteDownvote = e.upvoteDownvote--;}
 
-
->>>>>>> Create_Controller
 }

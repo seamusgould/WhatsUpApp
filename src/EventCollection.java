@@ -31,4 +31,8 @@ public class EventCollection {
       ll.add(event);
       return event;
    }
+
+   public Event getEvent(int i) {
+      return ll.get(i);
+   }
 }

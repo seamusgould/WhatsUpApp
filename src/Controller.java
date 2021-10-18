@@ -49,6 +49,22 @@ public class Controller {
 
     }
 
+    public boolean isValidIntSelection(int i)
+    {
+        if (collection.getEvent(i) instanceof Event){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean isResponseSelect(String s)
+    {
+        return s.toLowerCase().equals("select");
+
+    }
+
     //adds locations that are likely to host events on the Vassar campus
 
     public void addStandardLocations()
