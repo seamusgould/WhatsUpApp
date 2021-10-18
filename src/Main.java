@@ -42,49 +42,57 @@ public class Main {
             System.out.println("If you would like to post, please enter 'post', or else, if you would like to select an event, write 'select'");
             String response = myObj.nextLine();
 
-            while (controller.isResponsePost(response))
-                {
-                    System.out.println("What is the name of your event?");
-                    String eName = myObj.nextLine();
+            while (!controller.isValidResponse(response)) {
+                System.out.println("Please input 'post' or 'select'" + response + "is not a valid choice.");
+                response = myObj.nextLine();
+            }
+
+            if (controller.isResponsePost(response)) {
+                System.out.println("What is the name of your event?");
+                String eName = myObj.nextLine();
 
 
-                    Calendar eDateAndTimes = null;
-                    do{
-                        System.out.println("What is the date and time of your event? Please enter it in 24-hour time in the format MM/dd/yyyy HH:mm a");
-                        String eDateAndTime = myObj.nextLine();
-                        eDateAndTimes = isValidDateAndTime(eDateAndTime);
-                    } while (eDateAndTimes == null);
-
-                    System.out.println("What is the description of your event?");
-                    String eDescription = myObj.nextLine();
-                    System.out.println("Where will the event take place? Please choose from the list below or enter your own.");
-
-                    System.out.println(controller.getLocationList());
-                    String eLocation = myObj.nextLine();
-
-                    controller.makeEvent(eName, eDateAndTimes, 0,eDescription, poster, eLocation);
-                    System.out.println(controller.getEventCollection());
-                    System.out.println("If you would like to post, please enter 'post'");
-                    response = myObj.nextLine();
+                Calendar eDateAndTimes = null;
+                do {
+                    System.out.println("What is the date and time of your event? Please enter it in 24-hour time in the format MM/dd/yyyy HH:mm a");
+                    String eDateAndTime = myObj.nextLine();
+                    eDateAndTimes = isValidDateAndTime(eDateAndTime);
                 }
+                while (eDateAndTimes == null);
 
-            while (controller.isResponseSelect(response))
-            {
+                System.out.println("What is the description of your event?");
+                String eDescription = myObj.nextLine();
+                System.out.println("Where will the event take place? Please choose from the list below or enter your own.");
+
+                System.out.println(controller.getLocationList());
+                String eLocation = myObj.nextLine();
+
+                controller.makeEvent(eName, eDateAndTimes, 0, eDescription, poster, eLocation);
+                System.out.println(controller.getEventCollection());
+            }
+            else {
                 System.out.println("Which event would you like to select?  Refer to it by an index i.e. 0, 1, 2, ...");
                 String selection = myObj.nextLine();
-                try {
-                    int intSelection = Integer.parseInt(selection);
-                    do{
-                        
-                    }
-                    while (controller.isValidIntSelection(intSelection));
+                while(!(controller.isValidIntSelection(selection))){
+                    System.out.println("Please input a valid selection.");
+                    selection = myObj.nextLine();
                 }
-                catch (NumberFormatException e)
-                {
-                    System.out.println("Please provide a valid input for the index.");
-                    break;
+                int intSelection = Integer.parseInt(selection);
+                Event eSelection = controller.getEventCollection().getEvent(intSelection);
+                System.out.println("This is the event that you selected.");
+                System.out.println(eSelection);
+                System.out.println("Write 'comment' for Comment or 'vote' for Vote?");
+                String action = myObj.nextLine();
+                while (!(action.equals("comment") || (action.equals("vote")))){
+                    System.out.println("Write 'comment' for Comment or 'vote' for Vote?");
+                    action = myObj.nextLine();
+                }
+                if (action.equals("vote")){
+                    System.out.println("Write 'upvote' to upvote, and 'downvote' to downvote");
+                    String vote = myObj.nextLine();
+                    controller.makeVote(vote, intSelection);
+                }
                 }
             }
         }
     }
-}

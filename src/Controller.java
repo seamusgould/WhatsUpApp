@@ -49,20 +49,44 @@ public class Controller {
 
     }
 
-    public boolean isValidIntSelection(int i)
+    public boolean isValidIntSelection(String i)
     {
-        if (collection.getEvent(i) instanceof Event){
-            return true;
+        try {
+            int j = Integer.parseInt(i);
         }
-        else {
+        catch(NumberFormatException  e) {
+            System.out.println("Invalid response.  Make sure that the input is an integer.");
             return false;
         }
+
+        try{
+            collection.getEvent(Integer.parseInt(i));
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Invalid response.  Choose a smaller number.");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isValidResponse(String s)
+    {
+        s = s.toLowerCase();
+        return (s.equals("select") || s.equals("post"));
     }
 
     public boolean isResponseSelect(String s)
     {
         return s.toLowerCase().equals("select");
 
+    }
+
+    public void makeVote(String s, int i) {
+        Event eSelection = collection.getEvent(i);
+        if (s.equals("upvote")){
+            eSelection.upvoteDownvote += 1;
+        }
+        else eSelection.upvoteDownvote -= 1;
     }
 
     //adds locations that are likely to host events on the Vassar campus
@@ -106,8 +130,5 @@ public class Controller {
         locationList.add(new Location("Walker Field House"));
         locationList.add(new Location("Weinberg Field Sports Pavilion"));
     }
-
-
-
 }
 

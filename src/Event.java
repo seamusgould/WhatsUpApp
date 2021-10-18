@@ -12,6 +12,7 @@ public class Event {
     Location eventLocation;
     String name;
     String finalString = "";
+    String comments = "";
 
     Event (String name, Calendar eDateAndTime, int recurrence, String description, User poster, Location eLocation){
         this.eventName = name;
@@ -20,6 +21,7 @@ public class Event {
         this.eventPoster = poster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
+        this.comments = comments;
     }
 
     public String toString(){
@@ -37,6 +39,10 @@ public class Event {
         finalString += "\n";
         finalString += new String(new char[score.length()]).replace("\0", " ") + "|";
         finalString += new String(new char[100 - score.length()]).replace("\0", "=");
+
+        if (!comments.equals(""))
+            finalString += new String(new char[100 - score.length()]).replace("\0", "=");
+
         return finalString;
     }
 }
