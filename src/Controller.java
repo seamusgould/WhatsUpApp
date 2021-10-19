@@ -89,6 +89,11 @@ public class Controller {
         else eSelection.upvoteDownvote -= 1;
     }
 
+    public void makeComment(String s, int i) {
+        Event eSelection = collection.getEvent(i);
+        eSelection.addComment(s);
+    }
+
     //adds locations that are likely to host events on the Vassar campus
 
     public void addStandardLocations()

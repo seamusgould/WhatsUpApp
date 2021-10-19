@@ -13,7 +13,8 @@ public class EventCollection {
 
       if (ll.size() == 0) {
          return "There are currently no events. Post something!";
-      } else {
+      }
+      else {
          for (Event obj : ll) {
             accstring += obj;
             accstring += "\n";

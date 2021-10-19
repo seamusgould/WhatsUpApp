@@ -43,7 +43,7 @@ public class Main {
             String response = myObj.nextLine();
 
             while (!controller.isValidResponse(response)) {
-                System.out.println("Please input 'post' or 'select'" + response + "is not a valid choice.");
+                System.out.println("Please input 'post' or 'select', " + response + " is not a valid choice.");
                 response = myObj.nextLine();
             }
 
@@ -91,6 +91,11 @@ public class Main {
                     System.out.println("Write 'upvote' to upvote, and 'downvote' to downvote");
                     String vote = myObj.nextLine();
                     controller.makeVote(vote, intSelection);
+                }
+                else {
+                    System.out.println("Write your comment here.  Please be curteous.");
+                    String comment = myObj.nextLine();
+                    controller.makeComment(comment, intSelection);
                 }
                 }
             }
