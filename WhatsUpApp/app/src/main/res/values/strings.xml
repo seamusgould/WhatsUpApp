@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WhatsUpApp</string>
+    <string name="event_View">Events</string>
+    <string name="name_View">Name:</string>
+    <string name="date_View">Date:</string>
+    <string name="time_View">Time:</string>
+    <string name="location_View">Location:</string>
+    <string name="description_View">Description:</string>
+    <string name="add_Event_Button">Add Event</string>
 </resources>
