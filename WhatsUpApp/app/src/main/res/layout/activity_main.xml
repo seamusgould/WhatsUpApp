@@ -6,18 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <TextView
-<<<<<<< HEAD
-        android:id="@+id/eventView"
-        android:layout_width="match_parent"
-=======
-        android:id="@+id/label"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
->>>>>>> f5dea40b99951e99ffe282253f05a4d34ce58f53
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginTop="32dp"
         android:text="@string/event_View"
-        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,11 +21,12 @@
         android:id="@+id/eventList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <LinearLayout
         android:layout_width="0dp"
