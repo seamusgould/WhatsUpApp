@@ -116,13 +116,13 @@
                 android:layout_weight="1"
                 android:text="@string/location_View" />
 
-            <EditText
-                android:id="@+id/editLocation"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:layout_weight="2.1"
+                android:text="AutoCompleteTextView" />
+
         </LinearLayout>
 
         <LinearLayout
