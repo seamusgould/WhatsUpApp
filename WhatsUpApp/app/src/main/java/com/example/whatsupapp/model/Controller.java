@@ -1,11 +1,7 @@
-package com.example.whatsupapp;
+package com.example.whatsupapp.model;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.text.SimpleDateFormat;
-import java.text.ParseException;
 import java.util.*;
-import java.io.*;
 
 public class Controller {
     private EventCollection collection = new EventCollection();

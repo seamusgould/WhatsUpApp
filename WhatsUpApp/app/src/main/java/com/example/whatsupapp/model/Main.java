@@ -1,4 +1,4 @@
-package com.example.whatsupapp;
+package com.example.whatsupapp.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

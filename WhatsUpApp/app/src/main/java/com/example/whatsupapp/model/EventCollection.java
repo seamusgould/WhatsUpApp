@@ -1,4 +1,4 @@
-package com.example.whatsupapp;
+package com.example.whatsupapp.model;
 
 import java.util.*;
 
