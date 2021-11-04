@@ -1,3 +1,5 @@
+package com.example.whatsupapp;
+
 public class Location {
     private String roughLocation;
 

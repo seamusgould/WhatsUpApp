@@ -1,9 +1,4 @@
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
-import java.time.LocalTime;
-import java.text.SimpleDateFormat;
+package com.example.whatsupapp;
 
 public class User {
     String username;

@@ -1,4 +1,5 @@
-import java.util.Date;
+package com.example.whatsupapp;
+
 import java.util.*;
 
 public class EventCollection {
