@@ -1,9 +1,10 @@
 package com.example.whatsupapp.view;
 
 import com.example.whatsupapp.databinding.ActivityMainBinding;
+import com.example.whatsupapp.model.EventCollection;
+
 import android.content.Context;
 import android.text.Editable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -41,5 +42,11 @@ public class PostEventViewMvc implements IPostEventViewMvc{
     @Override
     public View getRootView() {
         return binding.getRoot();
+    }
+
+    @Override
+    public void updateDisplay(EventCollection eventCollection){
+        String s = eventCollection.toString();
+        this.binding.eventList.setText(s);
     }
 }
