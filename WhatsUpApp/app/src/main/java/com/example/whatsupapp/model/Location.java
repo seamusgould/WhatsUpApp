@@ -8,7 +8,7 @@ public class Location {
         }
 
     public String toString() {
-        return roughLocation + "\n";
+        return roughLocation;
     }
 }
 

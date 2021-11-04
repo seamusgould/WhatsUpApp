@@ -22,7 +22,7 @@ public class Controller {
         return collection;
     }
 
-    public ArrayList getLocationList()
+    public ArrayList<Location> getLocationList()
     {
         return locationList;
     }
