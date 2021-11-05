@@ -19,9 +19,9 @@ public class PostEventViewMvc implements IPostEventViewMvc{
     public PostEventViewMvc(Context context, Listener listener) {
         this.listener = listener;
         this.binding = ActivityMainBinding.inflate(LayoutInflater.from(context));
-        ArrayList<Location> locationArrayList = listener.getLocationList();
+        //ArrayList<Location> locationArrayList = listener.getLocationList();
 
-        String[] stringArray = new String[locationArrayList.size()];
+        //String[] stringArray = new String[locationArrayList.size()];
 
 
 

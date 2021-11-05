@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 
 public interface IPostEventViewMvc {
-    public interface Listener{
-        ArrayList<Location> getLocationList();
 
+    public interface Listener{
+        void onAddedEvent(String name, int qty);
     }
 
     public View getRootView();
