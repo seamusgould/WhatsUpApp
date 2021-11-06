@@ -42,12 +42,15 @@ public class PostEventViewMvc implements IPostEventViewMvc{
                 String eventTime = eventTimeEditable.toString();
 
                 // get the event location
-
+                Editable eventLocEditable = binding.editLoc.getText();
+                String eventLoc = eventLocEditable.toString();
 
 
                 // get the event description
                 Editable eventDescriptionEditable = binding.editDescription.getText();
                 String eventDescription = eventDescriptionEditable.toString();
+
+                listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
             }
         });
 

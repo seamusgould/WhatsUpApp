@@ -7,20 +7,20 @@ import android.util.Log;
 
 import com.example.whatsupapp.databinding.ActivityMainBinding;
 import com.example.whatsupapp.model.EventCollection;
+import com.example.whatsupapp.model.Location;
+import com.example.whatsupapp.model.User;
 import com.example.whatsupapp.view.IPostEventViewMvc;
 import com.example.whatsupapp.view.PostEventViewMvc;
 import com.example.whatsupapp.model.Event;
 
 import com.example.whatsupapp.*;
 
-
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements IPostEventViewMvc.Listener{
 
     private IPostEventViewMvc addedEvent;
     private EventCollection eventCollection;
-
-    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,9 @@ public class MainActivity extends AppCompatActivity implements IPostEventViewMvc
     }
 
     @Override
-    public void onAddedEvent(String name, int qty) {
-
+    public void onAddedEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription) {
+        Log.d("NextGenPos", "controller is handling line item addition");
+        this.eventCollection.makeEvent(eventName, eventDateAndTime, time, eventRoughLocation, eventDescription);
+        this.addedEvent.updateDisplay(this.eventCollection);
     }
 }

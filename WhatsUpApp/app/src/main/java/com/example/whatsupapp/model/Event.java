@@ -6,16 +6,16 @@ import java.util.Calendar;
 public class Event {
     int upvoteDownvote = 0;
     String eventName;
-    Calendar eventDateAndTime;
+    String eventDateAndTime;
     int eventRecurrence;
     String eventDescription;
-    User eventPoster;
-    Location eventLocation;
+    String eventPoster;
+    String eventLocation;
     String name;
     String finalString = "";
     ArrayList<String> comments = new ArrayList<String>();
 
-    Event (String name, Calendar eDateAndTime, int recurrence, String description, User poster, Location eLocation){
+    Event (String name, String eDateAndTime, int recurrence, String description, String poster, String eLocation){
         this.eventName = name;
         this.eventDateAndTime = eDateAndTime;
         this.eventRecurrence = recurrence;
@@ -29,8 +29,9 @@ public class Event {
         //String finalString2 = String.format("\n%d%s %t at %t posted by %s \n")
         finalString = "\n";
         finalString += score + "|";
-        finalString += eventName + " " + eventDateAndTime.getTime() + " at " + eventLocation;
-        finalString += new String(new char[score.length()]).replace("\0", " ") + "|" + " posted by " +  eventPoster.username;
+        finalString += eventName + " " + eventDateAndTime + " at " + eventLocation;
+        //finalString += eventName + " " + eventDateAndTime.getTime() + " at " + eventLocation;
+        finalString += new String(new char[score.length()]).replace("\0", " ") + "|" + " posted by " +  eventPoster; //.username;
         finalString += "\n";
         finalString += new String(new char[score.length()]).replace("\0", " ") + "|";
         finalString += new String(new char[100 - score.length()]).replace("\0", "=");
@@ -45,7 +46,7 @@ public class Event {
             finalString += new String(new char[100 - score.length()]).replace("\0", "-");
             finalString += "\n";
             finalString += new String(new char[score.length()]).replace("\0", " ") + "|";
-            finalString += s + "posted by " + eventPoster.username;
+            finalString += s + "posted by " + eventPoster;//.username;
             finalString += "\n";
             finalString += new String(new char[score.length()]).replace("\0", " ") + "|";
             finalString += new String(new char[100 - score.length()]).replace("\0", "-");

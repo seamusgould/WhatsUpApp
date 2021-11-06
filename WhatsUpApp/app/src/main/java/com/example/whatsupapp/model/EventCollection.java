@@ -6,7 +6,6 @@ public class EventCollection {
    private ArrayList<Event> ll = new ArrayList<Event>();
 
    public EventCollection() {
-
    }
 
    public String toString() {
@@ -27,9 +26,8 @@ public class EventCollection {
       }
    }
 
-
-   public Event makeEvent(String eventName, Calendar eventDateAndTime, int eventRecurrence, String eventDescription, User poster, Location eventRoughLocation) {
-      Event event =  new Event(eventName, eventDateAndTime, eventRecurrence, eventDescription, poster, eventRoughLocation);
+   public Event makeEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription) {
+      Event event =  new Event(eventName, eventDateAndTime, 2, eventDescription, "yas", eventRoughLocation);
       ll.add(event);
       return event;
    }
