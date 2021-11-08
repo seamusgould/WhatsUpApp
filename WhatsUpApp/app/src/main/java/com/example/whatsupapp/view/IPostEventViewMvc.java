@@ -14,6 +14,8 @@ public interface IPostEventViewMvc {
 
     public interface Listener{
         void onAddedEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription);
+
+        ArrayList<Location> getLocationList();
     }
 
     public View getRootView();

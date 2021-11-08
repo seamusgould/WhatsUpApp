@@ -1,5 +1,6 @@
 package com.example.whatsupapp.view;
 
+import com.example.whatsupapp.R;
 import com.example.whatsupapp.databinding.ActivityMainBinding;
 import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Controller;
@@ -9,6 +10,8 @@ import android.content.Context;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import java.util.ArrayList;
 
@@ -23,8 +26,16 @@ public class PostEventViewMvc implements IPostEventViewMvc{
 
         //change arraylist to array
         String[] stringArray = new String[locationArrayList.size()];
-        stringArray = locationArrayList.toArray(stringArray);
 
+        int i = 0;
+        for(Location loc: locationArrayList) {
+            stringArray[i] = loc.toString();
+            i++;
+        }
+        AutoCompleteTextView editLocation = this.binding.editLoc;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(editLocation.getContext(),
+                android.R.layout.simple_list_item_1, stringArray );
+        editLocation.setAdapter(adapter);
         this.binding.addEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
