@@ -19,11 +19,11 @@ public class PostEventViewMvc implements IPostEventViewMvc{
     public PostEventViewMvc(Context context, Listener listener) {
         this.listener = listener;
         this.binding = ActivityMainBinding.inflate(LayoutInflater.from(context));
-        //ArrayList<Location> locationArrayList = listener.getLocationList();
+        ArrayList<Location> locationArrayList = listener.getLocationList();
 
-        //String[] stringArray = new String[locationArrayList.size()];
-
-
+        //change arraylist to array
+        String[] stringArray = new String[locationArrayList.size()];
+        stringArray = locationArrayList.toArray(stringArray);
 
         this.binding.addEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
