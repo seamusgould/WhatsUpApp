@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import com.example.whatsupapp.databinding.ActivityMainBinding;
 import com.example.whatsupapp.model.EventCollection;
@@ -28,6 +30,11 @@ public class MainActivity extends AppCompatActivity implements IPostEventViewMvc
         this.eventCollection = new EventCollection();
         this.addedEvent = new PostEventViewMvc(getApplicationContext(), this);
         setContentView(this.addedEvent.getRootView());
+
+        AutoCompleteTextView editLocation = findViewById(R.id.editLoc);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, /*name of list*/ );
+        editLocation.setAdapter(adapter);
     }
 
     @Override
