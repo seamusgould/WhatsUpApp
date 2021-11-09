@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:text="@string/event_View"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,23 +21,26 @@
         android:id="@+id/eventList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"
         android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="12dp"
+        android:layout_marginBottom="50dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eventList">
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,6 +60,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1.4"
                 android:ems="10"
+                android:hint='"Club Meeting"'
                 android:inputType="textPersonName" />
         </LinearLayout>
 
@@ -78,6 +82,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1.25"
                 android:ems="10"
+                android:hint="12/12/2021"
                 android:inputType="date" />
 
         </LinearLayout>
@@ -101,6 +106,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1.25"
                 android:ems="10"
+                android:hint="10:30pm"
                 android:inputType="time" />
         </LinearLayout>
 
@@ -122,6 +128,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1.4"
                 android:ems="10"
+                android:hint='"Main"'
                 android:inputType="textPersonName" />
 
         </LinearLayout>
@@ -144,6 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3.2"
                 android:ems="10"
+                android:hint='"Meeting with Free Food!"'
                 android:inputType="textPersonName" />
         </LinearLayout>
 
