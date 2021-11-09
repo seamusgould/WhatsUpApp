@@ -68,7 +68,6 @@ public class PostEventViewMvc implements IPostEventViewMvc{
                 eventTimeEditable.clear();
                 eventLocEditable.clear();
                 eventDescriptionEditable.clear();
-                listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
 
             }
         });

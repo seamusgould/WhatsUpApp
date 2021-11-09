@@ -5,31 +5,45 @@ import java.util.ArrayList;
 public class Event {
     int upvoteDownvote = 0;
     String eventName;
-    String eventDateAndTime;
+    String eventDate;
+    String eventTime;
     int eventRecurrence;
     String eventDescription;
     String eventPoster;
     String eventLocation;
     String name;
-    String s = "";
+    String str = "";
     ArrayList<String> comments = new ArrayList<String>();
 
-    Event (String name, String eDateAndTime, int recurrence, String description, String poster, String eLocation){
+    Event (String name, String date, String time , int recurrence,
+           String description, String poster, String eLocation){
         this.eventName = name;
-        //TODO: separate date and time
-        this.eventDateAndTime = eDateAndTime;
+        this.eventTime = time;
+        this.eventDate = date;
         this.eventRecurrence = recurrence;
         this.eventPoster = poster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
     }
 
+    //constructor without recurrence
+    Event (String name, String date, String time ,
+           String description, String poster, String eLocation){
+        this.eventName = name;
+        this.eventTime = time;
+        this.eventDate = date;
+        this.eventPoster = poster;
+        this.eventLocation =  eLocation;
+        this.eventDescription = description;
+    }
+
+    @Override
     public String toString(){
         String score = Integer.toString(upvoteDownvote);
-        s += eventPoster +" posted: \n";
-        s += " On " + eventDateAndTime + " " + eventName + " at " + eventLocation;
-        s += "\n " + eventDescription;
-        return s;
+        str += eventPoster +" posted: \n";
+        str += " On " + eventDate + " " + eventTime + " " + eventName + " at " + eventLocation;
+        str += "\n " + eventDescription;
+        return str;
         //String finalString2 = String.format("\n%d%s %t at %t posted by %s \n")
 //        s = "\n";
 //        s += score + "|";

@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity implements IPostEventViewMvc
     }
 
     @Override
-    public void onAddedEvent(String eventName, String eventDateAndTime, String time,
+    public void onAddedEvent(String eventName, String eventDate, String eventTime,
                              String eventRoughLocation, String eventDescription) {
         Log.d("NextGenPos", "controller is handling line item addition");
-        this.eventCollection.makeEvent(eventName, eventDateAndTime, time, eventRoughLocation, eventDescription);
+        this.eventCollection.makeEvent(eventName, eventDate, eventTime, eventRoughLocation, eventDescription);
         this.addedEvent.updateDisplay(this.eventCollection);
     }
 

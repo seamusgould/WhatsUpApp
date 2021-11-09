@@ -8,23 +8,18 @@ public class EventCollection {
    public EventCollection() {
    }
 
+   @Override
    public String toString() {
-      String accstring = "";
-
-      if (ll.size() == 0) {
-         return "There are currently no events. Post something!";
-      }
-      else {
+      String str = "";
          for (Event obj : ll) {
-            accstring += obj + "\n";
+            str += obj + "\n";
          }
-         return accstring;
+         return str;
       }
-   }
 
-   public Event makeEvent(String eventName, String eventDateAndTime, String time,
-                          String eventRoughLocation, String eventDescription) {
-      Event event =  new Event(eventName, eventDateAndTime, 2, eventDescription,
+   public Event makeEvent(String eventName, String eventDate, String eventTime,
+                          String eventDescription, String eventRoughLocation) {
+      Event event =  new Event(eventName, eventDate, eventTime, eventDescription,
               "yas", eventRoughLocation);
       ll.add(event);
       return event;
