@@ -16,7 +16,7 @@ public class Event {
 
     Event (String name, String eDateAndTime, int recurrence, String description, String poster, String eLocation){
         this.eventName = name;
-        //separate date and time 
+        //TODO: separate date and time
         this.eventDateAndTime = eDateAndTime;
         this.eventRecurrence = recurrence;
         this.eventPoster = poster;
