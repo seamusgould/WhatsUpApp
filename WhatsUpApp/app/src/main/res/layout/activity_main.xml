@@ -21,7 +21,7 @@
         android:id="@+id/eventList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="32dp"
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -60,7 +60,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1.4"
                 android:ems="10"
-                android:hint='"Club Meeting"'
+                android:hint="VC++ Meeting"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
@@ -128,7 +128,7 @@
                 android:layout_height="50dp"
                 android:layout_weight="1.4"
                 android:ems="10"
-                android:hint='"Main"'
+                android:hint="Main"
                 android:inputType="textPersonName" />
 
         </LinearLayout>
@@ -151,7 +151,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3.2"
                 android:ems="10"
-                android:hint='"Meeting with Free Food!"'
+                android:hint="Meeting with Free Food!"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
