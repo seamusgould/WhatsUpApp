@@ -3,9 +3,10 @@ package com.example.whatsupapp.model;
 import java.util.*;
 
 public class EventCollection {
-   private ArrayList<Event> ll = new ArrayList<Event>();
+   private ArrayList<Event> ll;
 
    public EventCollection() {
+      ll = new ArrayList<Event>();
    }
 
    @Override
