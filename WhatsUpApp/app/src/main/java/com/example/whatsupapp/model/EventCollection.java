@@ -22,8 +22,12 @@ public class EventCollection {
                           String eventDescription, String eventRoughLocation) {
       Event event =  new Event(eventName, eventDate, eventTime, eventDescription,
               "yas", eventRoughLocation);
-      ll.add(event);
+      this.getEventCollection().add(event);
       return event;
+   }
+
+   public ArrayList<Event> getEventCollection(){
+      return ll;
    }
 
    public Event getEvent(int i) {
