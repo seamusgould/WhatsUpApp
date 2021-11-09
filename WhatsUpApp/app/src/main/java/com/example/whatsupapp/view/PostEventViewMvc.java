@@ -22,20 +22,21 @@ public class PostEventViewMvc implements IPostEventViewMvc{
     public PostEventViewMvc(Context context, Listener listener) {
         this.listener = listener;
         this.binding = ActivityMainBinding.inflate(LayoutInflater.from(context));
-        ArrayList<Location> locationArrayList = listener.getLocationList();
 
         //change arraylist to array
+        ArrayList<Location> locationArrayList = listener.getLocationList();
         String[] stringArray = new String[locationArrayList.size()];
-
         int i = 0;
         for(Location loc: locationArrayList) {
             stringArray[i] = loc.toString();
             i++;
         }
+
         AutoCompleteTextView editLocation = this.binding.editLoc;
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(editLocation.getContext(),
                 android.R.layout.simple_list_item_1, stringArray );
         editLocation.setAdapter(adapter);
+
         this.binding.addEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +68,7 @@ public class PostEventViewMvc implements IPostEventViewMvc{
                 eventTimeEditable.clear();
                 eventLocEditable.clear();
                 eventDescriptionEditable.clear();
+                listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
 
             }
         });

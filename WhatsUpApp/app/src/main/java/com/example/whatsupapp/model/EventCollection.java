@@ -16,18 +16,16 @@ public class EventCollection {
       }
       else {
          for (Event obj : ll) {
-            accstring += obj;
-            accstring += "\n";
-            accstring += "\n";
-            accstring += "\n";
-            accstring += "\n";
+            accstring += obj + "\n";
          }
          return accstring;
       }
    }
 
-   public Event makeEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription) {
-      Event event =  new Event(eventName, eventDateAndTime, 2, eventDescription, "yas", eventRoughLocation);
+   public Event makeEvent(String eventName, String eventDateAndTime, String time,
+                          String eventRoughLocation, String eventDescription) {
+      Event event =  new Event(eventName, eventDateAndTime, 2, eventDescription,
+              "yas", eventRoughLocation);
       ll.add(event);
       return event;
    }
