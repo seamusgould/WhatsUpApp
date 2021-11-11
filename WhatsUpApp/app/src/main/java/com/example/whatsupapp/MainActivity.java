@@ -69,11 +69,11 @@ public class MainActivity extends AppCompatActivity implements IPostEventViewMvc
 
                     Fragment fragment = null;
                     switch (menuItem.getItemId()) {
-                        case R.id.home:
-                            fragment = new HomeFragment();
-                            break;
                         case R.id.map:
                             fragment = new MapFragment();
+                            break;
+                        case R.id.home:
+                            fragment = new HomeFragment();
                             break;
                         case R.id.profile:
                             fragment = new ProfileFragment();
