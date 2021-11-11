@@ -16,6 +16,7 @@ import com.example.whatsupapp.model.Location;
 import com.example.whatsupapp.model.User;
 import com.example.whatsupapp.view.HomeFragment;
 import com.example.whatsupapp.view.IPostEventViewMvc;
+import com.example.whatsupapp.view.MainView;
 import com.example.whatsupapp.view.MapFragment;
 import com.example.whatsupapp.view.PostEventViewMvc;
 import com.example.whatsupapp.model.Event;
@@ -39,13 +40,17 @@ public class MainActivity extends AppCompatActivity implements IPostEventViewMvc
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.eventCollection = new EventCollection();
-        this.addedEvent = new PostEventViewMvc(getApplicationContext(), this);
-        setContentView(this.addedEvent.getRootView());
-        bottomNavigationView = findViewById(R.id.bottomNav);
+        //this.addedEvent = new PostEventViewMvc(getApplicationContext(), this);
+
+        MainView mainView = new MainView(getApplicationContext());
+        setContentView(mainView.getRootView());
+
+/*        bottomNavigationView = findViewById(R.id.bottomNav);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment())
-                .commit();
+        */
+        //getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment())
+          //      .commit();
 
     }
 
