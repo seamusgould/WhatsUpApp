@@ -13,29 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginEnd="12dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="120dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.tabs.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:background="red"
-            android:elevation="12dp"
-            app:tabIndicator="@color/white"
-            app:tabSelectedTextColor="@color/white"
-            app:tabMaxWidth="0dp"
-            app:tabGravity="fill"
-            app:tabMode="fixed"
-            app:tabTextColor="@color/white"
-            android:id="@+id/tabLayout" />
-
-        <androidx.viewpager.widget.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/viewPager" />
 
         <TextView
             android:id="@+id/eventList"
@@ -168,7 +150,16 @@
             android:layout_height="wrap_content"
             android:background="@color/purple_500"
             android:text="@string/add_Event_Button"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/maroon" />
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottomNav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/grey"
+        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
