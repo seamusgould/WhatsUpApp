@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/container" />
+
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -148,9 +153,9 @@
             android:id="@+id/addEventButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple_500"
+            android:background="@color/maroon"
             android:text="@string/add_Event_Button"
-            android:textColor="@color/maroon" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -159,6 +164,7 @@
         android:id="@+id/bottomNav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:itemTextColor="@color/white"
         android:background="@color/grey"
         app:menu="@menu/menu" />
 
