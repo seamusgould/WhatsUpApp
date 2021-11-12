@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements IPostEventViewMvc
         this.eventCollection = new EventCollection();
         //this.addedEvent = new PostEventViewMvc(getApplicationContext(), this);
 
-        MainView mainView = new MainView(getApplicationContext());
+        MainView mainView = new MainView(this);
         setContentView(mainView.getRootView());
 
 /*        bottomNavigationView = findViewById(R.id.bottomNav);
