@@ -43,12 +43,35 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
         super.onCreate(savedInstanceState);
         this.eventCollection = new EventCollection();
         this.addedEvent = new PostEventViewMvc(getApplicationContext(), this);
-
         this.mainView = new MainView(this);
         setContentView(mainView.getRootView());
-        this.mainView.displayFragment(new HomeFragment(this));
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
+//        this.mainView.displayFragment(new HomeFragment((IHomeFragmentView.Listener) this));
+        this.bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                        Fragment fragment = null;
+                        switch (menuItem.getItemId()) {
+                            case R.id.map:
+                                fragment = new MapFragment();
+                                break;
+                            case R.id.home:
+                                fragment = new HomeFragment();
+                                break;
+                            case R.id.profile:
+//                            default:
+                                fragment = new ProfileFragment();
+                                break;
+                        }
+//                        fragmentManager.beginTransaction().replace(R.id.rlContainer, fragment).commit();
+                        mainView.displayFragment(fragment);
+                        return true;
+                    }
+
+                });
 
     }
 

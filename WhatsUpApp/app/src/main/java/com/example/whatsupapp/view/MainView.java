@@ -14,27 +14,27 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainView implements IMainView{
     private MainBinding binding;
     private FragmentActivity activity;
-    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                    Fragment fragment = null;
-                    switch (menuItem.getItemId()) {
-                        case R.id.map:
-                            fragment = new MapFragment();
-                            break;
-                        case R.id.home:
-                            fragment = new HomeFragment();
-                            break;
-                        case R.id.profile:
-                            fragment = new ProfileFragment();
-                            break;
-                    }
-                    return true;
-                }
-
-            };
+//    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod =
+//            new BottomNavigationView.OnNavigationItemSelectedListener() {
+//                @Override
+//                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//
+//                    Fragment fragment = null;
+//                    switch (menuItem.getItemId()) {
+//                        case R.id.map:
+//                            fragment = new MapFragment();
+//                            break;
+//                        case R.id.home:
+//                            fragment = new HomeFragment();
+//                            break;
+//                        case R.id.profile:
+//                            fragment = new ProfileFragment();
+//                            break;
+//                    }
+//                    return true;
+//                }
+//
+//            };
 
     public MainView(FragmentActivity activity) {
         this.binding = MainBinding.inflate(activity.getLayoutInflater());
