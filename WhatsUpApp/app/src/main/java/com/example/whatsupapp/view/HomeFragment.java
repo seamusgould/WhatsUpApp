@@ -9,15 +9,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.whatsupapp.R;
+import com.example.whatsupapp.databinding.FragmentHomeBinding;
 
 /**
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements IHomeFragmentView{
+
+    FragmentHomeBinding binding;
+    Listener listener;
+
+    public HomeFragment(Listener listener) {
+        this.listener = listener;
+    }
 
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     @Override

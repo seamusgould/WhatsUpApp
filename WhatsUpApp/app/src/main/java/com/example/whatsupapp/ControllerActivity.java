@@ -15,6 +15,7 @@ import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
 import com.example.whatsupapp.model.User;
 import com.example.whatsupapp.view.HomeFragment;
+import com.example.whatsupapp.view.IMainView;
 import com.example.whatsupapp.view.IPostEventViewMvc;
 import com.example.whatsupapp.view.MainView;
 import com.example.whatsupapp.view.MapFragment;
@@ -28,29 +29,26 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements IPostEventViewMvc.Listener{
+public class ControllerActivity extends AppCompatActivity implements IPostEventViewMvc.Listener{
 
     private IPostEventViewMvc addedEvent;
     private EventCollection eventCollection;
     private ArrayList<Location>locationList = Location.getLocationList();
     private BottomNavigationView bottomNavigationView;
+    private IMainView mainView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.eventCollection = new EventCollection();
-        //this.addedEvent = new PostEventViewMvc(getApplicationContext(), this);
+        this.addedEvent = new PostEventViewMvc(getApplicationContext(), this);
 
-        MainView mainView = new MainView(this);
+        this.mainView = new MainView(this);
         setContentView(mainView.getRootView());
-
-/*        bottomNavigationView = findViewById(R.id.bottomNav);
+        this.mainView.displayFragment(new HomeFragment(this));
 
         bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavMethod);
-        */
-        //getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment())
-          //      .commit();
 
     }
 
@@ -67,27 +65,4 @@ public class MainActivity extends AppCompatActivity implements IPostEventViewMvc
         return locationList;
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener bottomNavMethod =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                    Fragment fragment = null;
-                    switch (menuItem.getItemId()) {
-                        case R.id.map:
-                            fragment = new MapFragment();
-                            break;
-                        case R.id.home:
-                            fragment = new HomeFragment();
-                            break;
-                        case R.id.profile:
-                            fragment = new ProfileFragment();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment)
-                            .commit();
-                    return true;
-                }
-
-            };
 }
