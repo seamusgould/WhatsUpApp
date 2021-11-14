@@ -15,10 +15,12 @@ import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
 import com.example.whatsupapp.model.User;
 import com.example.whatsupapp.view.HomeFragment;
+import com.example.whatsupapp.view.IHomeFragmentView;
 import com.example.whatsupapp.view.IMainView;
 import com.example.whatsupapp.view.IPostEventViewMvc;
 import com.example.whatsupapp.view.MainView;
 import com.example.whatsupapp.view.MapFragment;
+import com.example.whatsupapp.view.PostEventFragment;
 import com.example.whatsupapp.view.PostEventViewMvc;
 import com.example.whatsupapp.model.Event;
 
@@ -29,7 +31,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class ControllerActivity extends AppCompatActivity implements IPostEventViewMvc.Listener{
+public class ControllerActivity extends AppCompatActivity implements IPostEventViewMvc.Listener, IHomeFragmentView.Listener {
 
     private IPostEventViewMvc addedEvent;
     private EventCollection eventCollection;
@@ -62,7 +64,6 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
                                 fragment = new HomeFragment();
                                 break;
                             case R.id.profile:
-//                            default:
                                 fragment = new ProfileFragment();
                                 break;
                         }
@@ -73,6 +74,11 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
                 });
 
+    }
+
+    @Override
+    public void onPostButton() {
+        this.mainView.displayFragment(new PostEventFragment(this));
     }
 
     @Override

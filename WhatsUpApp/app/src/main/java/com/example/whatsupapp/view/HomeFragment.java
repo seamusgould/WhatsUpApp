@@ -33,4 +33,12 @@ public class HomeFragment extends Fragment implements IHomeFragmentView{
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState){
+//        this.binding.PostButton.setOnClickListener((clickedView) -> {
+//                    this.listener.onPostButton();
+//                }
+//        );
+    }
 }

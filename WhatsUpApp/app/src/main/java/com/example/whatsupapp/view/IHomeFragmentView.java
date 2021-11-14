@@ -4,6 +4,7 @@ public interface IHomeFragmentView {
 
     public interface Listener {
 
+        void onPostButton();
     }
 
 }
