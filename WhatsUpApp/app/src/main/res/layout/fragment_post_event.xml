@@ -147,7 +147,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@color/teal_200"
+            android:backgroundTint="@color/maroon"
             android:text="@string/add_Event_Button"
             android:textColor="@color/white" />
 

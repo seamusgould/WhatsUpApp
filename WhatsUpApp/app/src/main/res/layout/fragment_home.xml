@@ -23,6 +23,7 @@
         android:layout_below="@+id/homePageText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:backgroundTint="@color/maroon"
         android:text="Post" />
 
 </RelativeLayout>
