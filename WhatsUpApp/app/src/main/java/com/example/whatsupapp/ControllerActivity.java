@@ -33,47 +33,18 @@ import java.util.Calendar;
 
 public class ControllerActivity extends AppCompatActivity implements IPostEventViewMvc.Listener, IHomeFragmentView.Listener {
 
-    private IPostEventViewMvc addedEvent;
     private EventCollection eventCollection;
     private ArrayList<Location>locationList = Location.getLocationList();
     private BottomNavigationView bottomNavigationView;
     private IMainView mainView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.eventCollection = new EventCollection();
-        this.addedEvent = new PostEventViewMvc(getApplicationContext(), this);
         this.mainView = new MainView(this);
         setContentView(mainView.getRootView());
-
-//        this.mainView.displayFragment(new HomeFragment((IHomeFragmentView.Listener) this));
-        this.bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                        Fragment fragment = null;
-                        switch (menuItem.getItemId()) {
-                            case R.id.map:
-                                fragment = new MapFragment();
-                                break;
-                            case R.id.home:
-                                fragment = new HomeFragment();
-                                break;
-                            case R.id.profile:
-                                fragment = new ProfileFragment();
-                                break;
-                        }
-//                        fragmentManager.beginTransaction().replace(R.id.rlContainer, fragment).commit();
-                        mainView.displayFragment(fragment);
-                        return true;
-                    }
-
-                });
-
+        onHomeSelected();
     }
 
     @Override
@@ -86,12 +57,22 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
                              String eventRoughLocation, String eventDescription) {
         Log.d("NextGenPos", "controller is handling line item addition");
         this.eventCollection.makeEvent(eventName, eventDate, eventTime, eventRoughLocation, eventDescription);
-        this.addedEvent.updateDisplay(this.eventCollection);
+      //  this.addedEvent.updateDisplay(this.eventCollection);
     }
 
     @Override
     public ArrayList<Location> getLocationList() {
         return locationList;
+    }
+
+    public void onMapSelected(){
+        this.mainView.displayFragment(new MapFragment());
+    }
+    public void onHomeSelected(){
+        this.mainView.displayFragment(new HomeFragment(this));
+    }
+    public void onProfileSelected(){
+        this.mainView.displayFragment(new ProfileFragment());
     }
 
 }
