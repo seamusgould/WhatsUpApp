@@ -38,36 +38,36 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-//        this.binding.addEventButton.setOnClickListener((clickedView) -> {
-//                // get the event name
-//                Editable eventNameEditable = binding.editName.getText();
-//                String eventName = eventNameEditable.toString();
-//
-//                // get the event date
-//                Editable eventDateEditable = binding.editDate.getText();
-//                String eventDate = eventDateEditable.toString();
-//
-//                // get the event time
-//                Editable eventTimeEditable = binding.editTime.getText();
-//                String eventTime = eventTimeEditable.toString();
-//
-//                // get the event location
-//                Editable eventLocEditable = binding.editLoc.getText();
-//                String eventLoc = eventLocEditable.toString();
-//
-//
-//                // get the event description
-//                Editable eventDescriptionEditable = binding.editDescription.getText();
-//                String eventDescription = eventDescriptionEditable.toString();
-//
-//                listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
-//                eventNameEditable.clear();
-//                eventDateEditable.clear();
-//                eventTimeEditable.clear();
-//                eventLocEditable.clear();
-//                eventDescriptionEditable.clear();
-//
-//        });
+        this.binding.addEventButton.setOnClickListener((clickedView) -> {
+                // get the event name
+                Editable eventNameEditable = binding.editName.getText();
+                String eventName = eventNameEditable.toString();
+
+                // get the event date
+                Editable eventDateEditable = binding.editDate.getText();
+                String eventDate = eventDateEditable.toString();
+
+                // get the event time
+                Editable eventTimeEditable = binding.editTime.getText();
+                String eventTime = eventTimeEditable.toString();
+
+                // get the event location
+                Editable eventLocEditable = binding.editLoc.getText();
+                String eventLoc = eventLocEditable.toString();
+
+
+                // get the event description
+                Editable eventDescriptionEditable = binding.editDescription.getText();
+                String eventDescription = eventDescriptionEditable.toString();
+
+                listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
+                eventNameEditable.clear();
+                eventDateEditable.clear();
+                eventTimeEditable.clear();
+                eventLocEditable.clear();
+                eventDescriptionEditable.clear();
+
+        });
     }
 
     @Override
@@ -77,8 +77,8 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
     @Override
     public void updateDisplay(EventCollection eventCollection){
-//        String s = eventCollection.toString();
-//        this.binding.eventList.setText(s);
+        String s = eventCollection.toString();
+        this.binding.eventList.setText(s);
     }
 
 }
