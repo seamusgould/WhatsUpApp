@@ -44,6 +44,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     @Override
     public EventCollection onAddedEvent(String eventName, String eventDate, String eventTime,
                                         String eventRoughLocation, String eventDescription) {
+        Log.d("NextGenPos", "controller is handling line item addition");
         eventCollection.makeEvent(eventName, eventDate, eventTime, eventRoughLocation, eventDescription);
         return eventCollection;
     }
