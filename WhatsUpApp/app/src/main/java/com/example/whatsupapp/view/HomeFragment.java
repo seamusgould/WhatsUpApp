@@ -15,7 +15,8 @@ import com.example.whatsupapp.databinding.FragmentHomeBinding;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements IHomeFragmentView{
+
+public class HomeFragment extends Fragment implements IHomeFragmentView {
 
     FragmentHomeBinding binding;
     Listener listener;
@@ -23,7 +24,7 @@ public class HomeFragment extends Fragment implements IHomeFragmentView{
     public HomeFragment(Listener listener) {
         this.listener = listener;
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class HomeFragment extends Fragment implements IHomeFragmentView{
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         this.binding.PostButton.setOnClickListener((clickedView) -> {
                     this.listener.onPostButton();
                 }

@@ -68,11 +68,10 @@ public class PostEventViewMvc implements IPostEventViewMvc{
                 eventTimeEditable.clear();
                 eventLocEditable.clear();
                 eventDescriptionEditable.clear();
-
             }
         });
-
     }
+
     @Override
     public View getRootView() {
         return binding.getRoot();

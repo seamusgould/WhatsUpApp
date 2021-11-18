@@ -60,13 +60,13 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                 Editable eventDescriptionEditable = binding.editDescription.getText();
                 String eventDescription = eventDescriptionEditable.toString();
 
-                listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
+                EventCollection events = listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
                 eventNameEditable.clear();
                 eventDateEditable.clear();
                 eventTimeEditable.clear();
                 eventLocEditable.clear();
                 eventDescriptionEditable.clear();
-
+                updateDisplay(events);
         });
     }
 
@@ -80,5 +80,4 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
         String s = eventCollection.toString();
         this.binding.eventList.setText(s);
     }
-
 }

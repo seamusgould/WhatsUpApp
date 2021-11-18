@@ -15,14 +15,14 @@ public class EventCollection {
          for (Event obj : ll) {
             str += obj + "\n";
          }
-         return str;
+      return str;
       }
 
    public Event makeEvent(String eventName, String eventDate, String eventTime,
                           String eventDescription, String eventRoughLocation) {
       Event event =  new Event(eventName, eventDate, eventTime, eventDescription,
               "yas", eventRoughLocation);
-      this.getEventCollection().add(event);
+      ll.add(event);
       return event;
    }
 
