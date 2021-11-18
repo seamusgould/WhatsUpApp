@@ -15,6 +15,7 @@ import com.example.whatsupapp.databinding.FragmentHomeBinding;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
+
 public class HomeFragment extends Fragment implements IHomeFragmentView {
 
     FragmentHomeBinding binding;
