@@ -12,7 +12,6 @@ public class Event {
     String eventPoster;
     String eventLocation;
     String name;
-    String str = "";
     ArrayList<String> comments = new ArrayList<String>();
 
     Event (String name, String date, String time , int recurrence,
@@ -39,6 +38,7 @@ public class Event {
 
     @Override
     public String toString(){
+        String str = "";
         String score = Integer.toString(upvoteDownvote);
         str += eventPoster +" posted: \n";
         str += " On " + eventDate + " " + eventTime + " " + eventName + " at " + eventLocation;
