@@ -1,46 +1,44 @@
 package com.example.whatsupapp.view;
 
-import com.example.whatsupapp.R;
-import com.example.whatsupapp.databinding.ActivityMainBinding;
-import com.example.whatsupapp.model.EventCollection;
-import com.example.whatsupapp.model.Controller;
-import com.example.whatsupapp.model.Location;
+import android.os.Bundle;
 
-import android.content.Context;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import com.example.whatsupapp.R;
+import com.example.whatsupapp.databinding.FragmentPostEventBinding;
+import com.example.whatsupapp.model.EventCollection;
 
-public class PostEventViewMvc implements IPostEventViewMvc{
-    private ActivityMainBinding binding;
-    private Listener listener;
+public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
-    public PostEventViewMvc(Context context, Listener listener) {
+    Listener listener;
+    FragmentPostEventBinding binding;
+
+    public PostEventFragment() {
+    }
+
+    public PostEventFragment(Listener listener){
         this.listener = listener;
-        this.binding = ActivityMainBinding.inflate(LayoutInflater.from(context));
+    }
 
-        //change arraylist to array
-        ArrayList<Location> locationArrayList = listener.getLocationList();
-        String[] stringArray = new String[locationArrayList.size()];
-        int i = 0;
-        for(Location loc: locationArrayList) {
-            stringArray[i] = loc.toString();
-            i++;
-        }
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        this.binding = FragmentPostEventBinding.inflate(inflater);
+        return this.binding.getRoot();
+    }
 
-        AutoCompleteTextView editLocation = this.binding.editLoc;
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(editLocation.getContext(),
-                android.R.layout.simple_list_item_1, stringArray );
-        editLocation.setAdapter(adapter);
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        this.binding.addEventButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+        this.binding.addEventButton.setOnClickListener((clickedView) -> {
                 // get the event name
                 Editable eventNameEditable = binding.editName.getText();
                 String eventName = eventNameEditable.toString();
@@ -62,19 +60,19 @@ public class PostEventViewMvc implements IPostEventViewMvc{
                 Editable eventDescriptionEditable = binding.editDescription.getText();
                 String eventDescription = eventDescriptionEditable.toString();
 
-                listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
+                EventCollection events = listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
                 eventNameEditable.clear();
                 eventDateEditable.clear();
                 eventTimeEditable.clear();
                 eventLocEditable.clear();
                 eventDescriptionEditable.clear();
-            }
+                updateDisplay(events);
         });
     }
 
     @Override
     public View getRootView() {
-        return binding.getRoot();
+        return null;
     }
 
     @Override

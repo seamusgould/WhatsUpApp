@@ -3,15 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/background_color"
     tools:context=".view.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:textSize="30sp"
-        android:layout_centerInParent="true"
+        android:id="@+id/homePageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home" />
+        android:layout_centerInParent="true"
+        android:layout_marginTop="32dp"
+        android:text="Home"
+        android:textSize="30sp" />
+
+
+    <Button
+        android:id="@+id/PostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/homePageText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/maroon"
+        android:text="Post" />
 
 </RelativeLayout>
