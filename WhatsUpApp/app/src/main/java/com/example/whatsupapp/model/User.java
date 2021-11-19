@@ -3,7 +3,7 @@ package com.example.whatsupapp.model;
 public class User {
     String username;
 
-    User (String name){
+    public User(String name){
         this.username = name;
     }
 
