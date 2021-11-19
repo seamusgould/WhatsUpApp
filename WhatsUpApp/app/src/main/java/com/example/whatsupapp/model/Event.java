@@ -15,7 +15,6 @@ public class Event {
     User poster;
     String eventLocation;
     String name;
-    String str = "";
     ArrayList<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
     ArrayList<String> comments = new ArrayList<String>();
 
@@ -61,6 +60,7 @@ public class Event {
 
     @Override
     public String toString(){
+        String str = "";
         String score = Integer.toString(upvoteDownvote);
         str += eventPoster +" posted: \n";
         str += " On " + eventDate + " " + eventTime + " " + eventName + " at " + eventLocation;

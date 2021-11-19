@@ -16,10 +16,14 @@ class EventCollectionTest {
                 "great party", "Main Building");
         Event practiceEvent2 = collection.makeEvent("Hood Classic 2", "02/01/2021", "07:00",
                 "great party 2", "Main Building");
+        Event practiceEvent3 = collection.makeEvent("Hood Classic 3", "02/01/2021", "07:00",
+                "great party 2", "Main Building");
 
-        String str = practiceEvent.toString() + "\n" + practiceEvent2.toString() + "\n";
+        String str = practiceEvent.toString() + "\n";
+        str = str + practiceEvent2.toString() + "\n";
+        str = str + practiceEvent3.toString() + "\n";
 
-        assertEquals(str, practiceEvent.toString());
+        assertEquals(str, collection.toString());
 
     }
 
@@ -34,7 +38,16 @@ class EventCollectionTest {
         assertEquals(practiceEvent, collection.getEventCollection().get(0));
         assertEquals(practiceEvent2, collection.getEventCollection().get(1));
 
+        Event practiceEvent3 = new Event ("Hood Classic", "01/01/2021", "07:00",
+                "great party", "yas", "Main Building");
 
+
+        assertEquals(practiceEvent.name, practiceEvent3.name);
+        assertEquals(practiceEvent.eventDate, practiceEvent3.eventDate);
+        assertEquals(practiceEvent.eventTime, practiceEvent3.eventTime);
+        assertEquals(practiceEvent.eventDescription, practiceEvent3.eventDescription);
+        assertEquals(practiceEvent.eventPoster, practiceEvent3.eventPoster);
+        assertEquals(practiceEvent.eventLocation, practiceEvent3.eventLocation);
 
     }
 

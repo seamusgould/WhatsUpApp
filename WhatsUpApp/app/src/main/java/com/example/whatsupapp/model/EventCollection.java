@@ -42,10 +42,6 @@ public class EventCollection {
       originalCalendar = assignYearMonthDay(originalCalendar, e.originalEventDateAndTime.get(Calendar.YEAR),
               e.originalEventDateAndTime.get(Calendar.MONTH), e.originalEventDateAndTime.get(Calendar.DATE));
 
-      int year = originalCalendar.get(Calendar.YEAR);
-      int month = originalCalendar.get(Calendar.MONTH);
-      int day = originalCalendar.get(Calendar.DATE);
-
       if(howOften.equals("weekly")){
 
          for (int i = 1; i < (1 + howManyTimes); i++)
@@ -57,9 +53,6 @@ public class EventCollection {
             int newDay = newCalendar.get(Calendar.DATE) + (i * ((1 + howManySkip) * 7));
             newCalendar.set(Calendar.DATE, newDay);
             e.addNewDateAndTime(newCalendar);
-            day = newCalendar.get(Calendar.DATE);
-            //year = originalCalendar.get(Calendar.YEAR);
-            month = newCalendar.get(Calendar.MONTH);
 
          }
       }
@@ -81,8 +74,6 @@ public class EventCollection {
 
             //adjusts the new date to be the right day of the week
             possibleCalendar.set(Calendar.DATE, possibleCalendar.get(Calendar.DATE) + dayOfWeekDifference);
-
-            int newDayOfWeek = possibleCalendar.get(Calendar.DAY_OF_WEEK);
 
             int weekInMonth = getWeekOfDateInMonth(currentCalendar);
             int possibleWeekInMonth = getWeekOfDateInMonth(possibleCalendar);
