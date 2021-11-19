@@ -21,7 +21,7 @@ public class EventCollection {
    public Event makeEvent(String eventName, String eventDate, String eventTime,
                           String eventDescription, String eventRoughLocation) {
       Event event =  new Event(eventName, eventDate, eventTime, eventDescription,
-              "yas", eventRoughLocation);
+              "User", eventRoughLocation);
       ll.add(event);
       return event;
    }
