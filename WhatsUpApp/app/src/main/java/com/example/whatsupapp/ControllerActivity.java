@@ -12,7 +12,7 @@ import com.example.whatsupapp.view.IHomeFragmentView;
 import com.example.whatsupapp.view.IMainView;
 import com.example.whatsupapp.view.IPostEventViewMvc;
 import com.example.whatsupapp.view.MainView;
-import com.example.whatsupapp.view.MapFragment;
+import com.example.whatsupapp.view.MapsFragment;
 import com.example.whatsupapp.view.PostEventFragment;
 
 import com.example.whatsupapp.view.ProfileFragment;
