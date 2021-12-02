@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
 import com.example.whatsupapp.view.HomeFragment;
@@ -20,7 +22,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class ControllerActivity extends AppCompatActivity implements IPostEventViewMvc.Listener, IHomeFragmentView.Listener {
+public class ControllerActivity extends AppCompatActivity implements IPostEventViewMvc.Listener,
+        IHomeFragmentView.Listener {
 
     private EventCollection eventCollection;
     private ArrayList<Location>locationList = Location.getLocationList();
@@ -37,8 +40,24 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     @Override
+    public ArrayList<Event> getEvents() {
+        return eventCollection.getEventCollection();
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+
+    }
+
+
+    @Override
     public void onPostButton() {
         this.mainView.displayFragment(new PostEventFragment(this));
+    }
+
+    @Override
+    public void onAddedButton() {
+
     }
 
     @Override

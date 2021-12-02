@@ -6,24 +6,20 @@
     android:background="@color/background_color"
     tools:context=".view.HomeFragment">
 
-    <TextView
-        android:id="@+id/homePageText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="32dp"
-        android:text="Home"
-        android:textSize="30sp" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <Button
         android:id="@+id/PostButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/homePageText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:backgroundTint="@color/maroon"
-        android:text="Post" />
+        android:layout_alignParentBottom="true"
+        android:text="Post"
+        android:paddingBottom="50dp"
+        />
 
 </RelativeLayout>
