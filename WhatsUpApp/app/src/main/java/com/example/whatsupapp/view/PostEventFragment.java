@@ -10,10 +10,15 @@ import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 import com.example.whatsupapp.R;
 import com.example.whatsupapp.databinding.FragmentPostEventBinding;
 import com.example.whatsupapp.model.EventCollection;
+import com.example.whatsupapp.model.Location;
+
+import java.util.ArrayList;
 
 public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
@@ -37,6 +42,20 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+
+        //change arraylist to array
+        ArrayList<Location> locationArrayList = listener.getLocationList();
+        String[] stringArray = new String[locationArrayList.size()];
+        int i = 0;
+        for(Location loc: locationArrayList) {
+            stringArray[i] = loc.toString();
+            i++;
+        }
+
+        AutoCompleteTextView editLocation = this.binding.editLoc;
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(editLocation.getContext(),
+                android.R.layout.simple_list_item_1, stringArray );
+        editLocation.setAdapter(adapter);
 
         this.binding.addEventButton.setOnClickListener((clickedView) -> {
                 // get the event name
