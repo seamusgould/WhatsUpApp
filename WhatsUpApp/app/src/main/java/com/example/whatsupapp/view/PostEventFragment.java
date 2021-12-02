@@ -66,7 +66,7 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                 eventTimeEditable.clear();
                 eventLocEditable.clear();
                 eventDescriptionEditable.clear();
-                updateDisplay(events);
+                this.listener.onAddedButton();
         });
     }
 
@@ -77,7 +77,7 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
     @Override
     public void updateDisplay(EventCollection eventCollection){
-        String s = eventCollection.toString();
-        this.binding.eventList.setText(s);
+//        String s = eventCollection.toString();
+//        this.binding.eventList.setText(s);
     }
 }

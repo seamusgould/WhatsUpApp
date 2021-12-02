@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,9 +52,14 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         this.binding = FragmentHomeBinding.inflate(inflater);
+        RecyclerView recyclerView = binding.recView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+        adapter = new EventAdapter(this.getContext(), listener.getEvents());
+        recyclerView.setAdapter(adapter);
+        adapter.setClickListener(this::onItemClick);
         return this.binding.getRoot();
-//        return inflater.inflate(R.layout.fragment_home, container, false);
     }
+
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
