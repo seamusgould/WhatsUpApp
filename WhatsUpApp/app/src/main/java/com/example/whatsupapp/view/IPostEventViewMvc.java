@@ -20,6 +20,7 @@ public interface IPostEventViewMvc {
         void onItemClick(View view, int position);
         void onPostButton();
         void onAddedButton();
+        void onCommentAdded();
 
     }
 

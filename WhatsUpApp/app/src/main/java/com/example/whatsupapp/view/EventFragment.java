@@ -1,9 +1,13 @@
 package com.example.whatsupapp.view;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,7 +23,10 @@ import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class EventFragment extends Fragment implements IPostEventViewMvc.Listener, IHomeFragmentView, EventAdapter.ItemClickListener {
 
@@ -38,17 +45,24 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
         this.binding = FragmentEventBinding.inflate(inflater);
         binding.eventname.setText(event.toString());
 
+        ListView lv = (ListView) binding.comments;
 
-
-
-        return this.binding.getRoot();
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                getActivity(),
+                android.R.layout.simple_list_item_1,
+                event.getComments());
+        lv.setAdapter(arrayAdapter);
+    return this.binding.getRoot();
     }
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         this.binding.postComment.setOnClickListener((clickedView) -> {
-                    this.listener.onPostButton();
-                }
-        );
+            Editable nameEditable = binding.comment.getText();
+            String user_comment = nameEditable.toString();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Calendar cal = Calendar.getInstance();
+            event.addComment(user_comment + " posted by " + event.getUser() + " " + dateFormat.format(cal.getTime()));
+    });
     }
 
     @Override
@@ -78,6 +92,11 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
 
     @Override
     public void onAddedButton() {
+
+    }
+
+    @Override
+    public void onCommentAdded() {
 
     }
 }
