@@ -96,7 +96,5 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
     @Override
     public void updateDisplay(EventCollection eventCollection){
-//        String s = eventCollection.toString();
-//        this.binding.eventList.setText(s);
     }
 }
