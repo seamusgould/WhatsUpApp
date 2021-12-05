@@ -1,8 +1,6 @@
 package com.example.whatsupapp;
 
 import android.content.Context;
-import android.view.KeyEvent;
-import android.view.View;
 
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.ViewInteraction;
@@ -11,13 +9,10 @@ import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
-import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import org.hamcrest.Matcher;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import com.example.whatsupapp.ControllerActivity;
+import com.example.whatsupapp.Controller.ControllerActivity;
 
 
 import static org.junit.Assert.*;

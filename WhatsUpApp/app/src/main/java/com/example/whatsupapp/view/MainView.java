@@ -5,9 +5,8 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
-import com.example.whatsupapp.ControllerActivity;
+import com.example.whatsupapp.Controller.ControllerActivity;
 import com.example.whatsupapp.R;
 import com.example.whatsupapp.databinding.MainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
