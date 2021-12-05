@@ -18,4 +18,7 @@ public class User {
 
     public void downvote(Event e) {e.upvoteDownvote = e.upvoteDownvote--;}
 
+    public String toiString(){
+        return username;
+    }
 }
