@@ -1,6 +1,7 @@
 package com.example.whatsupapp.Controller;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -56,7 +57,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
         this.mainView = new MainView(this);
         setContentView(mainView.getRootView());
         if (savedInstanceState != null) {
-            this.mainView.displayFragment(new AuthFragment(this));
+ //           this.mainView.displayFragment(new AuthFragment(this));
         }
         onHomeSelected();
     }
@@ -132,5 +133,10 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     @Override
     public void onSigninAttempt(String username, String password, IAuthView authView) {
 
+    }
+
+    @Override
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }
