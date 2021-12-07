@@ -1,5 +1,6 @@
 package com.example.whatsupapp.Controller;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -29,11 +30,23 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     private ArrayList<Location>locationList = Location.getLocationList();
     private BottomNavigationView bottomNavigationView;
     private IMainView mainView;
+    private static final String EVENT_COL = "eventCol";
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(EVENT_COL, this.eventCollection);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.eventCollection = new EventCollection();
+        if (savedInstanceState == null)
+            this.eventCollection = new EventCollection();
+        else {
+            this.eventCollection = (EventCollection) savedInstanceState.getSerializable(EVENT_COL);
+            assert this.eventCollection != null;
+        }
         this.mainView = new MainView(this);
         setContentView(mainView.getRootView());
         onHomeSelected();
