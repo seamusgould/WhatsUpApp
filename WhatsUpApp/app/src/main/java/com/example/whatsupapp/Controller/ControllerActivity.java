@@ -4,16 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
-import com.example.whatsupapp.model.IAuthView;
+import com.example.whatsupapp.view.IAuthView;
 import com.example.whatsupapp.model.Location;
 import com.example.whatsupapp.model.Username;
 import com.example.whatsupapp.persistence.FirestoreFacade;
 import com.example.whatsupapp.persistence.IPersistenceFacade;
+import com.example.whatsupapp.view.AuthFragment;
 import com.example.whatsupapp.view.HomeFragment;
 import com.example.whatsupapp.view.IHomeFragmentView;
 import com.example.whatsupapp.view.IMainView;
