@@ -96,6 +96,7 @@ public class Event {
 
     public void addComment(String s){
         comments.add(s);
+        
     }
 
     public ArrayList<String> getComments() {
