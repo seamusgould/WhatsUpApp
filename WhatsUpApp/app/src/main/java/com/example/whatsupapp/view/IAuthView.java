@@ -1,4 +1,4 @@
-package com.example.whatsupapp.model;
+package com.example.whatsupapp.view;
 
 public interface IAuthView {
 

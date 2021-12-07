@@ -90,6 +90,16 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+    }
+
+    @Override
     public View getRootView() {
         return null;
     }

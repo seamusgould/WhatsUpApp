@@ -1,18 +1,20 @@
 package com.example.whatsupapp.Controller;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
-import com.example.whatsupapp.model.IAuthView;
+import com.example.whatsupapp.view.IAuthView;
 import com.example.whatsupapp.model.Location;
 import com.example.whatsupapp.model.Username;
 import com.example.whatsupapp.persistence.FirestoreFacade;
 import com.example.whatsupapp.persistence.IPersistenceFacade;
+import com.example.whatsupapp.view.AuthFragment;
 import com.example.whatsupapp.view.HomeFragment;
 import com.example.whatsupapp.view.IHomeFragmentView;
 import com.example.whatsupapp.view.IMainView;
@@ -33,17 +35,29 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     private ArrayList<Location> locationList = Location.getLocationList();
     private BottomNavigationView bottomNavigationView;
     private IMainView mainView;
+    private static final String EVENT_COL = "eventCol";
     private final IPersistenceFacade persistenceFacade = new FirestoreFacade();
 
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(EVENT_COL, this.eventCollection);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.eventCollection = new EventCollection();
+        if (savedInstanceState == null)
+            this.eventCollection = new EventCollection();
+        else {
+            this.eventCollection = (EventCollection) savedInstanceState.getSerializable(EVENT_COL);
+            assert this.eventCollection != null;
+        }
         this.mainView = new MainView(this);
         setContentView(mainView.getRootView());
         if (savedInstanceState != null) {
-            this.mainView.displayFragment(new AuthFragment(this));
+ //           this.mainView.displayFragment(new AuthFragment(this));
         }
         onHomeSelected();
     }
@@ -119,5 +133,10 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     @Override
     public void onSigninAttempt(String username, String password, IAuthView authView) {
 
+    }
+
+    @Override
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
     }
 }

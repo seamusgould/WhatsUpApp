@@ -2,9 +2,10 @@ package com.example.whatsupapp.model;
 
 import static java.lang.Math.floor;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class EventCollection {
+public class EventCollection implements Serializable {
    private ArrayList<Event> ll;
 
    public EventCollection() {

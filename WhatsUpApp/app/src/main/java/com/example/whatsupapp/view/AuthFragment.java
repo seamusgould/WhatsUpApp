@@ -1,4 +1,4 @@
-package com.example.whatsupapp.Controller;
+package com.example.whatsupapp.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.whatsupapp.model.IAuthView;
 import com.google.android.material.snackbar.Snackbar;
 import com.example.whatsupapp.databinding.FragmentAuthBinding;
 
