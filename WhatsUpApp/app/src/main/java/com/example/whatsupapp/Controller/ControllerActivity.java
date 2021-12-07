@@ -9,6 +9,8 @@ import android.view.View;
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
+import com.example.whatsupapp.view.AddDateFragment;
+import com.example.whatsupapp.view.AddTimeFragment;
 import com.example.whatsupapp.view.HomeFragment;
 import com.example.whatsupapp.view.IHomeFragmentView;
 import com.example.whatsupapp.view.IMainView;
@@ -57,11 +59,22 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public void onAddedButton() {
-        this.mainView.displayFragment(new HomeFragment(this));
+        this.mainView.displayFragment(new AddDateFragment(this));
     }
 
     @Override
     public void onCommentAdded() {
+
+    }
+
+    @Override
+    public void onDateButton(){
+        this.mainView.displayFragment(new AddTimeFragment(this));
+
+    }
+
+    public void onDateAdded() {
+        this.mainView.displayFragment(new AddTimeFragment(this));
 
     }
 

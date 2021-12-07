@@ -1,12 +1,15 @@
 package com.example.whatsupapp.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Event {
     int upvoteDownvote = 0;
     String eventName;
-    Calendar originalEventDateAndTime;
+    Calendar originalEventDateAndTime = Calendar.getInstance();
     String eventDate;
     String eventTime;
     int eventRecurrence;
@@ -18,20 +21,24 @@ public class Event {
     ArrayList<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
     ArrayList<String> comments = new ArrayList<String>();
 
-    Event (String name, String date, String time , int recurrence,
-           String description, String poster, String eLocation){
-        this.eventName = name;
-        this.eventTime = time;
-        this.eventDate = date;
-        this.eventRecurrence = recurrence;
-        this.eventPoster = poster;
-        this.eventLocation =  eLocation;
-        this.eventDescription = description;
-    }
-
-    //constructor without recurrence
+    //constructor without recurrence, all strings
     Event (String name, String date, String time ,
-           String description, String poster, String eLocation){
+           String description, String poster, String eLocation) {
+
+        String combinedDateAndTimeString = (date + " " + time);
+
+        SimpleDateFormat sdf1 = new SimpleDateFormat("MM/dd/yyyy HH:mm");
+
+        try {
+            Date parsedDate = sdf1.parse(combinedDateAndTimeString);
+            this.originalEventDateAndTime.setTime(parsedDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        this.originalEventDateAndTime.get(Calendar.DATE);
+        System.out.println(this.originalEventDateAndTime);
+
         this.eventName = name;
         this.eventTime = time;
         this.eventDate = date;

@@ -68,6 +68,8 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
                 }
         );
     }
+
+
     @Override
     public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription) {
         return null;
@@ -95,6 +97,11 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
 
     @Override
     public void onCommentAdded() {
+
+    }
+
+    @Override
+    public void onDateButton(){
 
     }
 

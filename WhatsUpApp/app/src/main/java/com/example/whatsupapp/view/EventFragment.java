@@ -96,6 +96,11 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
+    public void onDateButton(){
+
+    }
+
+    @Override
     public void onCommentAdded() {
 
     }

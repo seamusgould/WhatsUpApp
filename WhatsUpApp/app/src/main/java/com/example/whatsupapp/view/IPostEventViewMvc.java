@@ -19,6 +19,7 @@ public interface IPostEventViewMvc {
         ArrayList<Event> getEvents();
         void onItemClick(View view, int position);
         void onPostButton();
+        void onDateButton();
         void onAddedButton();
         void onCommentAdded();
 
