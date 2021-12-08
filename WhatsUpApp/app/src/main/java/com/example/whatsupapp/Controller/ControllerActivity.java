@@ -172,6 +172,12 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     @Override
+    public void onNewEvent() {
+        this.eventCollection = new EventCollection();
+        this.mainView.displayFragment(new HomeFragment(this));
+    }
+
+    @Override
     public EventCollection getEventCollection() {
         return this.eventCollection;
     }

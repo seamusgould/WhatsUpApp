@@ -16,6 +16,12 @@ public class FirestoreFacade implements IPersistenceFacade{
 
     private static final String USERS = "users";
     private static final String EVENT_COLLECTION = "event collection";
+
+    @Override
+    public void saveEventCollection(@NonNull EventCollection eventCollection) {
+        db.collection(EVENT_COLLECTION).add(eventCollection);
+    }
+
     @Override
     public void retrieveEventCollection(@NonNull DataListener<EventCollection> listener) {
         this.db.collection(EVENT_COLLECTION).get()
