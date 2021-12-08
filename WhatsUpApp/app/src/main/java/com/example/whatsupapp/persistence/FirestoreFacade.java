@@ -18,8 +18,8 @@ public class FirestoreFacade implements IPersistenceFacade{
     private static final String EVENT_COLLECTION = "event collection";
 
     @Override
-    public void saveEventCollection(@NonNull EventCollection eventCollection) {
-        db.collection(EVENT_COLLECTION).add(eventCollection);
+    public void saveEventCollection(@NonNull Event event) {
+        db.collection(EVENT_COLLECTION).add(event);
     }
 
     @Override
