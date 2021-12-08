@@ -38,7 +38,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     private ArrayList<Location> locationList = Location.getLocationList();
     private BottomNavigationView bottomNavigationView;
     private IMainView mainView;
-    private static final String CUR_COL = "eventCol";
+    private static final String CUR_EVENT = "curEvent";
     private static final String CUR_USER = "curUser";
     private final IPersistenceFacade persistenceFacade = new FirestoreFacade();
     private User curUser;
@@ -69,7 +69,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
         if (savedInstanceState != null) {
             this.curUser = (User) savedInstanceState.getSerializable(CUR_USER);
-            this.eventCollection = (EventCollection) savedInstanceState.getSerializable(CUR_COL);
+            this.curEvent = (Event) savedInstanceState.getSerializable(CUR_EVENT);
         }
         else {
             this.eventCollection = new EventCollection();
@@ -81,7 +81,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState){
         super.onSaveInstanceState(outState);
-        outState.putSerializable(CUR_COL, this.eventCollection);
+        outState.putSerializable(CUR_EVENT, this.curEvent);
         outState.putSerializable(CUR_USER, this.curUser);
     }
 
@@ -114,10 +114,11 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     @Override
     public EventCollection onAddedEvent(String eventName, String eventDate, String eventTime,
                                         String eventRoughLocation, String eventDescription) {
-        eventCollection.makeEvent(eventName, eventDate, eventTime, eventRoughLocation,
+        Event newEvent = eventCollection.makeEvent(eventName, eventDate, eventTime, eventRoughLocation,
                 eventDescription);
+        curEvent = newEvent;
+        this.persistenceFacade.saveEvent(this.curEvent); // save event to database
 
-        this.persistenceFacade.saveEventCollection(this.curEvent); // save event to database
         return eventCollection;
     }
 

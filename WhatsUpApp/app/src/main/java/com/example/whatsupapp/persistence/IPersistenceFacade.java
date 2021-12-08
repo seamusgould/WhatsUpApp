@@ -20,7 +20,7 @@ public interface IPersistenceFacade {
     }
 
     // ledger related
-    void saveEventCollection(@NonNull Event event);
+    void saveEvent(@NonNull Event event);
     void retrieveEventCollection(@NonNull DataListener<EventCollection> listener);
 
     // authentication related

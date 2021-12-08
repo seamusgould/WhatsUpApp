@@ -1,11 +1,12 @@
 package com.example.whatsupapp.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class Event {
-    //MAKE IT INTO LIST, OBJECTS NEED GETTER AND SETTER
+public class Event implements Serializable {
+    //need getter for each object I want to display
     int upvoteDownvote = 0;
     String eventName;
     Calendar originalEventDateAndTime;
