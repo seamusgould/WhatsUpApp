@@ -64,7 +64,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
             }
 
             @Override
-            public void onNoDataFound() { } // if no ledger found, do nothing - just start from
+            public void onNoDataFound() { } // if no ledger found, do nothing - just start from scratch
         });
 
         if (savedInstanceState != null) {
@@ -75,7 +75,6 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
             this.curEvent = new Event();
             this.mainView.displayFragment(new AuthFragment(this));
         }
-
     }
 
     @Override
