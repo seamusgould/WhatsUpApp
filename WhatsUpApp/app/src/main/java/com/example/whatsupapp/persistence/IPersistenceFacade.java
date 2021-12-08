@@ -1,6 +1,7 @@
 package com.example.whatsupapp.persistence;
 import androidx.annotation.NonNull;
 
+import com.example.whatsupapp.model.User;
 import com.example.whatsupapp.model.Username;
 
 
@@ -22,5 +23,5 @@ public interface IPersistenceFacade {
 
     // authentication related
     void createUserIfNotExists(@NonNull Username user, @NonNull BinaryResultListener listener);
-    void retrieveUser(@NonNull String username, @NonNull DataListener<Username> listener);
+    void retrieveUser(@NonNull String username, @NonNull DataListener<User> listener);
 }
