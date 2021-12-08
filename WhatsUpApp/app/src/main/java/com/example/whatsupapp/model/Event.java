@@ -53,6 +53,8 @@ public class Event implements Serializable {
         addNewDateAndTime(eventDateAndTime);
     }
 
+    public Event() {}
+
     public void addNewDateAndTime(Calendar c){
         allDatesAndTimes.add(c);
     }

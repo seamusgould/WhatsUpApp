@@ -72,7 +72,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
             this.curEvent = (Event) savedInstanceState.getSerializable(CUR_EVENT);
         }
         else {
-            this.eventCollection = new EventCollection();
+            this.curEvent = new Event();
             this.mainView.displayFragment(new AuthFragment(this));
         }
 
