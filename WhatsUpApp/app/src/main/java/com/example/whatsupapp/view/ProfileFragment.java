@@ -9,14 +9,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import com.example.whatsupapp.databinding.FragmentProfileBinding;
 import com.example.whatsupapp.R;
+import com.example.whatsupapp.model.Username;
 
 /**
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+    FragmentProfileBinding binding;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -25,6 +28,8 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        
+//        this.binding.usernameText.setText(Username.getUsername());
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
