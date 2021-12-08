@@ -53,7 +53,8 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
         if (savedInstanceState != null) {
             this.mainView.displayFragment(new AuthFragment(this));
         }
-        onHomeSelected();
+        this.mainView.displayFragment(new AuthFragment(this));
+//        onHomeSelected();
     }
 
     @Override
