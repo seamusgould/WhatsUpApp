@@ -31,7 +31,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 
-public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener, IHomeFragmentView, EventAdapter.ItemClickListener {
+public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener,
+        IHomeFragmentView, EventAdapter.ItemClickListener {
 
     EventAdapter adapter;
     FragmentHomeBinding binding;

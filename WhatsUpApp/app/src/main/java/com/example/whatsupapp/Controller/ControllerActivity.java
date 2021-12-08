@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
+import com.example.whatsupapp.view.EventFragment;
 import com.example.whatsupapp.view.IAuthView;
 import com.example.whatsupapp.model.Location;
 import com.example.whatsupapp.model.Username;
@@ -36,13 +37,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     private IMainView mainView;
     private static final String EVENT_COL = "eventCol";
     private final IPersistenceFacade persistenceFacade = new FirestoreFacade();
-
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState){
-        super.onSaveInstanceState(outState);
-        outState.putSerializable(EVENT_COL, this.eventCollection);
-    }
+    private Username curUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +54,12 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
             this.mainView.displayFragment(new AuthFragment(this));
         }
         onHomeSelected();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(EVENT_COL, this.eventCollection);
     }
 
     @Override
@@ -131,6 +132,21 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public void onSigninAttempt(String username, String password, IAuthView authView) {
+        this.persistenceFacade.retrieveUser(username, new IPersistenceFacade.DataListener<Username>() {
+        @Override
+        public void onDataReceived(@NonNull Username user) {
+            if (user.validatePassword(password)){ // password matches
+                ControllerActivity.this.curUser = user; // we have a new user
+                // navigate to ledger screen
+                ControllerActivity.this.mainView.displayFragment(new HomeFragment(ControllerActivity.this));
 
+            } else authView.onInvalidCredentials(); // let the view know things didn't work out
+        }
+
+        @Override
+        public void onNoDataFound() { // means username does not exist
+            authView.onInvalidCredentials(); // let the view know things didn't work out
+        }
+    });
     }
 }

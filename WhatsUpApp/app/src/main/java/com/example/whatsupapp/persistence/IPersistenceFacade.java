@@ -23,5 +23,5 @@ public interface IPersistenceFacade {
 
     // authentication related
     void createUserIfNotExists(@NonNull Username user, @NonNull BinaryResultListener listener);
-    void retrieveUser(@NonNull String username, @NonNull DataListener<User> listener);
+    void retrieveUser(@NonNull String username, @NonNull DataListener<Username> listener);
 }
