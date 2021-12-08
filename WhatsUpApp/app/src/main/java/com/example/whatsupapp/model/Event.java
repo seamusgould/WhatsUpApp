@@ -87,4 +87,24 @@ public class Event implements Serializable {
     public User getUser(){
         return this.poster;
     }
+
+    public String getEventName() {
+        return this.eventName;
+    }
+
+    public String getEventTime() {
+        return this.eventTime;
+    }
+
+    public String getEventDate() {
+        return this.eventDate;
+    }
+
+    public String getEventLocation() {
+        return this.eventLocation;
+    }
+
+    public String getEventDescription(){
+        return this.eventDescription;
+    }
 }
