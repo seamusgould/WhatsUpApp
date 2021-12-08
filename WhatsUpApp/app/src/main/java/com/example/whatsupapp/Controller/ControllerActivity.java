@@ -112,9 +112,9 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public EventCollection onAddedEvent(String eventName, String eventDate, String eventTime,
-                                        String eventRoughLocation, String eventDescription) {
-        Event newEvent = eventCollection.makeEvent(eventName, eventDate, eventTime, eventRoughLocation,
-                eventDescription);
+                                        String eventDescription, String eventRoughLocation) {
+        Event newEvent = eventCollection.makeEvent(eventName, eventDate, eventTime, eventDescription,
+                eventRoughLocation);
         curEvent = newEvent;
         this.persistenceFacade.saveEvent(this.curEvent); // save event to database
 
