@@ -24,6 +24,6 @@ public interface IPersistenceFacade {
     void retrieveEventCollection(@NonNull DataListener<EventCollection> listener);
 
     // authentication related
-    void createUserIfNotExists(@NonNull Username user, @NonNull BinaryResultListener listener);
-    void retrieveUser(@NonNull String username, @NonNull DataListener<Username> listener);
+    void createUserIfNotExists(@NonNull User user, @NonNull BinaryResultListener listener);
+    void retrieveUser(@NonNull String username, @NonNull DataListener<User> listener);
 }

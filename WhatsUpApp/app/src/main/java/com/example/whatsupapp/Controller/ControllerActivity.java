@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
+import com.example.whatsupapp.model.User;
 import com.example.whatsupapp.view.EventFragment;
 import com.example.whatsupapp.view.IAuthView;
 import com.example.whatsupapp.model.Location;
@@ -40,7 +41,8 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     private static final String CUR_COL = "eventCol";
     private static final String CUR_USER = "curUser";
     private final IPersistenceFacade persistenceFacade = new FirestoreFacade();
-    private Username curUser;
+    private User curUser;
+    private Event curEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
         });
 
         if (savedInstanceState != null) {
-            this.curUser = (Username) savedInstanceState.getSerializable(CUR_USER);
+            this.curUser = (User) savedInstanceState.getSerializable(CUR_USER);
             this.eventCollection = (EventCollection) savedInstanceState.getSerializable(CUR_COL);
         }
         else {
@@ -114,6 +116,8 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
                                         String eventRoughLocation, String eventDescription) {
         eventCollection.makeEvent(eventName, eventDate, eventTime, eventRoughLocation,
                 eventDescription);
+
+        this.persistenceFacade.saveEventCollection(this.curEvent); // save event to database
         return eventCollection;
     }
 
@@ -137,7 +141,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     /* IAuthView.Listener realization start */
     @Override
     public void onRegister(String username, String password, IAuthView authView) {
-        Username user = new Username(username, password); // our tentative user
+        User user = new User(username, password); // our tentative user
         this.persistenceFacade.createUserIfNotExists(user, new IPersistenceFacade.BinaryResultListener() {
             @Override
             public void onYesResult() {
@@ -153,9 +157,9 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public void onSigninAttempt(String username, String password, IAuthView authView) {
-        this.persistenceFacade.retrieveUser(username, new IPersistenceFacade.DataListener<Username>() {
+        this.persistenceFacade.retrieveUser(username, new IPersistenceFacade.DataListener<User>() {
         @Override
-        public void onDataReceived(@NonNull Username user) {
+        public void onDataReceived(@NonNull User user) {
             if (user.validatePassword(password)){ // password matches
                 ControllerActivity.this.curUser = user; // we have a new user
                 // navigate to ledger screen

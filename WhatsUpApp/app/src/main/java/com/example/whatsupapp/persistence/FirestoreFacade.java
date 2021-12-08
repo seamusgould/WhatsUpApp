@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
-import com.example.whatsupapp.model.Username;
+import com.example.whatsupapp.model.User;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -39,10 +39,10 @@ public class FirestoreFacade implements IPersistenceFacade{
 
 
     @Override
-    public void createUserIfNotExists(@NonNull Username user, @NonNull BinaryResultListener listener) {
-        this.retrieveUser(user.getUsername(), new DataListener<Username>() {
+    public void createUserIfNotExists(@NonNull User user, @NonNull BinaryResultListener listener) {
+        this.retrieveUser(user.getUsername(), new DataListener<User>() {
                     @Override
-                    public void onDataReceived(@NonNull Username user) { // there's data there, so no go
+                    public void onDataReceived(@NonNull User user) { // there's data there, so no go
                         listener.onNoResult();
                     }
 
@@ -53,7 +53,7 @@ public class FirestoreFacade implements IPersistenceFacade{
                 }
         );
     }
-    private void setUser(@NonNull Username user, @NonNull BinaryResultListener listener){
+    private void setUser(@NonNull User user, @NonNull BinaryResultListener listener){
         this.db.collection(USERS)
                 .document(user.getUsername())
                 .set(user)
@@ -63,11 +63,11 @@ public class FirestoreFacade implements IPersistenceFacade{
     }
 
     @Override
-    public void retrieveUser(@NonNull String username, @NonNull DataListener<Username> listener) {
+    public void retrieveUser(@NonNull String username, @NonNull DataListener<User> listener) {
         this.db.collection(USERS).document(username).get()
                 .addOnSuccessListener(dsnap -> {
                     if (dsnap.exists()) { // got some data back
-                        Username user = dsnap.toObject(Username.class);
+                        User user = dsnap.toObject(User.class);
                         assert (user != null);
                         listener.onDataReceived(user);
                     } else listener.onNoDataFound();  // no username match

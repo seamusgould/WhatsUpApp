@@ -2,8 +2,10 @@ package com.example.whatsupapp.model;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Event {
+    //MAKE IT INTO LIST, OBJECTS NEED GETTER AND SETTER
     int upvoteDownvote = 0;
     String eventName;
     Calendar originalEventDateAndTime;
@@ -15,8 +17,8 @@ public class Event {
     User poster;
     String eventLocation;
     String name;
-    ArrayList<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
-    ArrayList<String> comments = new ArrayList<String>();
+    List<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
+    List<String> comments = new ArrayList<String>();
 
     Event (String name, String date, String time , int recurrence,
            String description, String poster, String eLocation){
@@ -54,7 +56,7 @@ public class Event {
         allDatesAndTimes.add(c);
     }
 
-    public ArrayList<Calendar> getAllDatesAndTimes(){
+    public List<Calendar> getAllDatesAndTimes(){
         return allDatesAndTimes;
     }
 
@@ -75,7 +77,7 @@ public class Event {
         
     }
 
-    public ArrayList<String> getComments() {
+    public List<String> getComments() {
         return this.comments;
     }
 
