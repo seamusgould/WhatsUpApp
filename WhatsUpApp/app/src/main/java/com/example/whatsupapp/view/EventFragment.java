@@ -28,7 +28,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class EventFragment extends Fragment implements IPostEventViewMvc.Listener, IHomeFragmentView, EventAdapter.ItemClickListener {
+public class EventFragment extends Fragment implements IPostEventViewMvc.Listener,
+        IHomeFragmentView, EventAdapter.ItemClickListener, IEventCollectionView {
 
     Event event;
     FragmentEventBinding binding;
@@ -66,6 +67,11 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
+    public void onEventCollectionUpdated(EventCollection eventCollection) {
+        this.binding.eventname.setText(event.toString());
+    }
+
+    @Override
     public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription) {
         return null;
     }
@@ -99,4 +105,5 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     public void onCommentAdded() {
 
     }
+
 }

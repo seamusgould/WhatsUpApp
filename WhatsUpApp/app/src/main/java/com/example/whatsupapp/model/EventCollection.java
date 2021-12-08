@@ -15,11 +15,15 @@ public class EventCollection implements Serializable {
    @Override
    public String toString() {
       String str = "";
-         for (Event obj : ll) {
-            str += obj + "\n";
-         }
-      return str;
+      for (Event obj : ll) {
+         str += obj + "\n";
       }
+      return str;
+   }
+
+   public void addEvent(Event event) {
+      this.ll.add(event);
+   }
 
    public Event makeEvent(String eventName, String eventDate, String eventTime,
                           String eventDescription, String eventRoughLocation) {

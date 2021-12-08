@@ -1,6 +1,7 @@
 package com.example.whatsupapp.persistence;
 import androidx.annotation.NonNull;
 
+import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.User;
 import com.example.whatsupapp.model.Username;
 
@@ -19,7 +20,7 @@ public interface IPersistenceFacade {
 
     // ledger related
     //void saveSale(@NonNull Sale sale);
-    //void retrieveLedger(@NonNull DataListener<Ledger> listener);
+    void retrieveEventCollection(@NonNull DataListener<EventCollection> listener);
 
     // authentication related
     void createUserIfNotExists(@NonNull Username user, @NonNull BinaryResultListener listener);

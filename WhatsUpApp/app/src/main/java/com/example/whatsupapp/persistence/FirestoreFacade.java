@@ -4,13 +4,33 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.whatsupapp.model.Event;
+import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Username;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FirestoreFacade implements IPersistenceFacade{
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     private static final String USERS = "users";
+    private static final String EVENT_COLLECTION = "event collection";
+    @Override
+    public void retrieveEventCollection(@NonNull DataListener<EventCollection> listener) {
+        this.db.collection(EVENT_COLLECTION).get()
+                .addOnSuccessListener(qsnap -> {
+                    EventCollection ec = new EventCollection();
+                    for (DocumentSnapshot dsnap : qsnap){
+                        Event event = dsnap.toObject(Event.class);
+                        ec.addEvent(event);
+                    }
+                    listener.onDataReceived(ec);
+                })
+                .addOnFailureListener(e ->
+                        Log.w("NextGenPos", "Error retrieving ledger from database",e));
+    }
+
 
     @Override
     public void createUserIfNotExists(@NonNull Username user, @NonNull BinaryResultListener listener) {
