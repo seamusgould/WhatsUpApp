@@ -57,7 +57,12 @@ public class MainView implements IMainView{
                 .commitNow();
     }
 
-
+    @Override
+    public Fragment getCurrentFragment() {
+        // note: getFragment() is only available if implementation('androidx.fragment:fragment:1.4.0')
+        // is part of the build.gradle dependencies (module level)
+        return this.binding.fragmentContainerView.getFragment();
+    }
 
 
 }
