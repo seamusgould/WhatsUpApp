@@ -6,20 +6,50 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Event implements Serializable {
-    //need getter for each object I want to display
-    int upvoteDownvote = 0;
+
+    User poster;
+    String eventLocation;
+    String name;
+    List<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
+    List<String> comments = new ArrayList<String>();
     String eventName;
     Calendar originalEventDateAndTime;
     String eventDate;
     String eventTime;
     int eventRecurrence;
     String eventDescription;
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    //need getter for each object I want to display
+    int upvoteDownvote = 0;
+
+
+    public Calendar getOriginalEventDateAndTime() {
+        return originalEventDateAndTime;
+    }
+
+    public String getEventPoster() {
+        return eventPoster;
+    }
+
+
+    public String getEventTime() {
+        return eventTime;
+    }
+
     String eventPoster;
-    User poster;
-    String eventLocation;
-    String name;
-    List<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
-    List<String> comments = new ArrayList<String>();
+
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public String getEventDescription() {
+        return eventDescription;
+    }
+
 
     Event (String name, String date, String time , int recurrence,
            String description, String poster, String eLocation){
