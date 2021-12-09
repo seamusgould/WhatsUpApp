@@ -24,13 +24,15 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
     Listener listener;
     FragmentPostEventBinding binding;
-    String eventPoster; //getusername?
+    String eventPoster;
 
     public PostEventFragment() {
     }
 
-    public PostEventFragment(Listener listener){
+    public PostEventFragment(Listener listener, String eventPoster){
         this.listener = listener;
+        this.eventPoster = eventPoster;
+
     }
 
     @Nullable
@@ -80,7 +82,7 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                 String eventDescription = eventDescriptionEditable.toString();
 
                 EventCollection events = listener.onAddedEvent(eventName, eventDate, eventTime,
-                        eventDescription,eventPoster, eventLoc);
+                        eventDescription, eventPoster, eventLoc);
                 eventNameEditable.clear();
                 eventDateEditable.clear();
                 eventTimeEditable.clear();
