@@ -9,11 +9,13 @@ public class Controller {
 
     Location mainBuilding = new Location("main");
 
-    public Event makeEvent(String eventName, Calendar eventDateAndTime, int eventRecurrence, String eventDescription, User poster, String eventRoughLocation) {
+    public Event makeEvent(String eventName, Calendar eventDateAndTime, int eventRecurrence,
+                           String eventDescription, String eventPoster, String eventRoughLocation) {
         Location eLocation = new Location(eventRoughLocation);
         //will do this once we figure out how to not add duplicate elements
         //Location eLocation = newLocationFromString(eventRoughLocation);
-        Event newEvent = collection.makeEvent(eventName, "eventDateAndTime", "12:12", eventRoughLocation, eventDescription);
+        Event newEvent = collection.makeEvent(eventName, "eventDateAndTime",
+                "12:12", eventRoughLocation, "bob", eventDescription);
         return newEvent;
     }
 

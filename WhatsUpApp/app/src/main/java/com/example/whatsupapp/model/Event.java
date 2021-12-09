@@ -1,15 +1,15 @@
 package com.example.whatsupapp.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.List;
 
-public class Event {
+public class Event implements Serializable {
+    //need getter for each object I want to display
     int upvoteDownvote = 0;
     String eventName;
-    Calendar originalEventDateAndTime = Calendar.getInstance();
+    Calendar originalEventDateAndTime;
     String eventDate;
     String eventTime;
     int eventRecurrence;
@@ -18,31 +18,27 @@ public class Event {
     User poster;
     String eventLocation;
     String name;
-    ArrayList<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
-    ArrayList<String> comments = new ArrayList<String>();
+    List<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
+    List<String> comments = new ArrayList<String>();
 
-    //constructor without recurrence, all strings
-    Event (String name, String date, String time ,
-           String description, String poster, String eLocation) {
-
-        String combinedDateAndTimeString = (date + " " + time);
-
-        SimpleDateFormat sdf1 = new SimpleDateFormat("MM/dd/yyyy HH:mm");
-
-        try {
-            Date parsedDate = sdf1.parse(combinedDateAndTimeString);
-            this.originalEventDateAndTime.setTime(parsedDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        this.originalEventDateAndTime.get(Calendar.DATE);
-        System.out.println(this.originalEventDateAndTime);
-
+    Event (String name, String date, String time , int recurrence,
+           String description,  User poster, String eLocation){
         this.eventName = name;
         this.eventTime = time;
         this.eventDate = date;
-        this.eventPoster = poster;
+        this.eventRecurrence = recurrence;
+        this.poster = poster;
+        this.eventLocation =  eLocation;
+        this.eventDescription = description;
+    }
+
+    //constructor without recurrence
+    Event (String name, String date, String time ,
+           String description, String eventPoster, String eLocation){
+        this.eventName = name;
+        this.eventTime = time;
+        this.eventDate = date;
+        this.eventPoster = eventPoster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
     }
@@ -57,11 +53,13 @@ public class Event {
         addNewDateAndTime(eventDateAndTime);
     }
 
+    public Event() {}
+
     public void addNewDateAndTime(Calendar c){
         allDatesAndTimes.add(c);
     }
 
-    public ArrayList<Calendar> getAllDatesAndTimes(){
+    public List<Calendar> getAllDatesAndTimes(){
         return allDatesAndTimes;
     }
 
@@ -73,43 +71,43 @@ public class Event {
         str += " On " + eventDate + " " + eventTime + " " + eventName + " at " + eventLocation;
         str += "\n " + eventDescription;
         return str;
-        //String finalString2 = String.format("\n%d%s %t at %t posted by %s \n")
-//        s = "\n";
-//        s += score + "|";
-//        s += eventName + " " + eventDateAndTime + " at " + eventLocation;
-//        //finalString += eventName + " " + eventDateAndTime.getTime() + " at " + eventLocation;
-//        s += new String(new char[score.length()]).replace("\0", " ") + "|" + " posted by " +  eventPoster; //.username;
-//        s += "\n";
-//        s += new String(new char[score.length()]).replace("\0", " ") + "|";
-//        s += new String(new char[40 - score.length()]).replace("\0", "=");
-//        s += "\n";
-//        s += new String(new char[score.length()]).replace("\0", " ") + "|";
-//        s += eventDescription;
-//        s += "\n";
-//        s += new String(new char[score.length()]).replace("\0", " ") + "|";
-//        s += new String(new char[40 - score.length()]).replace("\0", "=");
-//
-//        for (String s : comments) {
-//            this.s += new String(new char[40 - score.length()]).replace("\0", "-");
-//            this.s += "\n";
-//            this.s += new String(new char[score.length()]).replace("\0", " ") + "|";
-//            this.s += s + "posted by " + eventPoster;//.username;
-//            this.s += "\n";
-//            this.s += new String(new char[score.length()]).replace("\0", " ") + "|";
-//            this.s += new String(new char[40 - score.length()]).replace("\0", "-");
         }
 
 
 
     public void addComment(String s){
         comments.add(s);
+        
     }
 
-    public ArrayList<String> getComments() {
+    public List<String> getComments() {
         return this.comments;
     }
 
-    public User getUser(){
-        return this.poster;
+//    public User getUser(){
+//        return this.poster;
+//    }
+    public String getEventPoster() {
+        return this.eventPoster;
+    }
+
+    public String getEventName() {
+        return this.eventName;
+    }
+
+    public String getEventTime() {
+        return this.eventTime;
+    }
+
+    public String getEventDate() {
+        return this.eventDate;
+    }
+
+    public String getEventLocation() {
+        return this.eventLocation;
+    }
+
+    public String getEventDescription(){
+        return this.eventDescription;
     }
 }

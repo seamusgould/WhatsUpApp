@@ -3,6 +3,8 @@ package com.example.whatsupapp.view;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -29,7 +31,8 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 
-public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener, IHomeFragmentView, EventAdapter.ItemClickListener {
+public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener,
+        IHomeFragmentView, EventAdapter.ItemClickListener {
 
     EventAdapter adapter;
     FragmentHomeBinding binding;
@@ -71,7 +74,8 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
 
 
     @Override
-    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription) {
+    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time,
+                                        String eventRoughLocation, String eventPoster, String eventDescription) {
         return null;
     }
 

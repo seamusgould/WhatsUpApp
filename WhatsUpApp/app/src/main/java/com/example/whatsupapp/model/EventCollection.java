@@ -2,9 +2,10 @@ package com.example.whatsupapp.model;
 
 import static java.lang.Math.floor;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class EventCollection {
+public class EventCollection implements Serializable {
    private ArrayList<Event> ll;
 
    public EventCollection() {
@@ -14,16 +15,20 @@ public class EventCollection {
    @Override
    public String toString() {
       String str = "";
-         for (Event obj : ll) {
-            str += obj + "\n";
-         }
-      return str;
+      for (Event obj : ll) {
+         str += obj + "\n";
       }
+      return str;
+   }
+
+   public void addEvent(Event event) {
+      this.ll.add(event);
+   }
 
    public Event makeEvent(String eventName, String eventDate, String eventTime,
-                          String eventDescription, String eventRoughLocation) {
+                          String eventDescription, String eventPoster, String eventRoughLocation) {
       Event event =  new Event(eventName, eventDate, eventTime, eventDescription,
-              "User", eventRoughLocation);
+              eventPoster , eventRoughLocation);
       ll.add(event);
       return event;
    }
