@@ -22,23 +22,23 @@ public class Event implements Serializable {
     List<String> comments = new ArrayList<String>();
 
     Event (String name, String date, String time , int recurrence,
-           String description, String poster, String eLocation){
+           String description,  User poster, String eLocation){
         this.eventName = name;
         this.eventTime = time;
         this.eventDate = date;
         this.eventRecurrence = recurrence;
-        this.eventPoster = poster;
+        this.poster = poster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
     }
 
     //constructor without recurrence
     Event (String name, String date, String time ,
-           String description, String poster, String eLocation){
+           String description, String eventPoster, String eLocation){
         this.eventName = name;
         this.eventTime = time;
         this.eventDate = date;
-        this.eventPoster = poster;
+        this.eventPoster = eventPoster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
     }
@@ -84,8 +84,11 @@ public class Event implements Serializable {
         return this.comments;
     }
 
-    public User getUser(){
-        return this.poster;
+//    public User getUser(){
+//        return this.poster;
+//    }
+    public String getEventPoster() {
+        return this.eventPoster;
     }
 
     public String getEventName() {

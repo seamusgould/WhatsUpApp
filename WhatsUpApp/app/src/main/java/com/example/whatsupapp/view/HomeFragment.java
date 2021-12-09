@@ -72,7 +72,8 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
         );
     }
     @Override
-    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription) {
+    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time,
+                                        String eventRoughLocation, String eventPoster, String eventDescription) {
         return null;
     }
 

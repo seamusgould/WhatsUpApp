@@ -13,11 +13,11 @@ class EventCollectionTest {
     @Test
     void testToString() {
         Event practiceEvent = collection.makeEvent("Hood Classic", "01/01/2021", "07:00",
-                "great party", "Main Building");
+                "great party", "bob", "Main Building");
         Event practiceEvent2 = collection.makeEvent("Hood Classic 2", "02/01/2021", "07:00",
-                "great party 2", "Main Building");
+                "great party 2", "charlie","Main Building");
         Event practiceEvent3 = collection.makeEvent("Hood Classic 3", "02/01/2021", "07:00",
-                "great party 2", "Main Building");
+                "great party 2", "mary","Main Building");
 
         String str = practiceEvent.toString() + "\n";
         str = str + practiceEvent2.toString() + "\n";
@@ -30,10 +30,10 @@ class EventCollectionTest {
     @Test
     void testMakeEvent() {
         Event practiceEvent = collection.makeEvent("Hood Classic", "01/01/2021", "07:00",
-                "great party", "Main Building");
+                "great party","bob", "Main Building");
 
         Event practiceEvent2 = collection.makeEvent("Hood Classic 2", "02/01/2021", "07:00",
-                "great party 2", "Main Building");
+                "great party 2", "mary","Main Building");
 
         assertEquals(practiceEvent, collection.getEventCollection().get(0));
         assertEquals(practiceEvent2, collection.getEventCollection().get(1));

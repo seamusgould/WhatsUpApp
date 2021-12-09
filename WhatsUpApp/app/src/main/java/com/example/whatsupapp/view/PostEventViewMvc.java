@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class PostEventViewMvc implements IPostEventViewMvc{
     private ActivityMainBinding binding;
     private Listener listener;
+    String eventPoster;
 
     public PostEventViewMvc(Context context, Listener listener) {
         this.listener = listener;
@@ -62,7 +63,8 @@ public class PostEventViewMvc implements IPostEventViewMvc{
                 Editable eventDescriptionEditable = binding.editDescription.getText();
                 String eventDescription = eventDescriptionEditable.toString();
 
-                listener.onAddedEvent(eventName, eventDate, eventTime, eventLoc, eventDescription);
+                listener.onAddedEvent(eventName, eventDate, eventTime, eventDescription,
+                        eventPoster,eventLoc);
                 eventNameEditable.clear();
                 eventDateEditable.clear();
                 eventTimeEditable.clear();

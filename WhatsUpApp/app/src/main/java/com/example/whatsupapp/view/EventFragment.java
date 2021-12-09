@@ -62,7 +62,8 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
             String user_comment = nameEditable.toString();
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Calendar cal = Calendar.getInstance();
-            event.addComment(user_comment + " posted by " + event.getUser() + " " + dateFormat.format(cal.getTime()));
+            event.addComment(user_comment + " posted by " + event.getEventPoster() + " " +
+                    dateFormat.format(cal.getTime()));
     });
     }
 
@@ -72,7 +73,8 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
-    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time, String eventRoughLocation, String eventDescription) {
+    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time,
+                                        String eventRoughLocation, String eventPoster, String eventDescription) {
         return null;
     }
 

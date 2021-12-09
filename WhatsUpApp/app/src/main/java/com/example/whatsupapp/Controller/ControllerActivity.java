@@ -112,8 +112,8 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public EventCollection onAddedEvent(String eventName, String eventDate, String eventTime,
-                                        String eventDescription, String eventRoughLocation) {
-        Event newEvent = eventCollection.makeEvent(eventName, eventDate, eventTime, eventDescription,
+                                        String eventDescription, String eventPoster, String eventRoughLocation) {
+        Event newEvent = eventCollection.makeEvent(eventName, eventDate, eventTime, eventDescription, eventPoster,
                 eventRoughLocation);
         curEvent = newEvent;
         this.persistenceFacade.saveEvent(this.curEvent); // save event to database
@@ -185,4 +185,6 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     public EventCollection getEventCollection() {
         return this.eventCollection;
     }
+
+    //onlocation search method that gets passed in location
 }

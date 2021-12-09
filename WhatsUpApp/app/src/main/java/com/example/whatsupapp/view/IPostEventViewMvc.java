@@ -13,7 +13,7 @@ public interface IPostEventViewMvc {
 
     public interface Listener{
         EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time,
-                                     String eventRoughLocation, String eventDescription);
+                                     String eventRoughLocation, String eventPoster, String eventDescription);
 
         ArrayList<Location> getLocationList();
         ArrayList<Event> getEvents();
