@@ -97,7 +97,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public void onPostButton() {
-        this.mainView.displayFragment(new PostEventFragment(this));
+        this.mainView.displayFragment(new PostEventFragment(this, curUser.getUsername()));
     }
 
     @Override
