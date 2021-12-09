@@ -10,6 +10,8 @@ import android.view.View;
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.User;
+import com.example.whatsupapp.view.AddDateFragment;
+import com.example.whatsupapp.view.AddTimeFragment;
 import com.example.whatsupapp.view.EventFragment;
 import com.example.whatsupapp.view.IAuthView;
 import com.example.whatsupapp.model.Location;
@@ -30,6 +32,7 @@ import com.example.whatsupapp.view.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class ControllerActivity extends AppCompatActivity implements IPostEventViewMvc.Listener,
         IHomeFragmentView.Listener, IAuthView.Listener, IEventCollectionView.Listener{
@@ -97,7 +100,16 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public void onPostButton() {
-        this.mainView.displayFragment(new PostEventFragment(this, curUser.getUsername()));
+        this.mainView.displayFragment(new AddDateFragment(this));
+    }
+
+    @Override
+    public void onDateButton(Calendar eventDate) {
+        this.mainView.displayFragment (new AddTimeFragment(this, eventDate));
+    }
+
+    public void onTimeButton(){
+        this.mainView.displayFragment (new PostEventFragment(this, curUser.getUsername()));
     }
 
     @Override

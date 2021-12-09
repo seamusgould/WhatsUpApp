@@ -7,6 +7,7 @@ import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public interface IPostEventViewMvc {
@@ -19,10 +20,11 @@ public interface IPostEventViewMvc {
         ArrayList<Event> getEvents();
         void onItemClick(View view, int position);
         void onPostButton();
-        void onDateButton();
+        void onDateButton(Calendar eventDate);
         void onAddedButton();
         void onCommentAdded();
 
+        void onTimeButton();
     }
 
     public View getRootView();

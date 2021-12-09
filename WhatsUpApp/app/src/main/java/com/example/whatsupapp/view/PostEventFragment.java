@@ -61,6 +61,7 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
         editLocation.setAdapter(adapter);
 
         this.binding.addEventButton.setOnClickListener((clickedView) -> {
+
                 // get the event name
                 Editable eventNameEditable = binding.editName.getText();
                 String eventName = eventNameEditable.toString();
@@ -83,12 +84,13 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
                 EventCollection events = listener.onAddedEvent(eventName, eventDate, eventTime,
                         eventDescription, eventPoster, eventLoc);
+                this.listener.onAddedButton();
                 eventNameEditable.clear();
                 eventDateEditable.clear();
                 eventTimeEditable.clear();
                 eventLocEditable.clear();
                 eventDescriptionEditable.clear();
-                this.listener.onAddedButton();
+
         });
     }
 

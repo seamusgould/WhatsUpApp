@@ -25,6 +25,7 @@ import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -90,6 +91,11 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
     }
 
     @Override
+    public void onDateButton(Calendar eventDate) {
+
+    }
+
+    @Override
     public ArrayList<Event> getEvents() {
         return null;
     }
@@ -105,7 +111,7 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
     }
 
     @Override
-    public void onDateButton(){
+    public void onTimeButton() {
 
     }
 

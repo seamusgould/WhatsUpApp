@@ -94,6 +94,11 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
+    public void onDateButton(Calendar eventDate) {
+
+    }
+
+    @Override
     public void onItemClick(View view, int position) {
 
     }
@@ -104,12 +109,12 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
-    public void onDateButton(){
+    public void onCommentAdded() {
 
     }
 
     @Override
-    public void onCommentAdded() {
+    public void onTimeButton() {
 
     }
 
