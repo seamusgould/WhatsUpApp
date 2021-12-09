@@ -1,5 +1,6 @@
 package com.example.whatsupapp.view;
 
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,14 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
     FragmentAddTimeBinding binding;
 
     public AddTimeFragment(IPostEventViewMvc.Listener listener){this.listener = listener;}
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        this.binding.TimeButton.setOnClickListener((clickedView) -> {
+                    this.listener.onDateButton();
+                }
+        );
+    }
 
     @Override
     public View getRootView() {

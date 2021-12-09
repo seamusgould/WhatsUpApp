@@ -73,6 +73,10 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     }
 
+    /*public void onTimeButton(){
+        this.mainView.displayFragment(new )
+    } */
+
     public void onDateAdded() {
         this.mainView.displayFragment(new AddTimeFragment(this));
 
