@@ -33,8 +33,40 @@ public class MapsFragment extends Fragment {
     GoogleMap map;
 
     public MapsFragment(ControllerActivity activity) {
-        this.binding = FragmentMapsBinding.inflate(activity.getLayoutInflater());
         this.activity = activity;
+
+    }
+
+    private OnMapReadyCallback callback = new OnMapReadyCallback() {
+
+        @Override
+        public void onMapReady(GoogleMap googleMap) {
+            LatLng vassar = new LatLng(41.686229, -73.897296);
+            googleMap.addMarker(new MarkerOptions().position(vassar).title("Marker in Vassar"));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(vassar));
+            googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+        map = googleMap;
+        }
+
+    };
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        this.binding = FragmentMapsBinding.inflate(inflater);
+        return this.binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(callback);
+        }
 
         this.binding.svLocation.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -64,39 +96,6 @@ public class MapsFragment extends Fragment {
                 return false;
             }
         });
-
-    }
-
-    private OnMapReadyCallback callback = new OnMapReadyCallback() {
-
-        @Override
-        public void onMapReady(GoogleMap googleMap) {
-            LatLng vassar = new LatLng(41.686229, -73.897296);
-            googleMap.addMarker(new MarkerOptions().position(vassar).title("Marker in Vassar"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(vassar));
-            googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
-        map = googleMap;
-        }
-
-    };
-
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_maps, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(callback);
-        }
     }
 
 
