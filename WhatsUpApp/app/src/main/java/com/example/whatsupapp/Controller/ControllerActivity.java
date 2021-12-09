@@ -127,7 +127,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     public void onMapSelected() {
-        this.mainView.displayFragment(new MapsFragment());
+        this.mainView.displayFragment(new MapsFragment(this));
     }
 
     public void onHomeSelected() {
