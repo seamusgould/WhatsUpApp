@@ -9,6 +9,8 @@ import com.example.whatsupapp.model.Username;
 
 public interface IPersistenceFacade {
 
+    void saveComment(Event event);
+
     interface DataListener<T>{
         void onDataReceived(@NonNull T data);
         void onNoDataFound();

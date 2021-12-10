@@ -102,6 +102,11 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
 
     }
 
+    @Override
+    public void onCommentAdded(String s, Event event) {
+
+    }
+
     @SuppressLint("ResourceType")
     @Override
     public void onItemClick(View view, int position) {

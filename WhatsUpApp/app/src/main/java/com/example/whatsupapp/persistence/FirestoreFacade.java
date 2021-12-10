@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.User;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -19,7 +20,19 @@ public class FirestoreFacade implements IPersistenceFacade{
 
     @Override
     public void saveEvent(@NonNull Event event) {
-        db.collection(EVENT_COLLECTION).add(event);
+/*
+        db.collection(EVENT_COLLECTION).document(event.getEventName()).set(event);
+*/
+
+        DocumentReference dref = db.collection(EVENT_COLLECTION).document();
+        String id = dref.getId();
+        event.setId(id);
+        dref.set(event);
+    }
+
+    @Override
+    public void saveComment(@NonNull Event event) {
+        db.collection(EVENT_COLLECTION).document(event.getId()).update("comments", event.getComments());
     }
 
     @Override

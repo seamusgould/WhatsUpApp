@@ -22,6 +22,7 @@ public interface IPostEventViewMvc {
         void onAddedButton();
         void onCommentAdded();
 
+        void onCommentAdded(String s, Event event);
     }
 
     public View getRootView();
