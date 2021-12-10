@@ -9,7 +9,7 @@ public class Controller {
 
     Location mainBuilding = new Location("main");
 
-    public Event makeEvent(String eventName, Calendar eventDateAndTime, int eventRecurrence,
+    public Event makeEvent(String eventName, String eventDateAndTime, int eventRecurrence,
                            String eventDescription, String eventPoster, String eventRoughLocation) {
         Location eLocation = new Location(eventRoughLocation);
         //will do this once we figure out how to not add duplicate elements

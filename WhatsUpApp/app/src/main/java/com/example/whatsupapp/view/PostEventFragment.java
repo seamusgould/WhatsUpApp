@@ -27,17 +27,12 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
     Listener listener;
     FragmentPostEventBinding binding;
     String eventPoster;
-    Calendar eventCalendar = Calendar.getInstance();
+    String eventDateAndTime;
 
-    public PostEventFragment(Listener listener, String eventPoster, Calendar eventDateAndTime){
+    public PostEventFragment(Listener listener, String eventPoster, String eventDateAndTime){
         this.listener = listener;
         this.eventPoster = eventPoster;
-
-        this.eventCalendar.set(Calendar.MONTH, eventDateAndTime.get(Calendar.MONTH));
-        this.eventCalendar.set(Calendar.DATE, eventDateAndTime.get(Calendar.DATE));
-        this.eventCalendar.set(Calendar.YEAR, eventDateAndTime.get(Calendar.YEAR));
-        this.eventCalendar.set(Calendar.HOUR, eventDateAndTime.get(Calendar.HOUR));
-        this.eventCalendar.set(Calendar.MINUTE, eventDateAndTime.get(Calendar.MINUTE));
+        this.eventDateAndTime = eventDateAndTime;
 
     }
 
@@ -80,7 +75,7 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                 Editable eventDescriptionEditable = binding.editDescription.getText();
                 String eventDescription = eventDescriptionEditable.toString();
 
-                EventCollection events = listener.onAddedEvent(eventName, eventCalendar,
+                EventCollection events = listener.onAddedEvent(eventName, eventDateAndTime,
                         eventDescription, eventPoster, eventLoc);
                 this.listener.onAddedButton();
                 eventNameEditable.clear();

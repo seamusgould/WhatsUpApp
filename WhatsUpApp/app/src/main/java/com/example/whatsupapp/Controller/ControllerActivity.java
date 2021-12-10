@@ -101,12 +101,17 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     @Override
-    public void onDateButton(Calendar eventDate) {
+    public void onDateButton(String eventDate) {
         this.mainView.displayFragment (new AddTimeFragment(this, eventDate));
     }
 
-    public void onTimeButton(Calendar eventDateAndTime){
+    public void onTimeButton(String eventDateAndTime){
         this.mainView.displayFragment (new PostEventFragment(this, curUser.getUsername(), eventDateAndTime));
+    }
+
+    @Override
+    public void onRecurrenceButton(Calendar eventDate) {
+
     }
 
     @Override
@@ -120,7 +125,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     @Override
-    public EventCollection onAddedEvent(String eventName, Calendar eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription) {
+    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription) {
         Event newEvent = eventCollection.makeEvent(eventName, eventDateAndTime, eventDescription, eventPoster,
                 eventRoughLocation);
         curEvent = newEvent;

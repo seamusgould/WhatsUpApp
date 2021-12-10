@@ -25,7 +25,7 @@ public class EventCollection implements Serializable {
       this.ll.add(event);
    }
 
-   public Event makeEvent(String eventName, Calendar eventDateAndTime,
+   public Event makeEvent(String eventName, String eventDateAndTime,
                           String eventDescription, String eventPoster, String eventRoughLocation) {
       Event event =  new Event(eventName, eventDateAndTime, eventDescription,
               eventPoster , eventRoughLocation);
@@ -41,11 +41,11 @@ public class EventCollection implements Serializable {
       return ll.get(i);
    }
 
-   public void handleRecurrence(Event e, String howOften, int howManyTimes, int howManySkip)
+   public void handleRecurrence(Event e, Calendar c, String howOften, int howManyTimes, int howManySkip)
    {
       Calendar originalCalendar = Calendar.getInstance();
-      originalCalendar = assignYearMonthDay(originalCalendar, e.originalEventDateAndTime.get(Calendar.YEAR),
-              e.originalEventDateAndTime.get(Calendar.MONTH), e.originalEventDateAndTime.get(Calendar.DATE));
+      originalCalendar = assignYearMonthDay(originalCalendar, c.get(Calendar.YEAR),
+              c.get(Calendar.MONTH), c.get(Calendar.DATE));
 
       if(howOften.equals("weekly")){
 
@@ -57,7 +57,8 @@ public class EventCollection implements Serializable {
 
             int newDay = newCalendar.get(Calendar.DATE) + (i * ((1 + howManySkip) * 7));
             newCalendar.set(Calendar.DATE, newDay);
-            e.addNewDateAndTime(newCalendar);
+            String s = convertCalendarToString(newCalendar);
+            e.addNewDateAndTime(s);
 
          }
       }
@@ -87,19 +88,22 @@ public class EventCollection implements Serializable {
             {
                currentCalendar = assignYearMonthDay(currentCalendar, possibleCalendar.get(Calendar.YEAR),
                        possibleCalendar.get(Calendar.MONTH), possibleCalendar.get(Calendar.DATE));
-               e.addNewDateAndTime(possibleCalendar);
+               String s = convertCalendarToString(possibleCalendar);
+               e.addNewDateAndTime(s);
 
             } else if (possibleWeekInMonth < weekInMonth){
                possibleCalendar.set(Calendar.DATE, possibleCalendar.get(Calendar.DATE) + 7);
                currentCalendar = assignYearMonthDay(currentCalendar, possibleCalendar.get(Calendar.YEAR), possibleCalendar.get(Calendar.MONTH),
                        possibleCalendar.get(Calendar.DATE));
-               e.addNewDateAndTime(possibleCalendar);
+               String s = convertCalendarToString(possibleCalendar);
+               e.addNewDateAndTime(s);
 
             } else{
                possibleCalendar.set(Calendar.DATE, possibleCalendar.get(Calendar.DATE) - 7);
                currentCalendar = assignYearMonthDay(currentCalendar, possibleCalendar.get(Calendar.YEAR), possibleCalendar.get(Calendar.MONTH),
                        possibleCalendar.get(Calendar.DATE));
-               e.addNewDateAndTime(possibleCalendar);
+               String s = convertCalendarToString(possibleCalendar);
+               e.addNewDateAndTime(s);
 
             }
          }
@@ -119,6 +123,12 @@ public class EventCollection implements Serializable {
          return (int) (1 + floor(c.get(Calendar.DATE) / 7)) - 1;
       }
       return (int) (1 + floor(c.get(Calendar.DATE) / 7));
+   }
+
+   public String convertCalendarToString(Calendar c){
+      String s = c.get(Calendar.MONTH) + "/" + c.get(Calendar.DATE) + "/" + c.get(Calendar.YEAR) + " "
+              + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE);
+      return s;
    }
 
 }

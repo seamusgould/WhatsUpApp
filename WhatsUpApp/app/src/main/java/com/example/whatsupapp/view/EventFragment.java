@@ -67,7 +67,7 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
-    public EventCollection onAddedEvent(String eventName, Calendar eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription) {
+    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription) {
         return null;
     }
 
@@ -87,7 +87,7 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
-    public void onDateButton(Calendar eventDate) {
+    public void onDateButton(String eventDate) {
 
     }
 
@@ -107,7 +107,12 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
-    public void onTimeButton(Calendar eventDateAndTime) {
+    public void onTimeButton(String eventDateAndTime) {
+
+    }
+
+    @Override
+    public void onRecurrenceButton(Calendar eventDate) {
 
     }
 

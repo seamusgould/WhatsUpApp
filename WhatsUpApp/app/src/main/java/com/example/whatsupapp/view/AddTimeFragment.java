@@ -19,14 +19,11 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
 
     IPostEventViewMvc.Listener listener;
     FragmentAddTimeBinding binding;
-    Calendar eventDateAndTime = Calendar.getInstance();
+    String eventDateString;
 
-    public AddTimeFragment(IPostEventViewMvc.Listener listener, Calendar eventDate) {
+    public AddTimeFragment(IPostEventViewMvc.Listener listener, String eventDateString) {
         this.listener = listener;
-        eventDateAndTime.set(Calendar.MONTH, eventDate.get(Calendar.MONTH));
-        eventDateAndTime.set(Calendar.DATE, eventDate.get(Calendar.DATE));
-        eventDateAndTime.set(Calendar.YEAR, eventDate.get(Calendar.YEAR));
-
+        this.eventDateString = eventDateString;
         }
 
     @Nullable
@@ -42,10 +39,9 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
             int eventHour = this.binding.timePicker1.getHour();
             int eventMinutes = this.binding.timePicker1.getMinute();
 
-            eventDateAndTime.set(Calendar.HOUR, eventHour);
-            eventDateAndTime.set(Calendar.MINUTE, eventMinutes);
+            eventDateString += eventHour + ":" + eventMinutes;
 
-            this.listener.onTimeButton(eventDateAndTime);
+            this.listener.onTimeButton(eventDateString);
 
             //TODO: update onTimeButton() to reflect passing in the calculator to PostFragment
                 }

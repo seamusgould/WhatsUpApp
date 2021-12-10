@@ -33,16 +33,28 @@ public class AddDateFragment extends Fragment implements IPostEventViewMvc {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         this.binding.DateButton.setOnClickListener((clickedView) -> {
-            Calendar eventDate = Calendar.getInstance();
+
             int eventMonth = this.binding.datePicker1.getMonth();
             int eventDay = this.binding.datePicker1.getDayOfMonth();
             int eventYear = this.binding.datePicker1.getYear();
 
-            eventDate.set(Calendar.MONTH, eventMonth);
-            eventDate.set(Calendar.DATE, eventDay);
-            eventDate.set(Calendar.YEAR, eventYear);
+            String eventDateString = eventMonth + "/" + eventDay + "/" + eventYear;
 
-            this.listener.onDateButton(eventDate);
+            this.listener.onDateButton(eventDateString);
+                }
+        );
+
+        this.binding.recurrenceButton.setOnClickListener((clickedView) -> {
+                    Calendar eventDate = Calendar.getInstance();
+                    int eventMonth = this.binding.datePicker1.getMonth();
+                    int eventDay = this.binding.datePicker1.getDayOfMonth();
+                    int eventYear = this.binding.datePicker1.getYear();
+
+                    eventDate.set(Calendar.MONTH, eventMonth);
+                    eventDate.set(Calendar.DATE, eventDay);
+                    eventDate.set(Calendar.YEAR, eventYear);
+
+                    this.listener.onRecurrenceButton(eventDate);
                 }
         );
     }

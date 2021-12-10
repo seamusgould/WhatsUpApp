@@ -13,18 +13,20 @@ import java.util.Calendar;
 public interface IPostEventViewMvc {
 
     public interface Listener{
-        EventCollection onAddedEvent(String eventName, Calendar eventDateAndTime,
+        EventCollection onAddedEvent(String eventName, String eventDateAndTime,
                                      String eventRoughLocation, String eventPoster, String eventDescription);
 
         ArrayList<Location> getLocationList();
         ArrayList<Event> getEvents();
         void onItemClick(View view, int position);
         void onPostButton();
-        void onDateButton(Calendar eventDate);
+        void onDateButton(String eventDate);
         void onAddedButton();
         void onCommentAdded();
 
-        void onTimeButton(Calendar eventDateAndTime);
+        void onTimeButton(String eventDateAndTime);
+
+        void onRecurrenceButton(Calendar eventDate);
     }
 
     public View getRootView();

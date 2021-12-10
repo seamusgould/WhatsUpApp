@@ -10,8 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="149dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.143" />
 
     <Button
         android:id="@+id/DateButton"
@@ -22,16 +26,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/datePicker1" />
+        app:layout_constraintTop_toBottomOf="@+id/datePicker1"
+        app:layout_constraintVertical_bias="0.1" />
 
-    <TextView
-        android:id="@+id/textView1"
+    <Button
+        android:id="@+id/recurrenceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/DateButton"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="18dp"/>
+        android:text="Yes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DateButton" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Would you like to repeat this event on another date?"
+        app:layout_constraintBottom_toTopOf="@+id/recurrenceButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DateButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

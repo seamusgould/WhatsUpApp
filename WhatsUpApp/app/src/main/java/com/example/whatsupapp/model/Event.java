@@ -9,32 +9,31 @@ public class Event implements Serializable {
     //need getter for each object I want to display
     int upvoteDownvote = 0;
     String eventName;
-    Calendar originalEventDateAndTime;
-    String eventDate;
-    String eventTime;
+    //Calendar originalEventDateAndTime;
+    String eventDateAndTime;
     int eventRecurrence;
     String eventDescription;
     String eventPoster;
     User poster;
     String eventLocation;
     String name;
-    List<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
+    List<String> allDatesAndTimes2 = new ArrayList<String>();
     List<String> comments = new ArrayList<String>();
     String id;
 
     //constructor without recurrence
-    /*Event (String name, String date, String time ,
+    Event (String name, String eventDateAndTime ,
            String description, String eventPoster, String eLocation){
         this.eventName = name;
-        this.eventTime = time;
-        this.eventDate = date;
+        this.eventDateAndTime = eventDateAndTime;
         this.eventPoster = eventPoster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
-    }*/
+        //this.addNewDateAndTime(eventDateAndTime);
+    }
 
     //Calendar constructor
-    public Event(String name, Calendar eventDateAndTime,
+    /*public Event(String name, Calendar eventDateAndTime,
                  String description, String poster, String eLocation){
         this.eventName = name;
         this.originalEventDateAndTime = eventDateAndTime;
@@ -42,24 +41,27 @@ public class Event implements Serializable {
         this.eventLocation =  eLocation;
         this.eventDescription = description;
         addNewDateAndTime(eventDateAndTime);
-    }
+    }*/
 
     public Event() {}
 
-    public void addNewDateAndTime(Calendar c){
-        allDatesAndTimes.add(c);
+    public void addNewDateAndTime(String c){
+        allDatesAndTimes2.add(c);
     }
 
-    public List<Calendar> getAllDatesAndTimes(){
-        return allDatesAndTimes;
+    public List<String> getAllDatesAndTimes(){
+        return allDatesAndTimes2;
     }
 
     @Override
     public String toString(){
+        /*Calendar curDateAndTime = allDatesAndTimes.get(0);
+        String dateString = curDateAndTime.get(Calendar.MONTH) + "/" + curDateAndTime.get(Calendar.DATE) + "/" + curDateAndTime.get(Calendar.YEAR);
+        String timeString = curDateAndTime.get(Calendar.HOUR) + ":" + curDateAndTime.get(Calendar.MINUTE);*/
         String str = "";
         String score = Integer.toString(upvoteDownvote);
         str += eventPoster +" posted: \n";
-        str += " On " + eventDate + " " + eventTime + " " + eventName + " at " + eventLocation;
+        str += " On " + eventDateAndTime + " " + eventName + " at " + eventLocation;
         str += "\n " + eventDescription;
         return str;
         }
@@ -86,12 +88,8 @@ public class Event implements Serializable {
         return this.eventName;
     }
 
-    public String getEventTime() {
-        return this.eventTime;
-    }
-
-    public String getEventDate() {
-        return this.eventDate;
+    public String getEventDateAndTime() {
+        return this.eventDateAndTime;
     }
 
     public String getEventLocation() {
