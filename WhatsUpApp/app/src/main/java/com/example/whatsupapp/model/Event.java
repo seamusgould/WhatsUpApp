@@ -20,6 +20,7 @@ public class Event implements Serializable {
     String name;
     List<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
     List<String> comments = new ArrayList<String>();
+    String id;
 
     //constructor without recurrence
     /*Event (String name, String date, String time ,
@@ -99,5 +100,13 @@ public class Event implements Serializable {
 
     public String getEventDescription(){
         return this.eventDescription;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 }
