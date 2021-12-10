@@ -2,40 +2,87 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/weeklyButton"
+    android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-87dp"
+        tools:layout_editor_absoluteY="-192dp">
 
-        <RadioButton
-            android:id="@+id/weeklyButton2"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="64dp" />
+
+        <TextView
+            android:id="@+id/recurrenceExplainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recurrence_explainer_msg1" />
+
+        <RadioGroup
+            android:id="@+id/weeklyOrMonthlyGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/weeklyButton2"
+                android:layout_width="113dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="332dp"
+                android:text="Weekly" />
+
+            <RadioButton
+                android:id="@+id/monthlyButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monthly" />
+
+        </RadioGroup>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="47dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recurrence_explainer_msg2" />
+
+        <EditText
+            android:id="@+id/numberOfWeeksSkipped"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Weekly" />
+            android:ems="10"
+            android:inputType="number" />
 
-        <RadioButton
-            android:id="@+id/monthlyButton"
-            android:layout_width="221dp"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Monthly" />
-    </RadioGroup>
+            android:text="@string/recurrence_explainer_msg3" />
 
-    <TextView
-        android:id="@+id/recurrenceExplainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Would you like this event to recur weekly (every Tuesday, for example), "
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/numberOfTotalEvents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/confirmRecurrenceButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

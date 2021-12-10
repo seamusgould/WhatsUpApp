@@ -29,11 +29,32 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
     String eventPoster;
     String eventDateAndTime;
 
+    EventCollection ev;
+    Calendar currentCal = Calendar.getInstance();
+    String howOften;
+    String howMany;
+    String howManySkipped;
+
     public PostEventFragment(Listener listener, String eventPoster, String eventDateAndTime){
         this.listener = listener;
         this.eventPoster = eventPoster;
         this.eventDateAndTime = eventDateAndTime;
 
+    }
+
+    public PostEventFragment(Listener listener, String eventPoster, EventCollection eventCollection, Calendar eventDate, String howOften, String howMany, String howManySkipped) {
+        this.listener = listener;
+        this.eventPoster = eventPoster;
+        this.ev = eventCollection;
+        this.howOften = howOften;
+        this.howMany = howMany;
+        this.howManySkipped = howManySkipped;
+
+        currentCal.set(Calendar.MONTH, eventDate.get(Calendar.MONTH));
+        currentCal.set(Calendar.DATE, eventDate.get(Calendar.DATE));
+        currentCal.set(Calendar.YEAR, eventDate.get(Calendar.YEAR));
+        currentCal.set(Calendar.HOUR, eventDate.get(Calendar.HOUR));
+        currentCal.set(Calendar.MINUTE, eventDate.get(Calendar.MINUTE));
     }
 
     @Nullable
@@ -77,6 +98,7 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
                 EventCollection events = listener.onAddedEvent(eventName, eventDateAndTime,
                         eventDescription, eventPoster, eventLoc);
+                //TODO: figure out a way to call handleRecurrence on the newly created event
                 this.listener.onAddedButton();
                 eventNameEditable.clear();
                 eventLocEditable.clear();

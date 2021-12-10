@@ -17,7 +17,7 @@ public class Event implements Serializable {
     User poster;
     String eventLocation;
     String name;
-    List<String> allDatesAndTimes2 = new ArrayList<String>();
+    List<String> allDatesAndTimes = new ArrayList<String>();
     List<String> comments = new ArrayList<String>();
     String id;
 
@@ -46,11 +46,11 @@ public class Event implements Serializable {
     public Event() {}
 
     public void addNewDateAndTime(String c){
-        allDatesAndTimes2.add(c);
+        allDatesAndTimes.add(c);
     }
 
     public List<String> getAllDatesAndTimes(){
-        return allDatesAndTimes2;
+        return allDatesAndTimes;
     }
 
     @Override

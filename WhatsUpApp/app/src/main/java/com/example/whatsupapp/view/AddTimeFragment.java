@@ -20,11 +20,28 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
     IPostEventViewMvc.Listener listener;
     FragmentAddTimeBinding binding;
     String eventDateString;
+    String howOften;
+    String howMany;
+    String howManySkipped;
+    boolean secondConstructorUsed = false;
+    Calendar eventDate = Calendar.getInstance();
 
     public AddTimeFragment(IPostEventViewMvc.Listener listener, String eventDateString) {
         this.listener = listener;
         this.eventDateString = eventDateString;
         }
+
+    public AddTimeFragment(IPostEventViewMvc.Listener listener, Calendar eventDate, String howOften, String howMany, String howManySkipped) {
+        this.listener = listener;
+        this.eventDateString = eventDate.get(Calendar.MONTH) + "/" + eventDate.get(Calendar.DATE) + "/" + eventDate.get(Calendar.YEAR);
+        this.howOften = howOften;
+        this.howMany = howMany;
+        this.howManySkipped = howManySkipped;
+        this.eventDate.set(Calendar.MONTH, eventDate.get(Calendar.MONTH));
+        this.eventDate.set(Calendar.DATE, eventDate.get(Calendar.DATE));
+        this.eventDate.set(Calendar.YEAR, eventDate.get(Calendar.YEAR));
+        secondConstructorUsed = true;
+    }
 
     @Nullable
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,11 +56,19 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
             int eventHour = this.binding.timePicker1.getHour();
             int eventMinutes = this.binding.timePicker1.getMinute();
 
-            eventDateString += eventHour + ":" + eventMinutes;
+            eventDateString += " " + eventHour + ":" + eventMinutes;
 
-            this.listener.onTimeButton(eventDateString);
+            if (secondConstructorUsed){
 
-            //TODO: update onTimeButton() to reflect passing in the calculator to PostFragment
+                this.eventDate.set(Calendar.HOUR, eventHour);
+                this.eventDate.set(Calendar.MINUTE, eventMinutes);
+                this.listener.onTimeButtonRecurrence(eventDate, howOften, howMany, howManySkipped);
+            } else{
+                this.listener.onTimeButton(eventDateString);
+            }
+
+
+
                 }
         );
     }

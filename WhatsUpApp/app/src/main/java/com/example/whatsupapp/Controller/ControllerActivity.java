@@ -27,6 +27,7 @@ import com.example.whatsupapp.view.MapsFragment;
 import com.example.whatsupapp.view.PostEventFragment;
 
 import com.example.whatsupapp.view.ProfileFragment;
+import com.example.whatsupapp.view.RecurrenceFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -111,6 +112,12 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public void onRecurrenceButton(Calendar eventDate) {
+        this.mainView.displayFragment (new RecurrenceFragment(this, eventDate));
+    }
+
+    @Override
+    public void onTimeButtonRecurrence(Calendar eventDate, String howOften, String howMany, String howManySkipped) {
+        this.mainView.displayFragment(new PostEventFragment(this, curUser.getUsername(), eventCollection, eventDate, howOften, howMany, howManySkipped));
 
     }
 
@@ -197,6 +204,11 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     @Override
     public EventCollection getEventCollection() {
         return this.eventCollection;
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
     //onlocation search method that gets passed in location

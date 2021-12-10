@@ -41,6 +41,16 @@ public class EventCollection implements Serializable {
       return ll.get(i);
    }
 
+   public ArrayList<Event> findUsersEvents(String username){
+      List<Event> filteredList = new ArrayList<Event>();
+      for (int i = 0; i < ll.size(); i++){
+         if (username.equals(ll.get(i).getEventPoster())){
+            filteredList.add(ll.get(i));
+         }
+      }
+      return (ArrayList<Event>) filteredList;
+   }
+
    public void handleRecurrence(Event e, Calendar c, String howOften, int howManyTimes, int howManySkip)
    {
       Calendar originalCalendar = Calendar.getInstance();
