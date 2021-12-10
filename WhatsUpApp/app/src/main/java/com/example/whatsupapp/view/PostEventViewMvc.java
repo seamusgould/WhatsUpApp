@@ -1,3 +1,4 @@
+/*
 package com.example.whatsupapp.view;
 
 import com.example.whatsupapp.R;
@@ -63,7 +64,7 @@ public class PostEventViewMvc implements IPostEventViewMvc{
                 Editable eventDescriptionEditable = binding.editDescription.getText();
                 String eventDescription = eventDescriptionEditable.toString();
 
-                listener.onAddedEvent(eventName, eventDate, eventTime, eventDescription,
+                listener.onAddedEvent(eventName, eventDateAndTime, eventDescription,
                         eventPoster,eventLoc);
                 eventNameEditable.clear();
                 eventDateEditable.clear();
@@ -85,3 +86,4 @@ public class PostEventViewMvc implements IPostEventViewMvc{
         this.binding.eventList.setText(s);
     }
 }
+*/

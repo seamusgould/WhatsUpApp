@@ -14,8 +14,8 @@ public class Controller {
         Location eLocation = new Location(eventRoughLocation);
         //will do this once we figure out how to not add duplicate elements
         //Location eLocation = newLocationFromString(eventRoughLocation);
-        Event newEvent = collection.makeEvent(eventName, "eventDateAndTime",
-                "12:12", eventRoughLocation, "bob", eventDescription);
+        Event newEvent = collection.makeEvent(eventName, eventDateAndTime, eventDescription,
+                "bob", eventRoughLocation);
         return newEvent;
     }
 

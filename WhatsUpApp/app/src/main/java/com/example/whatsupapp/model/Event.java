@@ -21,19 +21,8 @@ public class Event implements Serializable {
     List<Calendar> allDatesAndTimes = new ArrayList<Calendar>();
     List<String> comments = new ArrayList<String>();
 
-    Event (String name, String date, String time , int recurrence,
-           String description,  User poster, String eLocation){
-        this.eventName = name;
-        this.eventTime = time;
-        this.eventDate = date;
-        this.eventRecurrence = recurrence;
-        this.poster = poster;
-        this.eventLocation =  eLocation;
-        this.eventDescription = description;
-    }
-
     //constructor without recurrence
-    Event (String name, String date, String time ,
+    /*Event (String name, String date, String time ,
            String description, String eventPoster, String eLocation){
         this.eventName = name;
         this.eventTime = time;
@@ -41,13 +30,14 @@ public class Event implements Serializable {
         this.eventPoster = eventPoster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
-    }
+    }*/
 
+    //Calendar constructor
     public Event(String name, Calendar eventDateAndTime,
-                 String description, User poster, String eLocation){
+                 String description, String poster, String eLocation){
         this.eventName = name;
         this.originalEventDateAndTime = eventDateAndTime;
-        this.poster = poster;
+        this.eventPoster = poster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
         addNewDateAndTime(eventDateAndTime);

@@ -1,6 +1,5 @@
 package com.example.whatsupapp.view;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -12,13 +11,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.whatsupapp.R;
 import com.example.whatsupapp.databinding.FragmentEventBinding;
-import com.example.whatsupapp.databinding.FragmentHomeBinding;
-import com.example.whatsupapp.databinding.MainBinding;
 import com.example.whatsupapp.model.Event;
 import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
@@ -73,8 +67,7 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
-    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time,
-                                        String eventRoughLocation, String eventPoster, String eventDescription) {
+    public EventCollection onAddedEvent(String eventName, Calendar eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription) {
         return null;
     }
 
@@ -114,7 +107,7 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     }
 
     @Override
-    public void onTimeButton() {
+    public void onTimeButton(Calendar eventDateAndTime) {
 
     }
 

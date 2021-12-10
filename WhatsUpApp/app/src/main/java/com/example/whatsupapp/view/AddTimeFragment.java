@@ -45,7 +45,7 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
             eventDateAndTime.set(Calendar.HOUR, eventHour);
             eventDateAndTime.set(Calendar.MINUTE, eventMinutes);
 
-            this.listener.onTimeButton();
+            this.listener.onTimeButton(eventDateAndTime);
 
             //TODO: update onTimeButton() to reflect passing in the calculator to PostFragment
                 }

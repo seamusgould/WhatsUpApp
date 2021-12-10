@@ -12,10 +12,8 @@ import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.User;
 import com.example.whatsupapp.view.AddDateFragment;
 import com.example.whatsupapp.view.AddTimeFragment;
-import com.example.whatsupapp.view.EventFragment;
 import com.example.whatsupapp.view.IAuthView;
 import com.example.whatsupapp.model.Location;
-import com.example.whatsupapp.model.Username;
 import com.example.whatsupapp.persistence.FirestoreFacade;
 import com.example.whatsupapp.persistence.IPersistenceFacade;
 import com.example.whatsupapp.view.AuthFragment;
@@ -97,7 +95,6 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     }
 
-
     @Override
     public void onPostButton() {
         this.mainView.displayFragment(new AddDateFragment(this));
@@ -108,8 +105,8 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
         this.mainView.displayFragment (new AddTimeFragment(this, eventDate));
     }
 
-    public void onTimeButton(){
-        this.mainView.displayFragment (new PostEventFragment(this, curUser.getUsername()));
+    public void onTimeButton(Calendar eventDateAndTime){
+        this.mainView.displayFragment (new PostEventFragment(this, curUser.getUsername(), eventDateAndTime));
     }
 
     @Override
@@ -123,9 +120,8 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     @Override
-    public EventCollection onAddedEvent(String eventName, String eventDate, String eventTime,
-                                        String eventDescription, String eventPoster, String eventRoughLocation) {
-        Event newEvent = eventCollection.makeEvent(eventName, eventDate, eventTime, eventDescription, eventPoster,
+    public EventCollection onAddedEvent(String eventName, Calendar eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription) {
+        Event newEvent = eventCollection.makeEvent(eventName, eventDateAndTime, eventDescription, eventPoster,
                 eventRoughLocation);
         curEvent = newEvent;
         this.persistenceFacade.saveEvent(this.curEvent); // save event to database

@@ -3,8 +3,6 @@ package com.example.whatsupapp.view;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -75,8 +73,7 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
 
 
     @Override
-    public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time,
-                                        String eventRoughLocation, String eventPoster, String eventDescription) {
+    public EventCollection onAddedEvent(String eventName, Calendar eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription) {
         return null;
     }
 
@@ -111,7 +108,7 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
     }
 
     @Override
-    public void onTimeButton() {
+    public void onTimeButton(Calendar eventDateAndTime) {
 
     }
 

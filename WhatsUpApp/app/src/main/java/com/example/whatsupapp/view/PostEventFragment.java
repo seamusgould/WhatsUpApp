@@ -13,25 +13,31 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
+import com.example.whatsupapp.Controller.ControllerActivity;
 import com.example.whatsupapp.R;
 import com.example.whatsupapp.databinding.FragmentPostEventBinding;
 import com.example.whatsupapp.model.EventCollection;
 import com.example.whatsupapp.model.Location;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
     Listener listener;
     FragmentPostEventBinding binding;
     String eventPoster;
+    Calendar eventCalendar = Calendar.getInstance();
 
-    public PostEventFragment() {
-    }
-
-    public PostEventFragment(Listener listener, String eventPoster){
+    public PostEventFragment(Listener listener, String eventPoster, Calendar eventDateAndTime){
         this.listener = listener;
         this.eventPoster = eventPoster;
+
+        this.eventCalendar.set(Calendar.MONTH, eventDateAndTime.get(Calendar.MONTH));
+        this.eventCalendar.set(Calendar.DATE, eventDateAndTime.get(Calendar.DATE));
+        this.eventCalendar.set(Calendar.YEAR, eventDateAndTime.get(Calendar.YEAR));
+        this.eventCalendar.set(Calendar.HOUR, eventDateAndTime.get(Calendar.HOUR));
+        this.eventCalendar.set(Calendar.MINUTE, eventDateAndTime.get(Calendar.MINUTE));
 
     }
 
@@ -66,14 +72,6 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                 Editable eventNameEditable = binding.editName.getText();
                 String eventName = eventNameEditable.toString();
 
-                // get the event date
-                Editable eventDateEditable = binding.editDate.getText();
-                String eventDate = eventDateEditable.toString();
-
-                // get the event time
-                Editable eventTimeEditable = binding.editTime.getText();
-                String eventTime = eventTimeEditable.toString();
-
                 // get the event location
                 Editable eventLocEditable = binding.editLoc.getText();
                 String eventLoc = eventLocEditable.toString();
@@ -82,12 +80,10 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                 Editable eventDescriptionEditable = binding.editDescription.getText();
                 String eventDescription = eventDescriptionEditable.toString();
 
-                EventCollection events = listener.onAddedEvent(eventName, eventDate, eventTime,
+                EventCollection events = listener.onAddedEvent(eventName, eventCalendar,
                         eventDescription, eventPoster, eventLoc);
                 this.listener.onAddedButton();
                 eventNameEditable.clear();
-                eventDateEditable.clear();
-                eventTimeEditable.clear();
                 eventLocEditable.clear();
                 eventDescriptionEditable.clear();
 

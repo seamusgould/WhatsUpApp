@@ -25,9 +25,9 @@ public class EventCollection implements Serializable {
       this.ll.add(event);
    }
 
-   public Event makeEvent(String eventName, String eventDate, String eventTime,
+   public Event makeEvent(String eventName, Calendar eventDateAndTime,
                           String eventDescription, String eventPoster, String eventRoughLocation) {
-      Event event =  new Event(eventName, eventDate, eventTime, eventDescription,
+      Event event =  new Event(eventName, eventDateAndTime, eventDescription,
               eventPoster , eventRoughLocation);
       ll.add(event);
       return event;

@@ -13,7 +13,7 @@ import java.util.Calendar;
 public interface IPostEventViewMvc {
 
     public interface Listener{
-        EventCollection onAddedEvent(String eventName, String eventDateAndTime, String time,
+        EventCollection onAddedEvent(String eventName, Calendar eventDateAndTime,
                                      String eventRoughLocation, String eventPoster, String eventDescription);
 
         ArrayList<Location> getLocationList();
@@ -24,7 +24,7 @@ public interface IPostEventViewMvc {
         void onAddedButton();
         void onCommentAdded();
 
-        void onTimeButton();
+        void onTimeButton(Calendar eventDateAndTime);
     }
 
     public View getRootView();
