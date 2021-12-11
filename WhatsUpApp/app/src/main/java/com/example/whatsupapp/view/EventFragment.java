@@ -38,7 +38,7 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         this.binding = FragmentEventBinding.inflate(inflater);
-        binding.eventname.setText(event.toString());
+        binding.eventname.setText(event.toStringExtended());
 
         ListView lv = (ListView) binding.comments;
 
@@ -68,6 +68,11 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
 
     @Override
     public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription) {
+        return null;
+    }
+
+    @Override
+    public EventCollection onAddedRecurrence(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften, int howMany, int howManySkip) {
         return null;
     }
 
@@ -115,5 +120,11 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
     public void onRecurrenceButton(Calendar eventDate) {
 
     }
+
+    @Override
+    public void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped) {
+
+    }
+
 
 }

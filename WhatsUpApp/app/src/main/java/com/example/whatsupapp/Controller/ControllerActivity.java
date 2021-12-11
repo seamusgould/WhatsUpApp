@@ -116,7 +116,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     @Override
-    public void onTimeButtonRecurrence(Calendar eventDate, String howOften, String howMany, String howManySkipped) {
+    public void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped) {
         this.mainView.displayFragment(new PostEventFragment(this, curUser.getUsername(), eventCollection, eventDate, howOften, howMany, howManySkipped));
 
     }
@@ -124,6 +124,18 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     @Override
     public void onAddedButton() {
         this.mainView.displayFragment(new HomeFragment(this));
+    }
+
+    @Override
+    public EventCollection onAddedRecurrence(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften,
+                                  int howMany, int howManySkip) {
+        Event newEvent = eventCollection.makeEvent(eventName, eventDateAndTime, eventDescription, eventPoster,
+                eventRoughLocation);
+        curEvent = newEvent;
+        eventCollection.handleRecurrence(curEvent, c, howOften, howMany, howManySkip);
+        this.persistenceFacade.saveEvent(this.curEvent); // save event to database
+
+        return eventCollection;
     }
 
     @Override

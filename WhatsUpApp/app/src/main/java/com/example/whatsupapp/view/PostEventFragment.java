@@ -32,8 +32,9 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
     EventCollection ev;
     Calendar currentCal = Calendar.getInstance();
     String howOften;
-    String howMany;
-    String howManySkipped;
+    int howMany;
+    int howManySkipped;
+    Boolean secondConstructorUsed = false;
 
     public PostEventFragment(Listener listener, String eventPoster, String eventDateAndTime){
         this.listener = listener;
@@ -42,7 +43,7 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
 
     }
 
-    public PostEventFragment(Listener listener, String eventPoster, EventCollection eventCollection, Calendar eventDate, String howOften, String howMany, String howManySkipped) {
+    public PostEventFragment(Listener listener, String eventPoster, EventCollection eventCollection, Calendar eventDate, String howOften, int howMany, int howManySkipped) {
         this.listener = listener;
         this.eventPoster = eventPoster;
         this.ev = eventCollection;
@@ -55,6 +56,8 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
         currentCal.set(Calendar.YEAR, eventDate.get(Calendar.YEAR));
         currentCal.set(Calendar.HOUR, eventDate.get(Calendar.HOUR));
         currentCal.set(Calendar.MINUTE, eventDate.get(Calendar.MINUTE));
+
+        secondConstructorUsed = true;
     }
 
     @Nullable
@@ -96,8 +99,14 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                 Editable eventDescriptionEditable = binding.editDescription.getText();
                 String eventDescription = eventDescriptionEditable.toString();
 
-                EventCollection events = listener.onAddedEvent(eventName, eventDateAndTime,
-                        eventDescription, eventPoster, eventLoc);
+                if (secondConstructorUsed){
+                    EventCollection events = listener.onAddedRecurrence(eventName, eventDateAndTime, eventLoc, eventPoster, eventDescription,
+                            currentCal, howOften, howMany, howManySkipped);
+                } else {
+                    EventCollection events = listener.onAddedEvent(eventName, eventDateAndTime,
+                            eventDescription, eventPoster, eventLoc);
+                }
+
                 //TODO: figure out a way to call handleRecurrence on the newly created event
                 this.listener.onAddedButton();
                 eventNameEditable.clear();

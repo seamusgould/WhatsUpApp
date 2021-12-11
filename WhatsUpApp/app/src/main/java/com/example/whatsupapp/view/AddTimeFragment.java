@@ -21,8 +21,8 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
     FragmentAddTimeBinding binding;
     String eventDateString;
     String howOften;
-    String howMany;
-    String howManySkipped;
+    int howMany;
+    int howManySkipped;
     boolean secondConstructorUsed = false;
     Calendar eventDate = Calendar.getInstance();
 
@@ -31,7 +31,7 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
         this.eventDateString = eventDateString;
         }
 
-    public AddTimeFragment(IPostEventViewMvc.Listener listener, Calendar eventDate, String howOften, String howMany, String howManySkipped) {
+    public AddTimeFragment(IPostEventViewMvc.Listener listener, Calendar eventDate, String howOften, int howMany, int howManySkipped) {
         this.listener = listener;
         this.eventDateString = eventDate.get(Calendar.MONTH) + "/" + eventDate.get(Calendar.DATE) + "/" + eventDate.get(Calendar.YEAR);
         this.howOften = howOften;

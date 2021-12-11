@@ -66,6 +66,19 @@ public class Event implements Serializable {
         return str;
         }
 
+     public String toStringExtended(){
+        String str = "";
+        String score = Integer.toString(upvoteDownvote);
+        str += eventPoster + " posted: \n";
+        str += eventName + " at " + eventLocation;
+        for (int i = 0; i < getAllDatesAndTimes().size(); i++){
+            str += getAllDatesAndTimes().get(i) + " and\n";
+        }
+
+        str += eventDescription;
+        return str;
+     }
+
 
 
     public void addComment(String s){

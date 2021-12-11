@@ -77,6 +77,11 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
     }
 
     @Override
+    public EventCollection onAddedRecurrence(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften, int howMany, int howManySkip) {
+        return null;
+    }
+
+    @Override
     public ArrayList<Location> getLocationList() {
         return null;
     }
@@ -117,7 +122,7 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
     }
 
     @Override
-    public void onTimeButtonRecurrence(Calendar eventDate, String howOften, String howMany, String howManySkipped) {
+    public void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped) {
 
     }
 

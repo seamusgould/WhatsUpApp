@@ -15,6 +15,8 @@ public interface IPostEventViewMvc {
     public interface Listener{
         EventCollection onAddedEvent(String eventName, String eventDateAndTime,
                                      String eventRoughLocation, String eventPoster, String eventDescription);
+        EventCollection onAddedRecurrence(String eventName, String eventDateAndTime,
+                                          String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften, int howMany, int howManySkip);
 
         ArrayList<Location> getLocationList();
         ArrayList<Event> getEvents();
@@ -22,13 +24,14 @@ public interface IPostEventViewMvc {
         void onPostButton();
         void onDateButton(String eventDate);
         void onAddedButton();
+
         void onCommentAdded();
 
         void onTimeButton(String eventDateAndTime);
 
         void onRecurrenceButton(Calendar eventDate);
 
-        void onTimeButtonRecurrence(Calendar eventDate, String howOften, String howMany, String howManySkipped);
+        void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped);
     }
 
     public View getRootView();
