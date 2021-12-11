@@ -174,7 +174,7 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     public void onProfileSelected() {
-        this.mainView.displayFragment(new ProfileFragment());
+        this.mainView.displayFragment(new ProfileFragment(eventCollection, curUser.getUsername()));
     }
 
     /* IAuthView.Listener realization start */
