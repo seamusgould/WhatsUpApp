@@ -107,7 +107,7 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
     }
 
     @Override
-    public void onCommentAdded() {
+    public void onCommentAdded(String s, Event event) {
 
     }
 

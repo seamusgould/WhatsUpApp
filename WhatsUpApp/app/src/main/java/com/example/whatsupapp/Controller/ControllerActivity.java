@@ -144,8 +144,10 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     @Override
-    public void onCommentAdded() {
-        this.mainView.displayFragment(new HomeFragment(this));
+    public void onCommentAdded(String comment, Event event) {
+        event.addComment(comment);
+        this.persistenceFacade.saveComment(event);
+        //this.persistenceFacade.saveComment(this.curEvent); // save event to database
     }
 
     @Override
