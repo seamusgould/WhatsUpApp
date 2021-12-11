@@ -126,6 +126,11 @@ public class HomeFragment extends Fragment implements IPostEventViewMvc.Listener
 
     }
 
+    @Override
+    public void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped) {
+
+    }
+
     @SuppressLint("ResourceType")
     @Override
     public void onItemClick(View view, int position) {

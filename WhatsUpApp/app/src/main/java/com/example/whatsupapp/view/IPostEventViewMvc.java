@@ -32,6 +32,8 @@ public interface IPostEventViewMvc {
         void onRecurrenceButton(Calendar eventDate);
 
         void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped);
+
+        void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped);
     }
 
     public View getRootView();

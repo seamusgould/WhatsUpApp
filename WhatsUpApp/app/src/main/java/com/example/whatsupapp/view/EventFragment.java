@@ -126,5 +126,10 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
 
     }
 
+    @Override
+    public void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped) {
+
+    }
+
 
 }

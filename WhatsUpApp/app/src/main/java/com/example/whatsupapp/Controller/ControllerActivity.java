@@ -122,6 +122,11 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
     }
 
     @Override
+    public void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped) {
+        this.mainView.displayFragment(new AddTimeFragment(this, eventDate, howOften, howMany, howManySkipped));
+    }
+
+    @Override
     public void onAddedButton() {
         this.mainView.displayFragment(new HomeFragment(this));
     }

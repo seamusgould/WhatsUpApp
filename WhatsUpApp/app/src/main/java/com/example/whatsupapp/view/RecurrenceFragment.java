@@ -52,10 +52,10 @@ public class RecurrenceFragment extends Fragment implements IPostEventViewMvc{
                     Editable weeksSkippedEditable = binding.numberOfWeeksSkipped.getText();
                     Editable totalWeeksEditable = binding.numberOfTotalEvents.getText();
 
-                    String weeksSkipped = weeksSkippedEditable.toString();
-                    String totalWeeks = totalWeeksEditable.toString();
+                    int weeksSkipped = Integer.parseInt(weeksSkippedEditable.toString());
+                    int totalWeeks = Integer.parseInt(totalWeeksEditable.toString());
 
-
+                    this.listener.onRecurrenceSelected(curEventDate, weeklyOrMonthlyString, totalWeeks, weeksSkipped);
                 }
         );
     }
