@@ -161,4 +161,3 @@ public class EventCollection implements Serializable {
       return ll;
    }
 }
-

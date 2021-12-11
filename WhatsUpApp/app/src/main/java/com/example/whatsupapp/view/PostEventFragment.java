@@ -110,10 +110,9 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                             currentCal, howOften, howMany, howManySkipped);
                 } else {
                     EventCollection events = listener.onAddedEvent(eventName, eventDateAndTime,
-                            eventDescription, eventPoster, eventLoc);
+                            eventLoc, eventPoster, eventDescription);
                 }
 
-                //TODO: figure out a way to call handleRecurrence on the newly created event
                 this.listener.onAddedButton();
                 eventNameEditable.clear();
                 eventLocEditable.clear();
