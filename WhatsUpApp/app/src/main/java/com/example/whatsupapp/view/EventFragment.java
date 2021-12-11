@@ -59,7 +59,8 @@ public class EventFragment extends Fragment implements IPostEventViewMvc.Listene
             Calendar cal = Calendar.getInstance();
             event.addComment(user_comment + " posted by " + event.getEventPoster() + " " +
                     dateFormat.format(cal.getTime()));
-    });
+            nameEditable.clear();
+        });
     }
 
     @Override

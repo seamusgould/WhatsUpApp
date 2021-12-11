@@ -1,9 +1,12 @@
 package com.example.whatsupapp.model;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class Event implements Serializable {
     //need getter for each object I want to display
@@ -119,5 +122,24 @@ public class Event implements Serializable {
 
     public String getId() {
         return id;
+    }
+
+    public Calendar getFirstDay() throws ParseException {
+        if (allDatesAndTimes.size() == 0) {
+            String firstDay = eventDateAndTime;
+            Calendar cal = Calendar.getInstance();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy HH:mm", Locale.ENGLISH);
+            cal.setTime(sdf.parse(firstDay));// all done
+            return cal;
+        }
+        else {
+            String firstDay = allDatesAndTimes.get(0);
+            Calendar cal = Calendar.getInstance();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy HH:mm", Locale.ENGLISH);
+            cal.setTime(sdf.parse(firstDay));// all done
+            return cal;
+        }
     }
 }

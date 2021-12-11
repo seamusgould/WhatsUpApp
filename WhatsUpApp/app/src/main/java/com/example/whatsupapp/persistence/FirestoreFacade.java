@@ -41,6 +41,7 @@ public class FirestoreFacade implements IPersistenceFacade{
                         ec.addEvent(event);
                     }
                     listener.onDataReceived(ec);
+                    ec.orderEvents();
                 })
                 .addOnFailureListener(e ->
                         Log.w("NextGenPos", "Error retrieving ledger from database",e));
