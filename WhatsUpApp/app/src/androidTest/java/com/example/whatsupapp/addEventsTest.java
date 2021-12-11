@@ -1,8 +1,15 @@
 package com.example.whatsupapp;
 
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+
 import android.content.Context;
+import android.view.View;
 
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.assertion.ViewAssertions;
@@ -10,12 +17,14 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import org.hamcrest.Matcher;
 import org.junit.Test;
 
 import com.example.whatsupapp.Controller.ControllerActivity;
 
 
 import static org.junit.Assert.*;
+import static java.util.regex.Pattern.matches;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -40,30 +49,30 @@ public class addEventsTest {
     @Test
     public void testAddItems(){
 
-        Espresso.onView(ViewMatchers.withId(R.id.PostButton)).perform(ViewActions.click());
+        onView(withId(R.id.PostButton)).perform(ViewActions.click());
 
-        ViewInteraction addedEvents = Espresso.onView(ViewMatchers.withId(R.id.eventList));
+        ViewInteraction addedEvents = onView(withId(R.id.eventList));
 
-        ViewInteraction name = Espresso.onView(ViewMatchers.withId(R.id.editName))
+        ViewInteraction name = onView(withId(R.id.editName))
                 .perform(ViewActions.typeText("Chess Club"));
 
-        ViewInteraction date = Espresso.onView(ViewMatchers.withId(R.id.editDate))
+        ViewInteraction date = onView(withId(R.id.editDate))
                 .perform(ViewActions.typeText("12/12/2022"));
 
-        ViewInteraction time = Espresso.onView(ViewMatchers.withId(R.id.editTime))
+        ViewInteraction time = onView(withId(R.id.editTime))
                 .perform(ViewActions.typeText("11:30am"));
 
-        ViewInteraction loc = Espresso.onView(ViewMatchers.withId(R.id.editLoc))
+        ViewInteraction loc = onView(withId(R.id.editLoc))
                 .perform(ViewActions.typeText("Main Building"));
 
-        loc.perform(ViewActions.pressBack());
+        onView(withId(R.id.usernameEditText)).perform(closeSoftKeyboard());
 
-        ViewInteraction desc = Espresso.onView(ViewMatchers.withId(R.id.editDescription))
+        ViewInteraction desc = onView(withId(R.id.editDescription))
                 .perform(ViewActions.typeText("Playing a tournament that has rating guides."));
 
         loc.perform(ViewActions.pressBack());
 
-        Espresso.onView(ViewMatchers.withId(R.id.addEventButton)).perform(ViewActions.click());
+        onView(withId(R.id.addEventButton)).perform(ViewActions.click());
 
         String str = "";
         str += "User" +" posted: \n";
