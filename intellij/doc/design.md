@@ -57,22 +57,20 @@ Event "*" --- "1" Statistics : \tContributes-to\t\t
 @startuml
 hide footbox
 actor User as user
-participant " : Main" as main
-participant " : Controller" as cont
-participant " : Location" as evloc
+participant "PostEventFragment : IPostEventViewMvc" as postFrag
+participant " : ControllerActivity" as cont
 participant " : EventCollection" as coll
 participant " : Event" as event
+participant " : IPersistenceFacade" as persFacade
 
 
-user -> main: create event
-main -> cont: makeEvent
-cont -->> coll: makeEvent(eventName, eventDateAndTime, eventRecurrence, eventDescription, eventRoughLocation)
-coll -->> event **: create(eventName, eventDateAndTime, eventRecurrence, eventDescription, poster, eventRoughLocation)
-cont -->> evloc **: eLocation = eventRoughLocation
+user -> postFrag: Post event
+postFrag -> cont: getLocationList()
+postFrag -> cont: onAddedEvent(eventName, eventDateAndTime, eventDescription, eventPoster, eventLoc)
+cont -> coll : makeEvent(eventName, eventDateAndTime, eventDescription, eventPoster, eventLoc)
+coll --> event : curEvent = create(eventName, eventDateAndTime, eventDescription, eventPoster, eventLoc)
+cont ->  persFacade : saveEvent(curEvent)
 
-cont -> main: displayEvents
-
-main -> user: displayEvents
 
 @enduml
 ```
@@ -82,22 +80,15 @@ main -> user: displayEvents
 @startuml
 hide footbox
 actor User as user
-participant " : Main" as main
-participant " : Controller" as cont
+participant " : HomeFragment" as homeFrag
+participant " : ControllerActivity" as cont
 participant " : EventCollection" as coll
-participant " : Event" as event
 
-user -> main: view events
+user -> homeFrag: View events
+homeFrag -> cont: getEvents()
+cont -> coll: getEventCollection()
 
-main -> cont: displayEvents
-
-cont -> coll: toString()
-
-coll -> event: toString()
-
-cont -> main: displayEvents
-
-main -> user: displayEvents
+homeFrag -> user: Display events
 
 @enduml
 ```
