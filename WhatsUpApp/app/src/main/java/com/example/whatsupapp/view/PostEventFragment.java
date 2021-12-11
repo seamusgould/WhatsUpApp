@@ -57,6 +57,12 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
         currentCal.set(Calendar.HOUR, eventDate.get(Calendar.HOUR));
         currentCal.set(Calendar.MINUTE, eventDate.get(Calendar.MINUTE));
 
+        int currentMonth = currentCal.get(Calendar.MONTH);
+        int currentDay = currentCal.get(Calendar.DATE);
+
+        eventDateAndTime = addZero(currentMonth + 1) + "/" + addZero(currentDay) + "/" + currentCal.get(Calendar.YEAR) + " " + addZero(currentCal.get(Calendar.HOUR))
+                + ":" + addZero(currentCal.get(Calendar.MINUTE));
+
         secondConstructorUsed = true;
     }
 
@@ -114,6 +120,16 @@ public class PostEventFragment extends Fragment implements IPostEventViewMvc{
                 eventDescriptionEditable.clear();
 
         });
+    }
+
+    public String addZero(int x){
+        if (x < 10){
+            return "0" + x;
+        } else
+        {
+            return Integer.toString(x);
+        }
+
     }
 
     @Override

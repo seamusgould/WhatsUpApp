@@ -19,5 +19,5 @@
     <string name="invalid_credentials_msg">Signin failed. Invalid credentials.</string>
     <string name="recurrence_explainer_msg1">Would you like this event to recur weekly (every Tuesday, for example), or monthly (second saturday of the month, for example)? </string>
     <string name="recurrence_explainer_msg2">How many weeks would you like to skip? For example, 1 if the event is being held biweekly. </string>
-    <string name="recurrence_explainer_msg3">How many times in total would you like for this event to occur? </string>
+    <string name="recurrence_explainer_msg3">How many more times would you like for this event to occur? </string>
 </resources>

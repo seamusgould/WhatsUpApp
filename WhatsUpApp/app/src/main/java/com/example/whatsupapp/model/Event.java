@@ -29,7 +29,7 @@ public class Event implements Serializable {
         this.eventPoster = eventPoster;
         this.eventLocation =  eLocation;
         this.eventDescription = description;
-        //this.addNewDateAndTime(eventDateAndTime);
+        this.addNewDateAndTime(eventDateAndTime);
     }
 
     //Calendar constructor
@@ -70,9 +70,9 @@ public class Event implements Serializable {
         String str = "";
         String score = Integer.toString(upvoteDownvote);
         str += eventPoster + " posted: \n";
-        str += eventName + " at " + eventLocation;
+        str += eventName + " at " + eventLocation + "\n";
         for (int i = 0; i < getAllDatesAndTimes().size(); i++){
-            str += getAllDatesAndTimes().get(i) + " and\n";
+            str += getAllDatesAndTimes().get(i) + " \n";
         }
 
         str += eventDescription;

@@ -56,7 +56,7 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
             int eventHour = this.binding.timePicker1.getHour();
             int eventMinutes = this.binding.timePicker1.getMinute();
 
-            eventDateString += " " + eventHour + ":" + eventMinutes;
+            eventDateString += " " + addZero(eventHour) + ":" + addZero(eventMinutes);
 
             if (secondConstructorUsed){
 
@@ -71,6 +71,16 @@ public class AddTimeFragment extends Fragment implements IPostEventViewMvc {
 
                 }
         );
+    }
+
+    public String addZero(int x){
+        if (x < 10){
+            return "0" + x;
+        } else
+        {
+            return Integer.toString(x);
+        }
+
     }
 
     @Override

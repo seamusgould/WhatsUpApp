@@ -136,9 +136,18 @@ public class EventCollection implements Serializable {
    }
 
    public String convertCalendarToString(Calendar c){
-      String s = c.get(Calendar.MONTH) + "/" + c.get(Calendar.DATE) + "/" + c.get(Calendar.YEAR) + " "
-              + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE);
+      String s = addZero(1 + c.get(Calendar.MONTH)) + "/" + addZero(c.get(Calendar.DATE)) + "/" + c.get(Calendar.YEAR);
       return s;
+   }
+
+   public String addZero(int x){
+      if (x < 10){
+         return "0" + x;
+      } else
+      {
+         return Integer.toString(x);
+      }
+
    }
 
 }

@@ -34,11 +34,11 @@ public class AddDateFragment extends Fragment implements IPostEventViewMvc {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         this.binding.DateButton.setOnClickListener((clickedView) -> {
 
-            int eventMonth = this.binding.datePicker1.getMonth();
+            int eventMonth = (1 + this.binding.datePicker1.getMonth());
             int eventDay = this.binding.datePicker1.getDayOfMonth();
             int eventYear = this.binding.datePicker1.getYear();
 
-            String eventDateString = eventMonth + "/" + eventDay + "/" + eventYear;
+            String eventDateString = addZero(eventMonth) + "/" + addZero(eventDay) + "/" + eventYear;
 
             this.listener.onDateButton(eventDateString);
                 }
@@ -57,6 +57,16 @@ public class AddDateFragment extends Fragment implements IPostEventViewMvc {
                     this.listener.onRecurrenceButton(eventDate);
                 }
         );
+    }
+
+    public String addZero(int x){
+        if (x < 10){
+            return "0" + x;
+        } else
+        {
+            return Integer.toString(x);
+        }
+
     }
 
     @Override
