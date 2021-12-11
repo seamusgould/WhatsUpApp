@@ -21,6 +21,7 @@ import com.example.whatsupapp.view.HomeFragment;
 import com.example.whatsupapp.view.IEventCollectionView;
 import com.example.whatsupapp.view.IHomeFragmentView;
 import com.example.whatsupapp.view.IMainView;
+import com.example.whatsupapp.view.IMap;
 import com.example.whatsupapp.view.IPostEventViewMvc;
 import com.example.whatsupapp.view.MainView;
 import com.example.whatsupapp.view.MapsFragment;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ControllerActivity extends AppCompatActivity implements IPostEventViewMvc.Listener,
-        IHomeFragmentView.Listener, IAuthView.Listener, IEventCollectionView.Listener{
+        IHomeFragmentView.Listener, IAuthView.Listener, IEventCollectionView.Listener, IMap.Listener{
 
     private EventCollection eventCollection;
     private ArrayList<Location> locationList = Location.getLocationList();
@@ -222,13 +223,11 @@ public class ControllerActivity extends AppCompatActivity implements IPostEventV
 
     @Override
     public EventCollection getEventCollection() {
-        return this.eventCollection;
+        return eventCollection;
     }
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
-
-    //onlocation search method that gets passed in location
 }
