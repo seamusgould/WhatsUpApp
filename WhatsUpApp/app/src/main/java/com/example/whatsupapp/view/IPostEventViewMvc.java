@@ -25,7 +25,7 @@ public interface IPostEventViewMvc {
         void onDateButton(String eventDate);
         void onAddedButton();
 
-        void onCommentAdded();
+        void onCommentAdded(String s, Event event);
 
         void onTimeButton(String eventDateAndTime);
 

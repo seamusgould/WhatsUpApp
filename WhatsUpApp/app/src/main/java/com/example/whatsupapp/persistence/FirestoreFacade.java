@@ -20,10 +20,6 @@ public class FirestoreFacade implements IPersistenceFacade{
 
     @Override
     public void saveEvent(@NonNull Event event) {
-/*
-        db.collection(EVENT_COLLECTION).document(event.getEventName()).set(event);
-*/
-
         DocumentReference dref = db.collection(EVENT_COLLECTION).document();
         String id = dref.getId();
         event.setId(id);
@@ -88,5 +84,4 @@ public class FirestoreFacade implements IPersistenceFacade{
                 .addOnFailureListener(e ->
                         Log.w("NextGenPos", "Error retrieving user from database",e));
     }
-
 }
