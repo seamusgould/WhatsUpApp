@@ -251,6 +251,34 @@ public String toString()
 public static ArrayList<Location> getLocationList()
 }
 
+class AuthKey{
+- salt : String
+- key : String
+--
+public AuthKey()
+public AuthKey(String password)
+private AuthKey(String salt, String password)
+public String getSalt()
+public String getKey()
+public boolean validatePassword(String password)
+public String toString()
+private static String generateSalt()
+private static String generateKey(String salt, String password)
+}
+
+class Username{
+- username : String
+- authKey : AuthKey
+--
+public Username()
+public Username(String username, String password)
+public String getUsername()
+public AuthKey getAuthKey()
+public boolean validatePassword(String password)
+public String toString()
+}
+
+
 class ControllerActivity{
 - collection : EventCollection
 - locationList : ArrayList<Location> = Location.getLocationList()
@@ -287,32 +315,6 @@ public EventCollection getEventCollection()
 public void onPointerCaptureChanged(boolean hasCapture)
 }
 
-class AuthKey{
-- salt : String
-- key : String
---
-public AuthKey()
-public AuthKey(String password)
-private AuthKey(String salt, String password)
-public String getSalt()
-public String getKey()
-public boolean validatePassword(String password)
-public String toString()
-private static String generateSalt()
-private static String generateKey(String salt, String password)
-}
-
-class Username{
-- username : String
-- authKey : AuthKey
---
-public Username()
-public Username(String username, String password)
-public String getUsername()
-public AuthKey getAuthKey()
-public boolean validatePassword(String password)
-public String toString()
-}
 
 class FirestoreFacade{
 db : FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -336,6 +338,17 @@ void createUserIfNotExists(@NonNull User user, @NonNull BinaryResultListener lis
 void retrieveUser(@NonNull String username, @NonNull DataListener<User> listener)
 }
 
+
+class AddDateFragment{
+listener : IPostEventViewMvc.Listener
+binding : FragmentAddDateBinding
+--
+public AddDateFragment(IPostEventViewMvc.Listener listener)
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onViewCreated(View view, Bundle savedInstanceState)
+public String addZero(int x)
+}
+
 class AddTimeFragment{
 listener : IPostEventViewMvc.Listener
 binding : FragmentAddTimeBinding
@@ -351,8 +364,6 @@ public AddTimeFragment(IPostEventViewMvc.Listener listener, Calendar eventDate, 
 public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
 public void onViewCreated(View view, Bundle savedInstanceState)
 public String addZero(int x)
-public View getRootView()
-public void updateDisplay(EventCollection eventCollection)
 }
 
 class AuthFragment{
@@ -396,18 +407,6 @@ public EventFragment(IPostEventViewMvc.Listener listener, int i)
 public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
 public void onViewCreated(View view, Bundle savedInstanceState)
 public void onEventCollectionUpdated(EventCollection eventCollection)
-public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription)
-public EventCollection onAddedRecurrence(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften, int howMany, int howManySkip)
-public ArrayList<Location> getLocationList()
-public void onPostButton()
-public void onDateButton(String eventDate)
-public void onItemClick(View view, int position)
-public void onAddedButton()
-public void onCommentAdded(String s, Event event)
-public void onTimeButton(String eventDateAndTime)
-public void onRecurrenceButton(Calendar eventDate)
-public void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped)
-public void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped)
 }
 
 class HomeFragment{
@@ -422,18 +421,6 @@ activity : ControllerActivity
 public HomeFragment(IPostEventViewMvc.Listener listener)
 public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
 public void onViewCreated(View view, Bundle savedInstanceState)
-public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription)
-public EventCollection onAddedRecurrence(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften, int howMany, int howManySkip)
-public ArrayList<Location> getLocationList()
-public void onPostButton()
-public void onDateButton(String eventDate)
-public ArrayList<Event> getEvents()
-public void onAddedButton()
-public void onCommentAdded(String s, Event event)
-public void onTimeButton(String eventDateAndTime)
-public void onRecurrenceButton(Calendar eventDate)
-public void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped)
-public void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped)
 public void onItemClick(View view, int position)
 }
 
@@ -477,8 +464,6 @@ public void onViewCreated(View view, Bundle savedInstanceState)
 public String addZero(int x)
 public void onSaveInstanceState(@NonNull Bundle outState)
 public void onViewStateRestored(@Nullable Bundle savedInstanceState)
-public View getRootView()
-public void updateDisplay(EventCollection eventCollection)
 }
 
 class ProfileFragment{
@@ -502,8 +487,6 @@ curEventDate : Calendar = Calendar.getInstance()
 public RecurrenceFragment(Listener listener, Calendar eventDate)
 public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
 public void onViewCreated(View view, Bundle savedInstanceState)
-public View getRootView()
-public void updateDisplay(EventCollection eventCollection)
 }
 
 @enduml
