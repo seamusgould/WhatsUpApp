@@ -110,7 +110,6 @@ public class MapsFragment extends Fragment implements IMap {
                     googleMap.addMarker(new MarkerOptions().position(locMap.get(loc)).title(event.getEventName()));
                 }
                 LatLng vassar = new LatLng(41.686229, -73.897296);
-                googleMap.addMarker(new MarkerOptions().position(vassar).title("Marker in Vassar"));
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(vassar));
                 googleMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
                 map = googleMap;

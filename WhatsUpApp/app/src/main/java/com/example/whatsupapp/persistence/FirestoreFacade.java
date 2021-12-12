@@ -11,6 +11,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class FirestoreFacade implements IPersistenceFacade{
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -38,7 +44,16 @@ public class FirestoreFacade implements IPersistenceFacade{
                     EventCollection ec = new EventCollection();
                     for (DocumentSnapshot dsnap : qsnap){
                         Event event = dsnap.toObject(Event.class);
-                        ec.addEvent(event);
+                        try {
+                            if (!eventExpired(event)) {
+                                ec.addEvent(event);
+                            }
+                            else{
+                                //Delete the event
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
                     }
                     listener.onDataReceived(ec);
                     ec.orderEvents();
@@ -84,5 +99,14 @@ public class FirestoreFacade implements IPersistenceFacade{
                 })
                 .addOnFailureListener(e ->
                         Log.w("NextGenPos", "Error retrieving user from database",e));
+    }
+
+    public boolean eventExpired(Event event) throws ParseException {
+        Date now = new Date();
+        Calendar lastDay = event.getLastDay();
+        //Calendar date = lastDay.getInstance();
+        Date ld = lastDay.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        return (ld.before(now));
     }
 }

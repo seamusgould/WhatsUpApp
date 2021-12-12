@@ -67,9 +67,9 @@ public class Event implements Serializable {
         str += " On " + eventDateAndTime + " " + eventName + " at " + eventLocation;
         str += "\n " + eventDescription;
         return str;
-        }
+    }
 
-     public String toStringExtended(){
+    public String toStringExtended(){
         String str = "";
         String score = Integer.toString(upvoteDownvote);
         str += eventPoster + " posted: \n";
@@ -80,20 +80,20 @@ public class Event implements Serializable {
 
         str += eventDescription;
         return str;
-     }
+    }
 
 
 
     public void addComment(String s){
         comments.add(s);
-        
+
     }
 
     public List<String> getComments() {
         return this.comments;
     }
 
-//    public User getUser(){
+    //    public User getUser(){
 //        return this.poster;
 //    }
     public String getEventPoster() {
@@ -129,7 +129,7 @@ public class Event implements Serializable {
             String firstDay = eventDateAndTime;
             Calendar cal = Calendar.getInstance();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy HH:mm", Locale.ENGLISH);
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.ENGLISH);
             cal.setTime(sdf.parse(firstDay));// all done
             return cal;
         }
@@ -137,8 +137,27 @@ public class Event implements Serializable {
             String firstDay = allDatesAndTimes.get(0);
             Calendar cal = Calendar.getInstance();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("mm/dd/yyyy HH:mm", Locale.ENGLISH);
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.ENGLISH);
             cal.setTime(sdf.parse(firstDay));// all done
+            return cal;
+        }
+    }
+
+    public Calendar getLastDay() throws ParseException {
+        if (allDatesAndTimes.size() == 0) {
+            String lastDay = eventDateAndTime;
+            Calendar cal = Calendar.getInstance();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.ENGLISH);
+            cal.setTime(sdf.parse(lastDay));// all done
+            return cal;
+        }
+        else {
+            String lastDay = allDatesAndTimes.get(allDatesAndTimes.size() - 1);
+            Calendar cal = Calendar.getInstance();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm", Locale.ENGLISH);
+            cal.setTime(sdf.parse(lastDay));// all done
             return cal;
         }
     }
