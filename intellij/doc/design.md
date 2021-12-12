@@ -251,12 +251,6 @@ public String toString()
 public static ArrayList<Location> getLocationList()
 }
 
-class Main{
---
-public static Calendar isValidDateAndTime(String eDateAndTime)
-public static void main(String[] args)
-}
-
 class ControllerActivity{
 - collection : EventCollection
 - locationList : ArrayList<Location> = Location.getLocationList()
@@ -293,17 +287,224 @@ public EventCollection getEventCollection()
 public void onPointerCaptureChanged(boolean hasCapture)
 }
 
-User ---> Main : \t\t\t\t
+class AuthKey{
+- salt : String
+- key : String
+--
+public AuthKey()
+public AuthKey(String password)
+private AuthKey(String salt, String password)
+public String getSalt()
+public String getKey()
+public boolean validatePassword(String password)
+public String toString()
+private static String generateSalt()
+private static String generateKey(String salt, String password)
+}
 
-Main ---> ControllerActivity : \t\t\t\t
+class Username{
+- username : String
+- authKey : AuthKey
+--
+public Username()
+public Username(String username, String password)
+public String getUsername()
+public AuthKey getAuthKey()
+public boolean validatePassword(String password)
+public String toString()
+}
 
-ControllerActivity ---> "(1)" EventCollection : \t\t\t\t
+class FirestoreFacade{
+db : FirebaseFirestore = FirebaseFirestore.getInstance()
+{static} - USERS : String = "users"
+{static} - EVENT_COLLECTION : String = "event collection"
+--
+public void saveEvent(@NonNull Event event)
+public void saveComment(@NonNull Event event)
+public void retrieveEventCollection(@NonNull DataListener<EventCollection> listener)
+public void createUserIfNotExists(@NonNull User user, @NonNull BinaryResultListener listener)
+private void setUser(@NonNull User user, @NonNull BinaryResultListener listener)
+public void retrieveUser(@NonNull String username, @NonNull DataListener<User> listener)
+}
 
-EventCollection *- "(*)\nll\n{ArrayList}" Event : \t\t\t\t
+interface IPersistenceFacade{
+--
+void saveComment(Event event)
+void saveEvent(@NonNull Event event)
+void retrieveEventCollection(@NonNull DataListener<EventCollection> listener)
+void createUserIfNotExists(@NonNull User user, @NonNull BinaryResultListener listener)
+void retrieveUser(@NonNull String username, @NonNull DataListener<User> listener)
+}
 
-ControllerActivity ---> Location : \t\t\t\t
+class AddTimeFragment{
+listener : IPostEventViewMvc.Listener
+binding : FragmentAddTimeBinding
+eventDateString : String
+howOften : String
+howMany : int
+howManySkipped : int
+secondConstructorUsed : boolean = false
+eventDate : Calendar = Calendar.getInstance()
+--
+public AddTimeFragment(IPostEventViewMvc.Listener listener, String eventDateString)
+public AddTimeFragment(IPostEventViewMvc.Listener listener, Calendar eventDate, String howOften, int howMany, int howManySkipepd)
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onViewCreated(View view, Bundle savedInstanceState)
+public String addZero(int x)
+public View getRootView()
+public void updateDisplay(EventCollection eventCollection)
+}
 
-Event ---> "(1)" Location : \t\t\t\t
+class AuthFragment{
+{static} - IS_REGISTERED : String = "isRegistered"
+- listener : Listener
+- binding : FragmentAuthBinding
+- isRegisterd : boolean = false
+--
+public AuthFragment(@NonNull Listener listener)
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onViewCreated(View view, Bundle savedInstanceState)
+public void onSaveInstanceState(@NonNull Bundle outState)
+public void onRegisterSuccess()
+private void activateRegisteredConfig()
+public void onUserAlreadyExists()
+private void displayMessage(int msgRid)
+}
+
+class EventAdapter{
+- events : ArrayList<Event>
+- binding : FragmentHomeBinding
+- inflater : LayoutInflater
+- mClickListener : PostEventFragment.Listener
+- iClickListener : ItemClickListener
+--
+public EventAdapter(Context context, ArrayList<Event> events)
+public View onCreateViewHolder(ViewGroup parent, int viewType)
+public void onBindViewHolder(ViewHolder holder, int position)
+public int getItemCount()
+public Event getItem(int id)
+public void setClickListener(ItemClickListener itemClickListener)
+}
+
+class EventFragment{
+event : Event
+listener : IPostEventViewMvc.Listener
+binding : FragmentEventBinding
+inflater : LayoutInflater
+--
+public EventFragment(IPostEventViewMvc.Listener listener, int i)
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onViewCreated(View view, Bundle savedInstanceState)
+public void onEventCollectionUpdated(EventCollection eventCollection)
+public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription)
+public EventCollection onAddedRecurrence(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften, int howMany, int howManySkip)
+public ArrayList<Location> getLocationList()
+public void onPostButton()
+public void onDateButton(String eventDate)
+public void onItemClick(View view, int position)
+public void onAddedButton()
+public void onCommentAdded(String s, Event event)
+public void onTimeButton(String eventDateAndTime)
+public void onRecurrenceButton(Calendar eventDate)
+public void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped)
+public void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped)
+}
+
+class HomeFragment{
+adapter : EventAdapter
+binding : FragmentHomeBinding
+listener : IPostEventViewMvc.Listener
+inflater : LayoutInflater
+eFragment : EventFragment
+mainBinding : MainBinding
+activity : ControllerActivity
+--
+public HomeFragment(IPostEventViewMvc.Listener listener)
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onViewCreated(View view, Bundle savedInstanceState)
+public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription)
+public EventCollection onAddedRecurrence(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften, int howMany, int howManySkip)
+public ArrayList<Location> getLocationList()
+public void onPostButton()
+public void onDateButton(String eventDate)
+public ArrayList<Event> getEvents()
+public void onAddedButton()
+public void onCommentAdded(String s, Event event)
+public void onTimeButton(String eventDateAndTime)
+public void onRecurrenceButton(Calendar eventDate)
+public void onTimeButtonRecurrence(Calendar eventDate, String howOften, int howMany, int howManySkipped)
+public void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped)
+public void onItemClick(View view, int position)
+}
+
+class MainView{
+mainBinding : MainBinding
+activity : ControllerActivity
+--
+public MainView(ControllerActivity activity)
+public View getRootView()
+public void displayFragment(Fragment fragment)
+public Fragment getCurrentFragment()
+}
+
+class MapsFragment{
+activity : ControllerActivity
+binding : FragmentMapsBinding
+map : GoogleMap
+--
+public MapsFragment(ControllerActivity activity)
+private OnMapReadyCallback callback = new OnMapReadyCallback()
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onViewCreated(View view, Bundle savedInstanceState)
+}
+
+class PostEventFragment{
+listener : Listener
+binding : FragmentPostEventBinding
+eventPoster : String
+eventDateAndTime : String
+ev : EventCollection
+currentCal : Calendar = Calendar.getInstance()
+howOften : String
+howMany : int
+howManySkipped : int
+secondConstructorUsed : boolean = false
+--
+public PostEventFragment(Listener listener, String eventPoster, String eventDateAndTime)
+public PostEventFragment(Listener listener, String eventPoster, EventCollection eventCollection, Calendar eventDate, String howOften, int howMany, int howManySkipped)
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onViewCreated(View view, Bundle savedInstanceState)
+public String addZero(int x)
+public void onSaveInstanceState(@NonNull Bundle outState)
+public void onViewStateRestored(@Nullable Bundle savedInstanceState)
+public View getRootView()
+public void updateDisplay(EventCollection eventCollection)
+}
+
+class ProfileFragment{
+binding : FragmentProfileBinding
+username : String
+ec : EventCollection
+filteredEvents : List<Event> = new ArrayList<Event>()
+--
+public ProfileFragment(EventCollection eventCollection, String username)
+public ProfileFragment()
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onSaveInstanceState(@NonNull Bundle outState)
+public void onViewStateRestored(@Nullable Bundle savedInstanceState)
+}
+
+class RecurrenceFragment{
+listener : IPostEventViewMvc.Listener
+binding : FragmentRecurrenceBinding
+curEventDate : Calendar = Calendar.getInstance()
+--
+public RecurrenceFragment(Listener listener, Calendar eventDate)
+public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+public void onViewCreated(View view, Bundle savedInstanceState)
+public View getRootView()
+public void updateDisplay(EventCollection eventCollection)
+}
 
 @enduml
 ```
