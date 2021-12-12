@@ -23,18 +23,20 @@
 2. System displays activities that are happening at the current time or in the near future.
 3. Viewer views the list of activities.
 4. Viewer chooses an activity to view in more detail.
-5. The comments associated with the activity are displayed. The date and time the comment was posted, the number of upvotes and downvotes the comment has, and which user posted the comment are displayed with the comment text.
-6. Viewer chooses the option to add a comment.
-7. Viewer enters the text they want as their comment.
+5. The comments associated with the activity are displayed. The date and time the comment was posted and which user posted the comment are displayed with the comment text.
+6. Viewer enters the text they want as their comment.
+7. Viewer chooses the option to add their comment.
 8. The newly created comment is added to the collection of comments associated with the activity.
 
 **Extensions (or alternate flows):**  
-1a. The application fails to start
-1. Viewer can restart or contact the dev team
-   6a. Viewer no longer wishes to leave a comment
-1. The viewer can exit the comment screen to return to the detailed view of the activity.
-   8a. Viewer wishes to leave more than one comment
-1. Steps 5-8 can be repeated as often as desired.
+1a. The application fails to start  
+   1. Viewer can restart or contact the dev team  
+
+6a. Viewer no longer wishes to leave a comment  
+1. The viewer can exit the comment screen to return to the detailed view of the activity.  
+
+8a. Viewer wishes to leave more than one comment  
+   1. Steps 6-8 can be repeated as often as desired.
 
 **Special requirements:**
 - Touch screen UI.

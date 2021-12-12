@@ -17,21 +17,17 @@
 
 **Main success scenario:**
 1. Viewer opens the app.
-2. The user selects the option to create an account.
-3. The user provides their email address.
-4. The provided email address is verified to be a ".edu" address.
-5. The user's identity is confirmed using the email.
-6. The user creates a username.
-7. The user creates a password.
-8. A new account is created using the information provided by the user.
+2. The user enters a username.
+3. The user enters a password.
+4. The user selects the option to create an account with the credentials they provided.
+5. A new account is created using the information provided by the user.
 
 **Extensions (or alternate flows):**  
 1a. The application fails to start
-1. Viewer can restart or contact the dev team
-   4a. Email address provided is not a ".edu" address
-1. The user is asked to enter a valid ".edu" email address in order to create an account.
-   5a. The email is not confirmed
-1. The confirmation email can be resent, or the user could try creating an account again.
+1. Viewer can restart or contact the dev team  
+
+4a. An account with the username provided already exists
+1. The user is informed that their registration was not successful.
 
 **Special requirements:**
 - Touch screen UI.

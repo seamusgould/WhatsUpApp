@@ -21,18 +21,15 @@
 ### Comment on an Activity
 1. The viewer views the list of activities.
 2. The viewer selects an activity to view in more detail.
-3. The viewer selects the option to comment on the activity.
-4. The viewer writes their comment when prompted.
+3. The viewer writes their comment in the text box.
+4. The viewer selects the option to add their comment.
 5. The comment is added to the collection of existing comments for the activity.
 
 ### Create an Account
 1. The user opens the app.
-2. The user selects the option to create an account.
-3. The user provides their email address.
-4. The provided email address is verified to be a ".edu" address.
-5. The user's identity is confirmed using the email.
-6. The user creates a username.
-7. The user creates a password.
+2. The user enters a username.
+3. The user enters a password.
+4. The user selects the option to create an account with the credentials they provided.
 
 ### Manage Account
 1. User opens the app.
