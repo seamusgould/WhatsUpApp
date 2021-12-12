@@ -177,9 +177,34 @@ end
 @startuml
 skinparam classAttributeIconSize 0
 
+EventCollection *- "(*)\nll\n{ArrayList}" Event : \t\t
+ControllerActivity -> "(1) collection" EventCollection : \t
+Event -> "(1)" Location : \t\t\t
+Event --> "(1) poster" User : \t\t\t
+User -> "(1) authKey" AuthKey : \t\t\t
+ControllerActivity ---> Location : \t\t\t\t
+ControllerActivity --> "(1) curUser" User : \t
+ControllerActivity --> "(1) curEvent" Event : \t
+EventFragment --> "(1) event" Event : \t
+HomeFragment -> "(1) adapter" EventAdapter : \t
+HomeFragment -> "(1) eFragment" EventFragment : \t
+HomeFragment -> "(1) activity" ControllerActivity : \t
+EventAdapter -- "(*)\nevents\n{ArrayList}" Event : \t\t
+MainView --> "(1) activity" ControllerActivity : \t
+MapsFragment --> "(1) activity" ControllerActivity : \t
+PostEventFragment -> "(1) ev" EventCollection : \t
+ProfileFragment -> "(1) ec" EventCollection : \t
+ProfileFragment - "(*)\nfilteredEvents\n{List}" Event : \t\t
+AuthFragment -----> ControllerActivity : \t\t
+AuthFragment -> IPersistenceFacade : \t\t
+IPersistenceFacade <|.. FirestoreFacade 
+ControllerActivity -> RecurrenceFragment : \t\t
+AddDateFragment ---> ControllerActivity : \t\t
+AddTimeFragment --> ControllerActivity : \t\t
+
+
 class User{
 username : String
-- authKey : AuthKey
 --
 public User(String username)
 public User()
@@ -194,7 +219,6 @@ public String UserString()
 }
 
 class EventCollection{
-- ll : ArrayList<Event> [0..*]
 --
 public EventCollection()
 public String toString()
@@ -218,7 +242,6 @@ eventDateAndTime: String
 eventRecurrence : int
 eventDescription : String
 eventPoster : String
-poster : User
 eventLocation : String
 name : String
 allDatesAndTimes : List<String> = new ArrayList<String>()
@@ -266,29 +289,14 @@ private static String generateSalt()
 private static String generateKey(String salt, String password)
 }
 
-class Username{
-- username : String
-- authKey : AuthKey
---
-public Username()
-public Username(String username, String password)
-public String getUsername()
-public AuthKey getAuthKey()
-public boolean validatePassword(String password)
-public String toString()
-}
-
 
 class ControllerActivity{
-- collection : EventCollection
 - locationList : ArrayList<Location> = Location.getLocationList()
 - bottomNavigationView : BottomNavigationView
 - mainView : IMainView
 {static} - CUR_EVENT : String = "curEvent"
 {static} - CUR_USER : String = "curUser"
 - persistenceFacade : IPersistenceFacade = new FirestoreFacade()
-- User curUser
-- Event curEvent
 --
 protected void onCreate(Bundle savedInstanceState)
 public void onSaveInstanceState(@NonNull Bundle outState)
@@ -383,7 +391,6 @@ private void displayMessage(int msgRid)
 }
 
 class EventAdapter{
-- events : ArrayList<Event>
 - binding : FragmentHomeBinding
 - inflater : LayoutInflater
 - mClickListener : PostEventFragment.Listener
@@ -398,7 +405,6 @@ public void setClickListener(ItemClickListener itemClickListener)
 }
 
 class EventFragment{
-event : Event
 listener : IPostEventViewMvc.Listener
 binding : FragmentEventBinding
 inflater : LayoutInflater
@@ -410,13 +416,10 @@ public void onEventCollectionUpdated(EventCollection eventCollection)
 }
 
 class HomeFragment{
-adapter : EventAdapter
 binding : FragmentHomeBinding
 listener : IPostEventViewMvc.Listener
 inflater : LayoutInflater
-eFragment : EventFragment
 mainBinding : MainBinding
-activity : ControllerActivity
 --
 public HomeFragment(IPostEventViewMvc.Listener listener)
 public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
@@ -426,7 +429,6 @@ public void onItemClick(View view, int position)
 
 class MainView{
 mainBinding : MainBinding
-activity : ControllerActivity
 --
 public MainView(ControllerActivity activity)
 public View getRootView()
@@ -435,7 +437,6 @@ public Fragment getCurrentFragment()
 }
 
 class MapsFragment{
-activity : ControllerActivity
 binding : FragmentMapsBinding
 map : GoogleMap
 --
@@ -450,7 +451,6 @@ listener : Listener
 binding : FragmentPostEventBinding
 eventPoster : String
 eventDateAndTime : String
-ev : EventCollection
 currentCal : Calendar = Calendar.getInstance()
 howOften : String
 howMany : int
@@ -469,8 +469,6 @@ public void onViewStateRestored(@Nullable Bundle savedInstanceState)
 class ProfileFragment{
 binding : FragmentProfileBinding
 username : String
-ec : EventCollection
-filteredEvents : List<Event> = new ArrayList<Event>()
 --
 public ProfileFragment(EventCollection eventCollection, String username)
 public ProfileFragment()
