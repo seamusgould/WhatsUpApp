@@ -221,16 +221,39 @@ public static void main(String[] args)
 }
 
 class Controller{
-- collection : EventCollection = new EventCollection()
-- locationList : ArrayList<Location>
+- collection : EventCollection
+- locationList : ArrayList<Location> = Location.getLocationList()
+- bottomNavigationView : BottomNavigationView
+- mainView : IMainView
+{static} - CUR_EVENT : String = "curEvent"
+{static} - CUR_USER : String = "curUser"
+- persistenceFacade : IPersistenceFacade = new FirestoreFacade()
+- User curUser
+- Event curEvent
 --
-public Event makeEvent(String eventName, Calendar eventDateAndTime, int eventRecurrence, String eventDescription, User poster, String eventRoughLocation)
+protected void onCreate(Bundle savedInstanceState)
+public void onSaveInstanceState(@NonNull Bundle outState)
+public ArrayList<Event> getEvents()
+public void onItemClick(View view, int position)
+public void onPostButton()
+public void onDateButton(String eventDate)
+public void onTimeButton(String eventDateAndTime)
+public void onRecurrenceButton(Calendar eventDate)
+public void onTimeButtonRecucrrence(Calendar eventDate, String howOften, int howMany, int howManySkipped)
+public void onRecurrenceSelected(Calendar eventDate, String howOften, int howMany, int howManySkipped)
+public void onAddedButton()
+public EventCollection onAddedRecurrence(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription, Calendar c, String howOften, int howMany, int howManySkip)
+public void onCommentAdded(String comment, Event event)
+public EventCollection onAddedEvent(String eventName, String eventDateAndTime, String eventRoughLocation, String eventPoster, String eventDescription)
+public ArrayList<Location> getLocationList()
+public void onMapSelected()
+public void onHomeSelected()
+public void onProfileSelected()
+public void onRegister(String username, String password, IAuthView authView)
+public void onSigninAttempt(String username, String password, IAuthView authView)
+public void onNewEvent()
 public EventCollection getEventCollection()
-public ArrayList getLocationList()
-public void addNewLocation(Location l)
-public Location newLocationFromString(String s)
-public boolean isResponsePost(String s)
-public void addStandardLocations()
+public void onPointerCaptureChanged(boolean hasCapture)
 }
 
 User ---> Main : \t\t\t\t
