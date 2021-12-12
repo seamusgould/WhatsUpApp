@@ -179,39 +179,76 @@ skinparam classAttributeIconSize 0
 
 class User{
 username : String
+- authKey : AuthKey
 --
+public User(String username)
+public User()
+public User(String username, String password)
+public String getUsername()
+public AuthKey getAuthKey()
+public boolean validatePassword(String password)
 public void upvote(Event e)
 public void downvote(Event e)
+public String toString()
+public String UserString()
 }
 
 class EventCollection{
-+ ll : ArrayList<Event> [0..*]
+- ll : ArrayList<Event> [0..*]
 --
 public EventCollection()
 public String toString()
-public Event makeEvent(String eventName, Calendar eventDateAndTime, int eventRecurrence, String eventDescription, User poster, Location eventRoughLocation)
+public void addEvent(Event event)
+public Event makeEvent(String eventName, String eventDateAndTime, String eventDescription, String eventPoster, String eventRoughLocation)
+public ArrayList<Event> getEventCollection()
+public Event getEvent(int i)
+public ArrayList<Event> findUsersEvents(String username)
+public void handleRecurrence(Event e, Calendar c, String howOften, int howManyTimes, int howManySkip)
+public Calendar assignYearMonthDay(Calendar c, int year, int month, int day)
+private int getWeekOfDateInMonth(Calendar c)
+public String convertCalendarToString(Calendar c)
+public String addZero(int x)
+public ArrayList<Event> orderEvents()
 }
 
 class Event{
-+ upvoteDownvote : int = 0
-+ eventName : String
-+ eventDateAndTime: Calendar
-+ eventRecurrence : int
-+ eventDescription : String
-+ eventPoster : User
-+ eventLocation : Location
-+ name : String
-+ finalString : String = ""
+upvoteDownvote : int = 0
+eventName : String
+eventDateAndTime: String
+eventRecurrence : int
+eventDescription : String
+eventPoster : String
+poster : User
+eventLocation : String
+name : String
+allDatesAndTimes : List<String> = new ArrayList<String>()
+comments : List<String> = new ArrayList<String>()
+id : String
 --
-public Event(String name, Calendar eDateAndTime, int recurrence, String description, User poster, Location eLocation)
+public Event(String name, String eventDateAndTime, String description, String eventPoster, String eLocation)
+public Event()
+public void addNewDateAndTime(String c)
+public List<String> getAllDatesAndTimes()
 public String toString()
+public String toStringExtended()
+public void addComment(String s)
+public List<String> getComments()
+public String getEventPoster()
+public String getEventName()
+public String getEventDateAndTime()
+public String getEventLocation()
+public String getEventDescription()
+public void setId(String id)
+public String getId()
+public Calendar getFirstDay() throws exception ParseException
 }
 
 class Location{
-+ roughLocation : String
+roughLocation : String
 --
 public Location (String roughLocation)
 public String toString()
+public static ArrayList<Location> getLocationList()
 }
 
 class Main{
@@ -220,7 +257,7 @@ public static Calendar isValidDateAndTime(String eDateAndTime)
 public static void main(String[] args)
 }
 
-class Controller{
+class ControllerActivity{
 - collection : EventCollection
 - locationList : ArrayList<Location> = Location.getLocationList()
 - bottomNavigationView : BottomNavigationView
@@ -258,13 +295,13 @@ public void onPointerCaptureChanged(boolean hasCapture)
 
 User ---> Main : \t\t\t\t
 
-Main ---> Controller : \t\t\t\t
+Main ---> ControllerActivity : \t\t\t\t
 
-Controller ---> "(1)" EventCollection : \t\t\t\t
+ControllerActivity ---> "(1)" EventCollection : \t\t\t\t
 
 EventCollection *- "(*)\nll\n{ArrayList}" Event : \t\t\t\t
 
-Controller ---> Location : \t\t\t\t
+ControllerActivity ---> Location : \t\t\t\t
 
 Event ---> "(1)" Location : \t\t\t\t
 
