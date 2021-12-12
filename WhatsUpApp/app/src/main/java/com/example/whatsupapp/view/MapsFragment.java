@@ -107,7 +107,7 @@ public class MapsFragment extends Fragment implements IMap {
             for (Event event : ecs) {
                 String loc = event.getEventLocation();
                 if (locMap.containsKey(loc)) {
-                    googleMap.addMarker(new MarkerOptions().position(locMap.get(loc)).title(event.getEventName()));
+                    googleMap.addMarker(new MarkerOptions().position(locMap.get(loc)).title(event.getEventName() + " posted by " + event.getEventPoster()));
                 }
                 LatLng vassar = new LatLng(41.686229, -73.897296);
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(vassar));
