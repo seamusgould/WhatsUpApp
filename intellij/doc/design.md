@@ -93,6 +93,84 @@ homeFrag -> user: Display events
 @enduml
 ```
 
+# Comment on Event: A Sequence Diagram
+```plantuml
+@startuml
+hide footbox
+actor User as user
+participant " : EventFragment" as eventFrag
+participant " : Event" as event
+
+user -> eventFrag: Post comment
+eventFrag -> event: getComments()
+eventFrag -> event: addComment(user_comment + " posted by " + event.getEventPoster() + " " + dateFormat.format(cal.getTime()))
+
+@enduml
+```
+
+# Creating Account: A Sequence Diagram
+```plantuml
+@startuml
+hide footbox
+actor User as user
+participant "AuthFragment : IAuthView" as authFrag
+participant " : ControllerActivity" as cont
+participant " : User" as userClass
+participant " : IPersistenceFacade" as persFacade
+
+user -> authFrag: Create account
+authFrag -> cont: onRegister(username, password)
+cont -> userClass: user = create(username, password)
+cont -> persFacade: createUserIfNotExists(user)
+
+alt !userExists
+    persFacade ->> cont: onYesResult()
+    cont -> authFrag: onRegisterSuccess()
+    authFrag -> user: Registration was successful
+else userExists
+    persFacade ->> cont: onNoResult()
+    cont -> authFrag: onUserAlreadyExists()
+    authFrag -> user: Registration failed
+end
+
+@enduml
+```
+
+# Sign In to Account: A Sequence Diagram
+```plantuml
+@startuml
+hide footbox
+actor User as user
+participant " : HomeFragment" as homeFrag
+participant "AuthFragment : IAuthView" as authFrag
+participant " : ControllerActivity" as cont
+participant " : IPersistenceFacade" as persFacade
+participant " : User" as userClass
+
+user -> authFrag: Sign in to account
+authFrag -> cont: onSigninAttempt(username, password)
+cont -> persFacade: retrieveUser(username)
+
+alt userExists
+    persFacade -> userClass: user = create()
+    persFacade ->> cont: onDataReceived(user)
+    cont -> userClass: validatePassword(password)
+    alt validPassword
+        cont -> homeFrag **: create()
+        homeFrag -> user: Display home screen
+    else !validPassword
+        cont -> authFrag: onInvalidCredentials()
+        authFrag -> user: Sign in unsuccessful
+    end
+else !userExists
+    persFacade ->> cont: onNoDataFound()
+    cont -> authFrag: onInvalidCredentials()
+    authFrag -> user: Sign in unsuccessful
+end
+
+@enduml
+```
+
 # Class Diagram
 
 ```plantuml
